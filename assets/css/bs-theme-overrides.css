@@ -60,5 +60,25 @@ color: #c0c0c0;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
   color: #000;
-  float: left;
+}
+
+.exercise-widget__timer-item {
+  margin: 10px 0;
+}
+
+.exercise-widget__button {
+  background-color: #8aa1b6;
+  border-color: ##2c3e50;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 2.5;
+}
+
+.exercise-widget__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  float: clear;
 }

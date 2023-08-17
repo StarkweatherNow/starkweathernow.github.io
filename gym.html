@@ -31,7 +31,9 @@
         </div>
     </header>
 
+    <!-- Commenting out the location script for now
     <script src="assets/js/location.js"></script>
+    -->
 
     <section id="widgets" class="portfolio">
         <div class="container">
@@ -79,13 +81,20 @@
                                 <div class="gym-widget">
                                     <h4>HIIT Timer</h4>
                                     <div class="exercise-widget__timer">
+                                        <div class="exercise-widget__timer-display">
+                                            <span class="exercise-widget__timer-title">Timer</span>
+                                            <h3 id="exercise-widget__display">00:00</h3>
                                         <div class="exercise-widget__timer-item">
-                                            <span class="exercise-widget__timer-title">Fast</span>
+                                            <span class="exercise-widget__timer-title">High:  </span>
+                                            <button id="exercise-widget__high_sub" class="exercise-widget__button">-</button>
                                             <span id="exercise-widget__work">0</span>
+                                            <button id="exercise-widget__high_add" class="exercise-widget__button">+</button>
                                         </div>
                                         <div class="exercise-widget__timer-item">
-                                            <span class="exercise-widget__timer-title">Slow</span>
+                                            <span class="exercise-widget__timer-title">Low:  </span>
+                                            <button id="exercise-widget__low_sub" class="exercise-widget__button">-</button>
                                             <span id="exercise-widget__rest">0</span>
+                                            <button id="exercise-widget__low_add" class="exercise-widget__button">+</button>
                                         </div>
                                     </div>
                                     <div class="exercise-widget__controls">
@@ -161,7 +170,9 @@
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/freelancer.js"></script>
+    <!-- Commenting out the weather script for now
     <script src="assets/js/weather.js"></script>
+    -->
     <script src="assets/js/HIIT.js"></script>
 </body>
 
