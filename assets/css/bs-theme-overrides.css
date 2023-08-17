@@ -40,3 +40,14 @@
 .silver {
 color: #c0c0c0;
 }
+
+.weather-widget {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  color: #000;
+}

@@ -31,41 +31,91 @@
         </div>
     </header>
 
+    <script src="assets/js/location.js"></script>
+
     <section id="widgets" class="portfolio">
         <div class="container">
-            <h2 class="text-uppercase text-center text-secondary">Widgets</h2>
+            <h2 class="text-uppercase text-center text-secondary">Gym Widgets</h2>
             <hr class="star-dark mb-5">
             <div class="row">
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" href="#portfolio-modal-1" data-bs-toggle="modal">
+                <div class="col-md-6 col-lg-4">
+                    <span class="d-block mx-auto portfolio-item">
+                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100">
+                                <!--Weather Widget that lists out 4 current conditions based on user location
+                                    -Temperature
+                                    -Weather Icon
+                                    -Humidity
+                                    -Air Quality
+                                -->
+                                <div class="weather-widget">
+                                    <h4>Current Conditions</h4>
+                                    <div id="weather-widget__location"></div>
+                                    <div class="weather-widget__temperature">
+                                        <span id="weather-widget__temperature-value">0</span>
+                                        <span class="weather-widget__temperature-unit">F</span>
+                                    </div>
+                                    <div class="weather-widget_icon">
+                                        <img id="weather-widget__icon" src="https://www.weatherbit.io/static/img/icons/c01d.png" alt="Weather Icon" class="weather-widget__icon-image">
+                                    </div>
+                                    <div id="weather-widget__description">Clear Sky</div>
+                                    <div class="weather-widget__details">
+                                        <div class="weather-widget__details-item">
+                                            <span class="weather-widget__details-title">Humidity:</span>
+                                            <span id="weather-widget__humidity">0</span>
+                                        </div>
+                                        <div class="weather-widget__details-item">
+                                            <span class="weather-widget__details-title">Air Quality is</span>
+                                            <span id="weather-widget__AQ">0</span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </span>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="d-block mx-auto portfolio-item">
                         <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/portfolio/cabin.png">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" href="#portfolio-modal-2" data-bs-toggle="modal">
+                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100">
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="d-block mx-auto portfolio-item">
                         <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/portfolio/cake.png">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" href="#portfolio-modal-3" data-bs-toggle="modal">
+                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100">
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="d-block mx-auto portfolio-item">
                         <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/portfolio/circus.png">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" href="#portfolio-modal-4" data-bs-toggle="modal">
+                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100">
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="d-block mx-auto portfolio-item">
                         <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/portfolio/game.png">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" href="#portfolio-modal-5" data-bs-toggle="modal">
+                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100">
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="d-block mx-auto portfolio-item">
                         <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/portfolio/safe.png">
-                    </a></div>
-                <div class="col-md-6 col-lg-4"><a class="d-block mx-auto portfolio-item" href="#portfolio-modal-6" data-bs-toggle="modal">
-                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
-                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100"><i class="fa fa-search-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="assets/img/portfolio/submarine.png">
-                    </a></div>
+                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100">
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -94,6 +144,7 @@
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/freelancer.js"></script>
+    <script src="assets/js/weather.js"></script>
 </body>
 
 </html>
