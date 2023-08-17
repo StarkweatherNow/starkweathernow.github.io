@@ -1,9 +1,18 @@
 :root, [data-bs-theme=light] {
-  --bs-primary: #8aa1b6;
+  --bs-primary: #8aa1b6; !important;
   --bs-primary-rgb: 138,161,182;
   --bs-primary-text-emphasis: #374049;
   --bs-primary-bg-subtle: #E8ECF0;
   --bs-primary-border-subtle: #D0D9E2;
+}
+
+.bg-primary {
+  background-color: #8aa1b6 !important;
+}
+
+hr.star-light:after {
+  color: #fff;
+  background-color: #8aa1b6; !important;
 }
 
 .btn-primary {
@@ -41,13 +50,15 @@
 color: #c0c0c0;
 }
 
-.weather-widget {
+.gym-widget {
   width: 100%;
   max-width: 400px;
+  min-height: 250px;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
   color: #000;
+  float: left;
 }

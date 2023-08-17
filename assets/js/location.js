@@ -11,6 +11,7 @@ function successFunction(position) {
     var long = position.coords.longitude;
     console.log(lat);
     console.log(long);
+    //pass GPS to getWeather function
     getWeather(lat,long);
 }
   

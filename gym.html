@@ -47,7 +47,7 @@
                                     -Humidity
                                     -Air Quality
                                 -->
-                                <div class="weather-widget">
+                                <div class="gym-widget">
                                     <h4>Current Conditions</h4>
                                     <div id="weather-widget__location"></div>
                                     <div class="weather-widget__temperature">
@@ -69,16 +69,33 @@
                                         </div>
                                     </div>
                             </div>
+                            </div>
                         </span>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <a class="d-block mx-auto portfolio-item">
-                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
+                    <span class="d-block mx-auto portfolio-item">
                             <div class="text-center text-white my-auto portfolio-item-caption-content w-100">
-                                
+                                <!--Exercise Widget - Customizable High Intensity Interval Training Timer-->
+                                <div class="gym-widget">
+                                    <h4>HIIT Timer</h4>
+                                    <div class="exercise-widget__timer">
+                                        <div class="exercise-widget__timer-item">
+                                            <span class="exercise-widget__timer-title">Fast</span>
+                                            <span id="exercise-widget__work">0</span>
+                                        </div>
+                                        <div class="exercise-widget__timer-item">
+                                            <span class="exercise-widget__timer-title">Slow</span>
+                                            <span id="exercise-widget__rest">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="exercise-widget__controls">
+                                        <button id="exercise-widget__start" class="exercise-widget__button">Start</button>
+                                        <button id="exercise-widget__pause" class="exercise-widget__button">Pause</button>
+                                        <button id="exercise-widget__reset" class="exercise-widget__button">Reset</button>
+                                    </div>
+
                             </div>
-                        </div>
-                    </a>
+                    </span>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <a class="d-block mx-auto portfolio-item">
@@ -145,6 +162,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/freelancer.js"></script>
     <script src="assets/js/weather.js"></script>
+    <script src="assets/js/HIIT.js"></script>
 </body>
 
 </html>
