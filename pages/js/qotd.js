@@ -1,14 +1,16 @@
 //Data Source for Dashboard Widget - Quote of the Day
 //import JSON file - qotd.json
-import data from ('./quotes.json') assert { type: "json" };
+import data from './quotes.json' assert { type: "json" };
 
-//Get the data from the JSON file
-var quote = data.quote;
-var author = data.author;
+//get the length of the JSON file
+var length = data.length;
 
-//parse data into a string
-quote = JSON.stringify(quote);
-author = JSON.stringify(author);
+//generate a random number between 0 and the length of the JSON file
+var random = Math.floor(Math.random() * length);
+
+//get the quote and author from the JSON file
+var quote = data[random].quote;
+var author = data[random].author;
 
 //remove the quotation marks from the string
 quote = quote.replace(/\"/g, "");
