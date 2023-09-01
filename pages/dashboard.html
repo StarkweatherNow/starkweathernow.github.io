@@ -68,13 +68,17 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" data-target="#qotd">
-                <h3 class="panel-title">Quote of the Day</h3>
+            <div class="panel-heading gap-2" data-toggle="collapse" data-target="#qotd">
+                <button class="btn btn-lg btn-primary" type="button">Quote of the Day</button>
             </div>
             <div class="panel-body collapse in" id="qotd">
                 <div id="qotdInfo">
-                    <div id="qotdQuote"></div>
-                    <div id="qotdAuthor"></div>
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-header" id="qotdAuthor"></div>
+                        <div class="card-body">
+                          <p class="card-text" id="qotdQuote"></p>
+                        </div>
+                    <div ></div>
                 </div>
             </div>
         </div>
