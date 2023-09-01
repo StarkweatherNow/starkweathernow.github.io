@@ -14,8 +14,8 @@ var author = quote.split(" - ")[1];
 quote = quote.split(" - ")[0];
 
 //append quote to ID qotdquote
-document.getElementById("qotdQuote").innerHTML = quote;
+document.getElementById("qotdQuote").innerText = quote;
 
 //append author to ID qotdauthor
-document.getElementById("qotdAuthor").innerHTML = author;
+document.getElementById("qotdAuthor").innerText = author;
 
