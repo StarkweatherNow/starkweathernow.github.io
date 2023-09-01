@@ -1,6 +1,6 @@
 //Data Source for Dashboard Widget - Quote of the Day
 //import JSON file - qotd.json
-import data from './quotes.json' assert { type: "json" };
+import data from 'quotes.json' assert { type: "json" };
 
 //get the length of the JSON file
 var length = data.length;
