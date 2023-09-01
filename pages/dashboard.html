@@ -1,0 +1,130 @@
+<!--Dashboard Page to display daily widgets: Weather, Schedule, Quote of the Day, To-Do List-->
+<!--This page is written using HTML and inline CSS to create a responsive grid of collapsible squares to import data into-->
+<!--The collapsible squares are created using Bootstrap-->
+<!--The data is imported using JS and XML-->
+<!--The data is imported from the following sources: Weather - OpenWeatherMap API, Schedule - Google Calendar API, Quote of the Day - They Said So API, To-Do List - Google Tasks API-->
+<!--The data is displayed using AJAX-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <!--Importing CSS-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <!--Importing JS-->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--Importing JQuery Mobile-->
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+    <script src="js/jquery.mobile-1.4.5.js"></script>
+    <!--Importing Google API-->
+    <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+<!--Header-->
+<div class="header">
+    <h1>Daily Dashboard</h1>
+</div>
+
+<!--Collapsible Grid-->
+
+<!--Weather-->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#weather">
+                <h3 class="panel-title">Weather</h3>
+            </div>
+            <div class="panel-body collapse in" id="weather">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="weatherIcon"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="weatherInfo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Schedule-->
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#schedule">
+                <h3 class="panel-title">Schedule</h3>
+            </div>
+            <div class="panel-body collapse in" id="schedule">
+                <div id="scheduleInfo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Quote of the Day-->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading gap-2" data-toggle="collapse" data-target="#qotd">
+                <button class="btn btn-lg btn-primary" type="button">Quote of the Day</button>
+            </div>
+            <div class="panel-body collapse in" id="qotd">
+                <div id="qotdInfo">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-header" id="qotdAuthor"></div>
+                        <div class="card-body">
+                          <p class="card-text" id="qotdQuote"></p>
+                        </div>
+                    <div ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--To-Do List-->
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#todo">
+                <h3 class="panel-title">To-Do List</h3>
+            </div>
+            <div class="panel-body collapse in" id="todo">
+                <div id="todoInfo">
+                    <div id="todoList"></div>
+                    <div id="todoButtons"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Stocks-->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#stocks">
+                <h3 class="panel-title">Stocks</h3>
+            </div>
+            <div class="panel-body collapse in" id="stocks">
+                <div id="stocksInfo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Footer-->
+<div class="footer">
+    <h5>Created by: Brandon Starkweather</h5>
+</div>
+
+<!--Importing JS files-->
+<script src="js/weather.js"></script>
+<script src="js/schedule.js"></script>
+<script src="js/qotd.js"></script>
+<script src="js/todo.js"></script>
+<script src="js/stocks.js"></script>
+
+</body>
+</html>
