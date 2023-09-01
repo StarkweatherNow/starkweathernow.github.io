@@ -2,7 +2,7 @@
 <!--This page is written using HTML and inline CSS to create a responsive grid of collapsible squares to import data into-->
 <!--The collapsible squares are created using Bootstrap-->
 <!--The data is imported using JS and XML-->
-<!--The data is imported from the following sources: Weather - OpenWeatherMap API, Schedule - Google Calendar API, Quote of the Day - They Said So API, To-Do List - Google Tasks API-->
+<!--The data is imported from the following sources: Weather - OpenWeatherMap API, Schedule - Google Calendar API, To-Do List - Google Tasks API-->
 <!--The data is displayed using AJAX-->
 
 <!DOCTYPE html>
@@ -12,6 +12,7 @@
     <title>Dashboard</title>
     <!--Importing CSS-->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
     <!--Importing JS-->
     <script src="js/jquery-3.7.1.min.js"></script>
@@ -24,28 +25,60 @@
     <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
-<!--Header-->
-<div class="header">
-    <h1>Daily Dashboard</h1>
-</div>
+<!--NavBar-->
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Start The Day</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="https://brandonstarkweather.com/">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://brandonstarkweather.com/#portfolio">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://brandonstarkweather.com/#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://brandonstarkweather.com/#contact">Contact</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
-<!--Collapsible Grid-->
+<!--BootStrap div for creating margin to provide space for the following widgets-->
+<div class="" style="margin: 20px;">
 
 <!--Weather-->
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" data-target="#weather">
-                <h3 class="panel-title">Weather</h3>
-            </div>
-            <div class="panel-body collapse in" id="weather">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div id="weatherIcon"></div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div id="weatherInfo"></div>
-                    </div>
+            <div class="card border-warning mb-3" style="max-width: 20rem;">
+                <div class="card-header">Weather</div>
+                <div class="card-body">
+                    <h4 class="card-title">OpenWeather</h4>
+                    <p class="card-text" id="weather-widget"></p>
                 </div>
             </div>
         </div>
@@ -54,11 +87,12 @@
     <!--Schedule-->
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" data-target="#schedule">
-                <h3 class="panel-title">Schedule</h3>
-            </div>
-            <div class="panel-body collapse in" id="schedule">
-                <div id="scheduleInfo"></div>
+            <div class="card border-danger mb-3" style="max-width: 20rem;">
+                <div class="card-header">Schedule</div>
+                <div class="card-body">
+                    <h4 class="card-title">Google Cal</h4>
+                    <p class="card-text" id="gcal-widget"></p>
+                </div>
             </div>
         </div>
     </div>
@@ -68,14 +102,11 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="panel-heading gap-2" data-toggle="collapse" data-target="#qotd">
-                <button class="btn btn-lg btn-primary" type="button">Quote of the Day</button>
-            </div>
-            <div class="panel-body collapse in" id="qotd">
                 <div id="qotdInfo">
                     <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-                        <div class="card-header" id="qotdAuthor"></div>
+                        <div class="card-header">Quote of the Day</div>
                         <div class="card-body">
+                          <h4 class="card-title" id="qotdAuthor"></h4> 
                           <p class="card-text" id="qotdQuote"></p>
                         </div>
                     <div ></div>
@@ -87,13 +118,11 @@
     <!--To-Do List-->
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" data-target="#todo">
-                <h3 class="panel-title">To-Do List</h3>
-            </div>
-            <div class="panel-body collapse in" id="todo">
-                <div id="todoInfo">
-                    <div id="todoList"></div>
-                    <div id="todoButtons"></div>
+            <div class="card border-info mb-3" style="max-width: 20rem;">
+                <div class="card-header">To-Do List</div>
+                <div class="card-body">
+                    <h4 class="card-title">Google Tasks</h4>
+                    <p class="card-text" id="gcal-todo-widget"></p>
                 </div>
             </div>
         </div>
@@ -104,14 +133,17 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" data-target="#stocks">
-                <h3 class="panel-title">Stocks</h3>
-            </div>
-            <div class="panel-body collapse in" id="stocks">
-                <div id="stocksInfo"></div>
+            <div class="card border-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">Stocks</div>
+                <div class="card-body">
+                    <h4 class="card-title">AlphaVantage</h4>
+                    <p class="card-text" id="stocks-widget"></p>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
 </div>
 
 <!--Footer-->
