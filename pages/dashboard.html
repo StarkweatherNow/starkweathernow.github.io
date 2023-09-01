@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
     <!--Importing JS-->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/bootstrap.js"></script>
     <!--Importing JQuery Mobile-->
@@ -24,10 +24,10 @@
     <!--Importing Google API-->
     <script src="https://apis.google.com/js/api.js"></script>
     <!--Importing JS files-->
-    <script src="widget.js"></script>
+    <script src="js/widget.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/schedule.js"></script>
-    <script src="js/qotd.js"></script>
+    <script type="module" src="js/qotd.js"></script>
     <script src="js/todo.js"></script>
     <script src="js/stocks.js"></script>
 </head>
@@ -36,7 +36,93 @@
 <div class="header">
     <h1>Dashboard</h1>
 </div>
-<!--Weather Widget - Import weather.js -->
+
+<!--Collapsible Grid-->
+
+<!--Weather-->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#weather">
+                <h3 class="panel-title">Weather</h3>
+            </div>
+            <div class="panel-body collapse in" id="weather">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="weatherIcon"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="weatherInfo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Schedule-->
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#schedule">
+                <h3 class="panel-title">Schedule</h3>
+            </div>
+            <div class="panel-body collapse in" id="schedule">
+                <div id="scheduleInfo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Quote of the Day-->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#qotd">
+                <h3 class="panel-title">Quote of the Day</h3>
+            </div>
+            <div class="panel-body collapse in" id="qotd">
+                <div id="qotdInfo">
+                    <div id="qotdQuote"></div>
+                    <div id="qotdAuthor"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--To-Do List-->
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#todo">
+                <h3 class="panel-title">To-Do List</h3>
+            </div>
+            <div class="panel-body collapse in" id="todo">
+                <div id="todoInfo">
+                    <div id="todoList"></div>
+                    <div id="todoButtons"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Stocks-->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#stocks">
+                <h3 class="panel-title">Stocks</h3>
+            </div>
+            <div class="panel-body collapse in" id="stocks">
+                <div id="stocksInfo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Footer-->
+<div class="footer">
+    <h3>Created by: Brandon Starkweather</h3>
+</div>
+
 
 </body>
 </html>

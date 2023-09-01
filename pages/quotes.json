@@ -1,43 +1,15 @@
-//list of daily quotes formated in JSON
-
-//get the quote of the day
-function getQuote() {
-    //get the quote of the day
-    var quote = quotes[Math.floor(Math.random() * quotes.length)];
-    //get the quote of the day
-    var author = authors[Math.floor(Math.random() * authors.length)];
-    //get the quote of the day
-    var quote = quotes[Math.floor(Math.random() * quotes.length)];
-    //get the quote of the day
-    var author = authors[Math.floor(Math.random() * authors.length)];
-    //get the quote of the day
-    var quote = quotes[Math.floor(Math.random() * quotes.length)];
-    //get the quote of the day
-    var author = authors[Math.floor(Math.random() * authors.length)];
-    //get the quote of the day
-    var quote = quotes[Math.floor(Math.random() * quotes.length)];
-    //get the quote of the day
-    var author = authors[Math.floor(Math.random() * authors.length)];
-    //get the quote of the day
-    var quote = quotes[Math.floor(Math.random() * quotes.length)];
-    //get the quote of the day
-    var author = authors[Math.floor(Math.random() * authors.length)];
-    //get the quote of the day
-    var quote = quotes[Math.floor(Math.random() * quotes.length)];
-    //get the quote of the day
-    var author = authors[Math.floor(Math.random() * authors.length)];
-    //get the quote of the day
-    var quote = quotes[Math.floor(Math.random() * quotes.length)];
-    //get the quote of the day
-    var author = authors[Math.floor(Math.random() * authors.length)];
-    //get the quote of the day
-    var quote = quotes[Math.floor(Math.random() * quotes.length)];
-    //get the quote of the day
-    var author = authors[Math.floor(Math.random() * authors.length)];
-
-    //display the quote of the day
-    document.getElementById("quote").innerHTML = quote;
-    //display the author of the quote of the day
-    document.getElementById("author").innerHTML = author;
+//list of JSON objects to display daily quote and author
+{
+    "stoic1":{ 
+        "quote":"The happiness of your life depends upon the quality of your thoughts.",
+        "author":"Marcus Aurelius"
+    },
+    "stoic2":{ 
+        "quote":"The best revenge is not to be like your enemy.",
+        "author":"Marcus Aurelius"
+    },
+    "stoic3":{ 
+        "quote":"You have power over your mind - not outside events. Realize this, and you will find strength.",
+        "author":"Marcus Aurelius"
+    },
 }
-
