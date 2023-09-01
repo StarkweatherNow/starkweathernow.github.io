@@ -1,0 +1,43 @@
+//list of daily quotes formated in JSON
+
+//get the quote of the day
+function getQuote() {
+    //get the quote of the day
+    var quote = quotes[Math.floor(Math.random() * quotes.length)];
+    //get the quote of the day
+    var author = authors[Math.floor(Math.random() * authors.length)];
+    //get the quote of the day
+    var quote = quotes[Math.floor(Math.random() * quotes.length)];
+    //get the quote of the day
+    var author = authors[Math.floor(Math.random() * authors.length)];
+    //get the quote of the day
+    var quote = quotes[Math.floor(Math.random() * quotes.length)];
+    //get the quote of the day
+    var author = authors[Math.floor(Math.random() * authors.length)];
+    //get the quote of the day
+    var quote = quotes[Math.floor(Math.random() * quotes.length)];
+    //get the quote of the day
+    var author = authors[Math.floor(Math.random() * authors.length)];
+    //get the quote of the day
+    var quote = quotes[Math.floor(Math.random() * quotes.length)];
+    //get the quote of the day
+    var author = authors[Math.floor(Math.random() * authors.length)];
+    //get the quote of the day
+    var quote = quotes[Math.floor(Math.random() * quotes.length)];
+    //get the quote of the day
+    var author = authors[Math.floor(Math.random() * authors.length)];
+    //get the quote of the day
+    var quote = quotes[Math.floor(Math.random() * quotes.length)];
+    //get the quote of the day
+    var author = authors[Math.floor(Math.random() * authors.length)];
+    //get the quote of the day
+    var quote = quotes[Math.floor(Math.random() * quotes.length)];
+    //get the quote of the day
+    var author = authors[Math.floor(Math.random() * authors.length)];
+
+    //display the quote of the day
+    document.getElementById("quote").innerHTML = quote;
+    //display the author of the quote of the day
+    document.getElementById("author").innerHTML = author;
+}
+
