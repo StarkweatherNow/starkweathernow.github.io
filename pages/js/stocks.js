@@ -16,14 +16,16 @@ function getStocks() {
         var close = data["Time Series (Daily)"][date]["4. close"];
         var volume = data["Time Series (Daily)"][date]["5. volume"];
         var output = "<h2>Stock Information</h2><br><table><tr><th>Symbol</th><th>Date</th><th>Open</th><th>High</th><th>Low</th><th>Close</th><th>Volume</th></tr><tr><td>" + symbol + "</td><td>" + date + "</td><td>" + open + "</td><td>" + high + "</td><td>" + low + "</td><td>" + close + "</td><td>" + volume + "</td></tr></table>";
-        document.getElementById("stockResults").innerHTML = output;
+        document.getElementById("stock-widget").innerHTML = output;
     }
     request.send();
 }
 
+
+
 //Function to clear results
 function clearResults() {
-    document.getElementById("stockResults").innerHTML = "";
+    document.getElementById("stock-widget").innerHTML = "";
 }
 
 //Function to clear form
@@ -88,3 +90,5 @@ function validateFormClearAll() {
     }
 }
 
+//attach function to button
+document.getElementById("stock-button").onclick = validateForm;

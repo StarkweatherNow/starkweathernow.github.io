@@ -74,13 +74,13 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="card border-warning mb-3" style="max-width: 20rem;">
+            <div class="card border-warning mb-3">
                 <div class="card-header">Weather</div>
                 <div class="card-body">
                     <h4 class="card-title">OpenWeather</h4>
                     <p class="card-text" id="weather-widget">
                         Get your location by clicking this button. I might add the ability for zip codes later. 
-                        <p><button type="button" class="btn btn-success" id="weather-button">Get Location</button></p>
+                        <p class="text-center"><button type="button" class="btn btn-success" id="weather-button">Get Location</button></p>
                     </p>
                 </div>
             </div>
@@ -90,7 +90,7 @@
     <!--Schedule-->
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="card border-danger mb-3" style="max-width: 20rem;">
+            <div class="card border-danger mb-3">
                 <div class="card-header">Schedule</div>
                 <div class="card-body">
                     <h4 class="card-title">Google Cal</h4>
@@ -106,7 +106,7 @@
     <div class="col-sm-6">
         <div class="panel panel-default">
                 <div id="qotdInfo">
-                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                    <div class="card text-white bg-primary mb-3">
                         <div class="card-header">Quote of the Day</div>
                         <div class="card-body">
                           <h4 class="card-title" id="qotdAuthor"></h4> 
@@ -121,7 +121,7 @@
     <!--To-Do List-->
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="card border-info mb-3" style="max-width: 20rem;">
+            <div class="card border-info mb-3">
                 <div class="card-header">To-Do List</div>
                 <div class="card-body">
                     <h4 class="card-title">Google Tasks</h4>
@@ -136,11 +136,17 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="card border-success mb-3" style="max-width: 20rem;">
+            <div class="card border-success mb-3">
                 <div class="card-header">Stocks</div>
                 <div class="card-body">
                     <h4 class="card-title">AlphaVantage</h4>
-                    <p class="card-text" id="stocks-widget"></p>
+                    <p class="card-text" id="stocks-widget">
+                        <div class="form-group">
+                            <label class="col-form-label mt-4" for="inputDefault">Stock Symbol</label>
+                            <input type="text" class="form-control" placeholder="Default input" id="stock">
+                        </div>
+                        <p class="text-center"><button type="button" class="btn btn-success" id="stocks-button">Get Stock</button></p>
+                    </p>
                 </div>
             </div>
         </div>
