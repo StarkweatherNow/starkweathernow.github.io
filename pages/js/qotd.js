@@ -70,4 +70,35 @@ document.getElementById("qotdQuote").innerText = quote;
 //append author to ID qotdauthor
 document.getElementById("qotdAuthor").innerText = author;
 
-//tap quote to refresh
+//AJAX function to refresh 'qotdinfo' div when clicked
+function refreshQuote() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            //parse quote and author from array
+            var quote = quotes[Math.floor(Math.random() * quotes.length)];
+            var author = quote.split(" - ")[1];
+            quote = quote.split(" - ")[0];
+
+            //append quote to ID qotdquote
+            document.getElementById("qotdQuote").innerText = quote;
+
+            //append author to ID qotdauthor
+            document.getElementById("qotdAuthor").innerText = author;
+        }
+    };
+    xhttp.open("GET", "qotd.txt", true);
+    xhttp.send();
+}
+
+
+//add event listener to support mobile
+document.getElementById("qotdInfo").addEventListener("touchstart", refreshQuote, false);
+
+//add event listener to support desktop
+document.getElementById("qotdInfo").addEventListener("click", refreshQuote, false);
+
+
+
+
