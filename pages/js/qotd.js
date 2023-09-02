@@ -56,6 +56,9 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
+//call shuffle function
+shuffle(quotes);
+
 //parse quote and author from array
 var quote = quotes[Math.floor(Math.random() * quotes.length)];
 var author = quote.split(" - ")[1];
