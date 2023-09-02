@@ -46,10 +46,10 @@ function drawWeather(data) {
     var humidity = data.main.humidity;
     var icon = data.weather[0].icon;
     var name = data.name;
-    document.getElementById('weather-location').innerHTML = name;
+    document.getElementById('weather-location').innerHTML = name + " " + fahrenheit + '&deg;';
     document.getElementById('weather-icon').src = "http://openweathermap.org/img/w/" + icon + ".png";
     document.getElementById('weather-description').innerHTML = description;
-    document.getElementById('weather-widget__temperature-value').innerHTML = fahrenheit + '&deg;';
+    document.getElementById('weather-temp').innerHTML = fahrenheit + '&deg;';
     document.getElementById('weather-widget__humidity').innerHTML = humidity + '%';
 };
     
