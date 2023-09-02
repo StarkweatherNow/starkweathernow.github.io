@@ -100,7 +100,7 @@ function refreshQuote() {
             document.getElementById("qotdQuote").innerText = quote;
 
             //append author to ID qotdauthor
-            document.getElementById("qotdAuthor").innerText = author + refreshicon;
+            document.getElementById("qotdAuthor").innerHTML = author + refreshicon;
         }
     };
     xhttp.open("GET", "js/qotd.txt", true);
