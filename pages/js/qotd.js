@@ -56,9 +56,17 @@ var quotes_07 = [
 
 ];
 
+//array of quotes from famous poets
+var quotes_08 = [
+    "The woods are lovely, dark and deep. But I have promises to keep, and miles to go before I sleep. - Robert Frost",
+    "Two roads diverged in a wood, and I took the one less traveled by, and that has made all the difference. - Robert Frost",
+    "I took the one less traveled by, and that has made all the difference. - Robert Frost",
+    "The best way out is always through. - Robert Frost",
+    "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost",
+];
 
 //create master array from the above arrays
-var quotes = quotes_01.concat(quotes_02, quotes_03, quotes_04, quotes_05, quotes_06, quotes_07);
+var quotes = quotes_01.concat(quotes_02, quotes_03, quotes_04, quotes_05, quotes_06, quotes_07, quotes_08);
 
 //shuffle array
 function shuffle(array) {
