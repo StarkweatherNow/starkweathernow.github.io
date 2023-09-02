@@ -1,6 +1,9 @@
 /* CSS fill for overrides and custom styles */
 
 .footer {
+    position: absolute;
+    bottom: 0;
+    left: auto;
     width: max-width;
     background-color: #1a1a1a;
     color: white;

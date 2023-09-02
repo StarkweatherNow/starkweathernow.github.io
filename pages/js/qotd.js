@@ -48,8 +48,17 @@ var quotes_06 = [
 
 ];
 
+//array of quotes from Bruce Lee
+var quotes_07 = [
+    "If you spend too much time thinking about a thing, you'll never get it done. - Bruce Lee",
+    "If you love life, don't waste time, for time is what life is made up of. - Bruce Lee",
+    "Mistakes are always forgivable, if one has the courage to admit them. - Bruce Lee",
+
+];
+
+
 //create master array from the above arrays
-var quotes = quotes_01.concat(quotes_02, quotes_03, quotes_04, quotes_05, quotes_06);
+var quotes = quotes_01.concat(quotes_02, quotes_03, quotes_04, quotes_05, quotes_06, quotes_07);
 
 //shuffle array
 function shuffle(array) {
