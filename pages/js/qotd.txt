@@ -1,7 +1,7 @@
 <div class="card text-white bg-primary mb-3">
                         <div class="card-header">Quote of the Day</div>
                         <div class="card-body">
-                          <span id="qotdAuthor"></span>  
+                          <h4 class="card-title" id="qotdAuthor"></h4> 
                           <p class="card-text" id="qotdQuote"></p>
                         </div>
                     </div>

@@ -83,7 +83,7 @@ var refreshicon = " <span class=\"right ui-icon ui-icon-refresh\"></span>";
 document.getElementById("qotdQuote").innerText = quote;
 
 //append author to ID qotdauthor
-document.getElementById("qotdAuthor").innerHTML = author + refreshicon;
+document.getElementById("qotdAuthor").innerText = author;
 
 //AJAX function to refresh 'qotdinfo' div when clicked
 function refreshQuote() {
@@ -100,7 +100,7 @@ function refreshQuote() {
             document.getElementById("qotdQuote").innerText = quote;
 
             //append author to ID qotdauthor
-            document.getElementById("qotdAuthor").innerHTML = author + refreshicon;
+            document.getElementById("qotdAuthor").innerText = author;
         }
     };
     xhttp.open("GET", "js/qotd.txt", true);
