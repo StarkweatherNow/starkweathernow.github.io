@@ -102,7 +102,7 @@
                 <div class="card-header">Current Conditions</div>
                 <div class="card-body">
                     <h4 class="card-title">API: OpenWeather</h4>
-                    <p class="card-text" id="gcal-widget"></p>
+                    <p class="card-text" id="condition-widget"></p>
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@
                 <div class="card-header">To-Do List</div>
                 <div class="card-body">
                     <h4 class="card-title">Google Tasks</h4>
-                    <p class="card-text" id="gcal-todo-widget"></p>
+                    <p class="card-text" id="gcal-todo-widget">Google Login Goes Here</p>
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@
                 <div class="card-header">Economic Markers</div>
                 <div class="card-body">
                     <h4 class="card-title">API: ???</h4>
-                    <p class="card-text" id="gcal-todo-widget"></p>
+                    <p class="card-text" id="eco-widget"></p>
                 </div>
             </div>
         </div>
@@ -202,6 +202,37 @@
     </div>
 </div>
 
+<!-- Credits & Tech-->
+<div class="row">
+    <!--Credits-->
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="card border-info mb-3">
+                <div class="card-header">Credits</div>
+                <div class="card-body">
+                    <h4 class="card-title">Giving Thanks!</h4>
+                    <p class="card-text" id="credits-widget"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Tech-->
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">Tech Stack</div>
+                <div class="card-body">
+                    <h4 class="card-title">Powered By:</h4>
+                    <p class="card-text" id="tech-widget"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
 <!--Footer-->
 <div class="footer">
     <h5>Created by: Brandon Starkweather</h5>
@@ -209,6 +240,7 @@
 </div>
 
 <!--Importing JS files-->
+<script src="js/location.js"></script>
 <script src="js/weather.js"></script>
 <script src="js/schedule.js"></script>
 <script src="js/qotd.js"></script>

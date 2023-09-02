@@ -115,8 +115,3 @@ function refreshQuote() {
     xhttp.send();
 };
 
-//add event listener to support mobile
-document.getElementById("qotdinfo").addEventListener("touchstart", refreshQuote, false);
-
-//add event listener to support desktop
-document.getElementById("qotdinfo").addEventListener("click", refreshQuote, false);
