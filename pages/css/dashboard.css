@@ -1,7 +1,7 @@
 /* CSS fill for overrides and custom styles */
 
 .footer {
-    position: absolute;
+    position: static;
     bottom: 0;
     left: auto;
     width: 100%;
