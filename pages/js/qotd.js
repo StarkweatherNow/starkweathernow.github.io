@@ -74,7 +74,7 @@ var author = quote.split(" - ")[1];
 quote = quote.split(" - ")[0];
 
 //adding HTML to Author
-var author = "<h4 class=\"card-title\">" + author + "</h4>";
+//var author = "<h4 class=\"card-title\">" + author + "</h4>";
 
 // JQuery UI - refresh icon
 var refreshicon = " <span class=\"right ui-icon ui-icon-refresh\"></span>";
