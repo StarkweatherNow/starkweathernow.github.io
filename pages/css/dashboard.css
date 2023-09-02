@@ -19,7 +19,7 @@
     float: right;
 }
 
-//overriding jquery icons to default to white
+/*overriding jquery icons to default to white*/
 .ui-icon {
     background-image: url("images/ui-icons_ffffff_256x240.png") !important;
 }
