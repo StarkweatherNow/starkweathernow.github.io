@@ -14,3 +14,7 @@
 .widget-grid {
     padding: 20px;
 }
+
+.right {
+    float: right;
+}
