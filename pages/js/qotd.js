@@ -88,7 +88,7 @@ function refreshQuote() {
             document.getElementById("qotdAuthor").innerText = author;
         }
     };
-    xhttp.open("GET", "qotd.txt", true);
+    xhttp.open("GET", "js/qotd.txt", true);
     xhttp.send();
 }
 
