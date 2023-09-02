@@ -43,3 +43,7 @@ function showPosition(position) {
 
 //OnClick event to call getLocation function
 document.getElementById("weather-button").onclick = getLocation;
+
+//add event listener to support mobile
+document.getElementById("weather-button").addEventListener("touchstart", getLocation, false);
+
