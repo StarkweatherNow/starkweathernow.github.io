@@ -24,6 +24,7 @@
     <script src="js/jquery.mobile-1.5.0-rc1.min.js"></script>-->
     <!--Importing Google API-->
     <script src="https://apis.google.com/js/api.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 </head>
 <body>
 <!--NavBar-->
@@ -78,7 +79,7 @@
             <div class="card border-warning mb-3">
                 <div class="card-header">Weather</div>
                 <div class="card-body">
-                    <h4 class="card-title">OpenWeather</h4>
+                    <h4 class="card-title">API: OpenWeather</h4>
                     <p class="card-text" id="weather-widget">
                         Get your location by clicking this button. I might add the ability for zip codes later. 
                         <p class="text-center"><button type="button" class="btn btn-success" id="weather-button">Get Location</button></p>
@@ -106,16 +107,15 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">
-                <div id="qotdInfo">
+                <div id="qotdInfo" onclick="refreshQuote()">
                     <div class="card text-white bg-primary mb-3">
                         <div class="card-header">Quote of the Day</div>
                         <div class="card-body">
                           <h4 class="card-title" id="qotdAuthor"></h4> 
                           <p class="card-text" id="qotdQuote"></p>
                         </div>
-                    <div ></div>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 
@@ -138,9 +138,9 @@
     <div class="col-sm-6">
         <div class="panel panel-default">
             <div class="card border-success mb-3">
-                <div class="card-header">Stocks</div>
+                <div class="card-header">Check Stock</div>
                 <div class="card-body">
-                    <h4 class="card-title">AlphaVantage</h4>
+                    <h4 class="card-title">API: AlphaVantage</h4>
                     <p class="card-text" id="stocks-widget">
                         <div class="form-group">
                             <label class="col-form-label mt-4" for="inputDefault">Stock Symbol</label>

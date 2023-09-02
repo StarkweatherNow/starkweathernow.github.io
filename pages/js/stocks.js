@@ -1,5 +1,8 @@
 //JS script to call stock quote API and display results
 
+//default stock symbol
+var stock = "GME"   //GameStop;
+
 //Function to call API and display results
 function getStocks() {
     var stock = document.getElementById("stock").value;
@@ -16,7 +19,7 @@ function getStocks() {
         var close = data["Time Series (Daily)"][date]["4. close"];
         var volume = data["Time Series (Daily)"][date]["5. volume"];
         var output = "<h2>Stock Information</h2><br><table><tr><th>Symbol</th><th>Date</th><th>Open</th><th>High</th><th>Low</th><th>Close</th><th>Volume</th></tr><tr><td>" + symbol + "</td><td>" + date + "</td><td>" + open + "</td><td>" + high + "</td><td>" + low + "</td><td>" + close + "</td><td>" + volume + "</td></tr></table>";
-        document.getElementById("stock-widget").innerHTML = output;
+        document.getElementById("stocks-widget").innerHTML = output;
     }
     request.send();
 }
@@ -91,4 +94,5 @@ function validateFormClearAll() {
 }
 
 //attach function to button
-document.getElementById("stock-button").onclick = validateForm;
+document.getElementById("stocks-button").onclick = validateForm;
+
