@@ -21,6 +21,17 @@ function getWeather(lat,long) {
         // catch any errors
     });
 
+    //Get the forecast information from OpenWeatherMap API
+    fetch('https://api.openweathermap.org/data/2.5/forecast?lat='+lat+'&lon='+long+'&appid='+API_KEY)
+    .then(function(resp) { return resp.json() }) // Convert data to json
+    .then(function(data) {
+        console.log(data);
+        drawForecast(data);
+    })
+    .catch(function() {
+        // catch any errors
+    });
+
     //Get the air quality information from OpenWeatherMap API
     fetch('https://api.openweathermap.org/data/2.5/air_pollution?lat='+lat+'&lon='+long+'&appid='+API_KEY)
     .then(function(resp) { return resp.json() }) // Convert data to json
@@ -51,6 +62,26 @@ function drawWeather(data) {
     document.getElementById('weather-description').innerHTML = description;
     document.getElementById('weather-temp').innerHTML = fahrenheit + '&deg;';
     document.getElementById('weather-widget__humidity').innerHTML = humidity + '%';
+};
+
+function drawForecast(data) {
+    //for each item in the data.list array parse "dt" and "main.temp" and "main.humidity" and "wind.speed" to the table
+    for (var i = 0; i < data.list.length; i++) {
+        var unix_timestamp = data.list[i].dt;
+        var date = new Date(unix_timestamp*1000);
+        var hours = date.getHours();
+        var minutes = "0" + date.getMinutes();
+        var formattedTime = hours + ':' + minutes.substr(-2);
+        document.getElementById('time-'+i).innerHTML = formattedTime;
+        var fahrenheit = Math.round(((parseFloat(data.list[i].main.temp)-273.15)*1.8)+32);
+        document.getElementById('temp-'+i).innerHTML = fahrenheit + '&deg;';
+        document.getElementById('hum-'+i).innerHTML = data.list[i].main.humidity + '%';
+        document.getElementById('wind-'+i).innerHTML = data.list[i].wind.speed + ' mph';
+        //clear text from weather-widget
+        document.getElementById('weather-widget').innerHTML = "";
+
+    };
+
 };
     
 function drawAirQuality(data) {
