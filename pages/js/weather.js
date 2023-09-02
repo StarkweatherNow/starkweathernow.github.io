@@ -47,8 +47,8 @@ function drawWeather(data) {
     var icon = data.weather[0].icon;
     var name = data.name;
     document.getElementById('weather-location').innerHTML = name;
-    document.getElementById('weather-widget__icon').src = "http://openweathermap.org/img/w/" + icon + ".png";
-    document.getElementById('weather-widget__description').innerHTML = description;
+    document.getElementById('weather-icon').src = "http://openweathermap.org/img/w/" + icon + ".png";
+    document.getElementById('weather-description').innerHTML = description;
     document.getElementById('weather-widget__temperature-value').innerHTML = fahrenheit + '&deg;';
     document.getElementById('weather-widget__humidity').innerHTML = humidity + '%';
 };
@@ -57,17 +57,17 @@ function drawAirQuality(data) {
     var aqi = data.list[0].main.aqi;
     //If Else statement to determine the AQI
     if (aqi == 1) {
-        aqi = "Good";
+        aqi = "Air Quality:<br><span class=\"badge bg-success\">Good</span>";
     } else if (aqi == 2) {
-        aqi = "Fair";
+        aqi = "Air Quality:<br><span class=\"badge bg-warning\">Fair</span>";
     } else if (aqi == 3) {
-        aqi = "Moderate";
+        aqi = "Air Quality:<br><span class=\"badge bg-warning\">Moderate</span>";
     } else if (aqi == 4) {
-        aqi = "Poor";
+        aqi = "Air Quality:<br><span class=\"badge bg-danger\">Poor</span>";
     } else if (aqi == 5) {
-        aqi = "Very Poor";
+        aqi = "Air Quality:<br><span class=\"badge bg-danger\">Very Poor</span>";
     } else {
         aqi = "Unknown";
     };
-    document.getElementById('weather-widget__AQ').innerHTML = aqi;
+    document.getElementById('weather-AQ').innerHTML = aqi;
 };

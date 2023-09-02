@@ -23,3 +23,10 @@
 .ui-icon {
     background-image: url(images/ui-icons_ffffff_256x240.png) !important;
 }
+
+#weather-icon{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+}
