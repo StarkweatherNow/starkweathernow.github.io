@@ -105,7 +105,7 @@ function refreshQuote() {
     };
     xhttp.open("GET", "js/qotd.txt", true);
     xhttp.send();
-}
+};
 
 //add event listener to support mobile
 document.getElementById("qotdinfo").addEventListener("touchstart", refreshQuote, false);
