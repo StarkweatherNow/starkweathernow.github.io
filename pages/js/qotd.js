@@ -73,11 +73,14 @@ var quote = quotes[Math.floor(Math.random() * quotes.length)];
 var author = quote.split(" - ")[1];
 quote = quote.split(" - ")[0];
 
+//refresh icon
+var refreshicon = " <span class=\"ui-icon ui-icon-refresh\"></span>";
+
 //append quote to ID qotdquote
 document.getElementById("qotdQuote").innerText = quote;
 
 //append author to ID qotdauthor
-document.getElementById("qotdAuthor").innerText = author;
+document.getElementById("qotdAuthor").innerText = author + refreshicon;
 
 //AJAX function to refresh 'qotdinfo' div when clicked
 function refreshQuote() {
@@ -94,7 +97,7 @@ function refreshQuote() {
             document.getElementById("qotdQuote").innerText = quote;
 
             //append author to ID qotdauthor
-            document.getElementById("qotdAuthor").innerText = author;
+            document.getElementById("qotdAuthor").innerText = author + refreshicon;
         }
     };
     xhttp.open("GET", "js/qotd.txt", true);
