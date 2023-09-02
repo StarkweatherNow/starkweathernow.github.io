@@ -31,6 +31,10 @@
     display: block;
 }
 
-#weather-table .td {
-    text-align: right !important;
+#table-style td {
+    text-align: center;
+}
+
+#table-style .table {
+    margin-bottom: 0 !important;
 }
