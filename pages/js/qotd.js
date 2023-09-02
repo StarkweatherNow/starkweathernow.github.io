@@ -6,6 +6,7 @@ var quotes = [
     "It does not matter how slowly you go as long as you do not stop. - Confucius",
     "Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. - Thomas A. Edison",
     "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible. - Francis of Assisi",
+    "It's not whether you get knocked down, it's whether you get up. - Vince Lombardi",
 ];
 
 //parse quote and author from array
