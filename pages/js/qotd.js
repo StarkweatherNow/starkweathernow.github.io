@@ -70,3 +70,4 @@ document.getElementById("qotdQuote").innerText = quote;
 //append author to ID qotdauthor
 document.getElementById("qotdAuthor").innerText = author;
 
+//tap quote to refresh
