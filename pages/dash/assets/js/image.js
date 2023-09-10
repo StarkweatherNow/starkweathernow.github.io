@@ -15,7 +15,11 @@ function drawDailyImage(data) {
     var image = data.url;
     var title = data.title;
     var explanation = data.explanation;
-    document.getElementById('daily-image__image').style(background-image:url) = image;
+    document.getElementById('daily-image__image').style.backgroundImage = "url('" + image + "')";
     document.getElementById('daily-image__title').innerHTML = title;
     document.getElementById('daily-image__explanation').innerHTML = explanation;
 }
+
+
+//On page load call the getDailyImage function
+getDailyImage();
