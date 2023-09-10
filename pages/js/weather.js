@@ -60,7 +60,7 @@ function drawWeather(data) {
     document.getElementById('weather-location').innerHTML = name;
     document.getElementById('weather-icon').src = "http://openweathermap.org/img/w/" + icon + ".png";
     document.getElementById('weather-description').innerHTML = description;
-    document.getElementById('weather-temp').innerHTML = fahrenheit + '&deg;' + humidity + '%';
+    document.getElementById('weather-temp').innerHTML = 'Temp:' + fahrenheit + '&deg;' + " " + 'Humidity:' + humidity + '%';
 };
 
 function drawForecast(data) {
