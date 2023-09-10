@@ -1,4 +1,4 @@
-//Widget to display weather information
+// Widget to display weather information
 // - Uses OpenWeatherMap API
 // - Displays the following info: Tempature, Weather Description, Air Quality, Humidity
 // - Uses the following icons: https://openweathermap.org/weather-conditions
