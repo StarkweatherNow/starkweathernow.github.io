@@ -12,7 +12,7 @@ function getNASA() {
     }).then(function(response) {
         //console.log(response);
         //Print response to HTML
-        $("#nasa-img").attr(style.back, response.url);
+        $("#nasa-img").attr("src", response.url);
         $("#nasa-title").html(response.title);
         $("#nasa-desc").html(response.explanation);
     });
