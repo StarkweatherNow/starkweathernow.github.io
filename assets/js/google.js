@@ -106,7 +106,7 @@ document.getElementById('signout_button').style.visibility = 'hidden';
 /**
  * Print task lists.
  */
-    async function fetchTaskLists() {
+async function fetchTaskLists() {
     let response;
     try {
         response = await gapi.client.tasks.tasklists.list({
@@ -121,13 +121,15 @@ document.getElementById('signout_button').style.visibility = 'hidden';
         document.getElementById('google_tasks_content').innerText = 'No task lists found.';
         return;
     }
+
+    // Parse taskList to Console
+    console.log(taskLists);
     
-// Flatten to string to display
+    // Flatten to string to display
     const output = taskLists.reduce(
         (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
         'Task lists:\n');
     document.getElementById('google_tasks_content').innerText = output;
-    }
-
+}
 
 //Google Calendar "Quick Start" code
