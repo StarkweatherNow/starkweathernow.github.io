@@ -25,12 +25,10 @@
     <div>
         <h2>Google Account</h2>
         <p id="google-status">Login to Google Account</p>
-        <div id="g_id_onload"
-            data-client_id="821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com"
-            data-context="signin"
-            data-login_uri="https://brandonstarkweather.com/assets/js/test"
-            data-auto_select="true"
-            data-itp_support="true">
+        <div>
+            <!--Add buttons to initiate auth sequence and sign out-->
+            <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+            <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
         </div>
     </div>
     <div>
@@ -120,6 +118,8 @@
           google.accounts.id.prompt();
         };
     </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 </body>
 
 
