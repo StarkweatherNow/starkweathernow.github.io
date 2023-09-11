@@ -1,0 +1,108 @@
+<!--Basic JS Test Environment to get Console Outputs-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Dev - Test Page</title>
+    <!--3rd Party JS Libraries-->
+    <script type="text/javascript" src="jquery-3.7.1.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script type="text/javascript" src="moment.js"></script>
+    <!--My JS Functions-->
+    <script type="text/javascript" src="NASA.js"></script>
+    <script type="text/javascript" src="geo.js"></script>
+    <script type="text/javascript" src="weather.js"></script>
+    <script type="text/javascript" src="maps.js"></script>
+</head>
+<body>
+    <h1>Testing JavaScript Here</h1>
+    <div>
+        <h2>GeoLocation Output</h2>
+        <p id="location-status">...Finding Location...</p>
+    </div>
+    <div>
+        <h2>Google Account Access</h2>
+        <p id="google-status">Authorize Access to Google Account</p>
+        <div>
+            <!--Add buttons to initiate auth sequence and sign out-->
+            <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+            <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+        </div>
+    </div>
+    <div>
+        <h2>NASA Image of the Day</h2>
+        <div id="nasa">
+            <h3 id="nasa-title"></h3>
+            <img src="" id="nasa-img"></img>
+            <p id="nasa-desc"></p>
+        </div>
+    </div>
+    <div>
+        <h2>OpenWeather Conditions</h2>
+        <div id="weather">
+            <h3 id="weather-location"></h3>
+            <div src="" id="weather-icon"></div>
+            <p id="weather-temp"></p>
+            <p id="weather-humidity"></p>
+            <p id="weather-wind"></p>
+        </div>
+        <p id="weather-status">...Loading Weather...</p>
+    </div>
+    <div>
+        <h2>OpenWeather Forecast</h2>
+        <div id="forecast">
+            <!--Table with 4 Columns and 5 Rows-->
+            <table id="forecast-table">
+                <tr>
+                    <th>Time</th>
+                    <th>Temp</th>
+                    <th>Humidity</th>
+                    <th>Wind</th>
+                </tr>
+                <tr>
+                    <td id="forecast-time-0"></td>
+                    <td id="forecast-temp-0"></td>
+                    <td id="forecast-humidity-0"></td>
+                    <td id="forecast-wind-0"></td>                
+                </tr>
+                <tr>
+                    <td id="forecast-time-1"></td>
+                    <td id="forecast-temp-1"></td>
+                    <td id="forecast-humidity-1"></td>
+                    <td id="forecast-wind-1"></td>
+                </tr>
+                <tr>
+                    <td id="forecast-time-2"></td>
+                    <td id="forecast-temp-2"></td>
+                    <td id="forecast-humidity-2"></td>
+                    <td id="forecast-wind-2"></td>
+                </tr>
+                <tr>
+                    <td id="forecast-time-3"></td>
+                    <td id="forecast-temp-3"></td>
+                    <td id="forecast-humidity-3"></td>
+                    <td id="forecast-wind-3"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <h2>Local Highway Traffic</h2>
+        <div id="map">
+            <img src="" id="map-img"></img>
+        </div>
+        <p id="map-status">...Loading Map...</p>
+    </div>
+    <div>
+        <h2>Google Tasks</h2>
+        <div id="google_tasks">
+            <pre id="google_tasks_content" style="white-space: pre-wrap;"></pre>
+        </div>
+    </div>
+    <script type="text/javascript" src="google.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+</body>
+
+
+</html>
