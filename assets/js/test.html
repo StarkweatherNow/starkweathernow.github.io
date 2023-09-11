@@ -6,7 +6,7 @@
     <title>JS Dev - Test Page</title>
     <!--3rd Party JS Libraries-->
     <script type="text/javascript" src="jquery-3.7.1.js"></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
     <script type="text/javascript" src="moment.js"></script>
     <!--My JS Functions-->
     <script type="text/javascript" src="NASA.js"></script>
@@ -25,7 +25,13 @@
     <div>
         <h2>Google Account</h2>
         <p id="google-status">Login to Google Account</p>
-        <div id="buttonDiv"></div>
+        <div id="g_id_onload"
+            data-client_id="821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com"
+            data-context="signin"
+            data-login_uri="https://brandonstarkweather.com/assets/js/login.js"
+            data-auto_select="true"
+            data-itp_support="true">
+        </div>
     </div>
     <div>
         <h2>NASA Image of the Day</h2>
