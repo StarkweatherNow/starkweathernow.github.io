@@ -5,8 +5,7 @@
 <head>
     <title>JS Dev - Test Page</title>
     <script type="text/javascript" src="jquery-3.7.1.js"></script>
-    <link href="https://js.radar.com/v4.1.6/radar.css" rel="stylesheet">
-    <script src="https://js.radar.com/v4.1.6/radar.min.js"></script>
+    <script type="text/javascript" src="moment.js"></script>
     <script type="text/javascript" src="NASA.js"></script>
     <script type="text/javascript" src="geo.js"></script>
     <script type="text/javascript" src="weather.js"></script>
@@ -20,7 +19,15 @@
         <p id="location-status">...Finding Location...</p>
     </div>
     <div>
-        <h2>OpenWeather Forecast</h2>
+        <h2>NASA Image of the Day</h2>
+        <div id="nasa">
+            <h3 id="nasa-title"></h3>
+            <img src="" id="nasa-img"></img>
+            <p id="nasa-desc"></p>
+        </div>
+    </div>
+    <div>
+        <h2>OpenWeather Conditions</h2>
         <div id="weather">
             <h3 id="weather-location"></h3>
             <div src="" id="weather-icon"></div>
@@ -31,19 +38,49 @@
         <p id="weather-status">...Loading Weather...</p>
     </div>
     <div>
+        <h2>OpenWeather Forecast</h2>
+        <div id="forecast">
+            <!--Table with 4 Columns and 5 Rows-->
+            <table id="forecast-table">
+                <tr>
+                    <th>Time</th>
+                    <th>Temp</th>
+                    <th>Humidity</th>
+                    <th>Wind</th>
+                </tr>
+                <tr>
+                    <td id="forecast-time-0"></td>
+                    <td id="forecast-temp-0"></td>
+                    <td id="forecast-humidity-0"></td>
+                    <td id="forecast-wind-0"></td>                
+                </tr>
+                <tr>
+                    <td id="forecast-time-1"></td>
+                    <td id="forecast-temp-1"></td>
+                    <td id="forecast-humidity-1"></td>
+                    <td id="forecast-wind-1"></td>
+                </tr>
+                <tr>
+                    <td id="forecast-time-2"></td>
+                    <td id="forecast-temp-2"></td>
+                    <td id="forecast-humidity-2"></td>
+                    <td id="forecast-wind-2"></td>
+                </tr>
+                <tr>
+                    <td id="forecast-time-3"></td>
+                    <td id="forecast-temp-3"></td>
+                    <td id="forecast-humidity-3"></td>
+                    <td id="forecast-wind-3"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
         <h2>Local Highway Traffic</h2>
         <div id="map">
             <img src="" id="map-img"></img>
         </div>
         <p id="map-status">...Loading Map...</p>
-    </div>
-    <div>
-        <h2>NASA Image of the Day</h2>
-        <div id="nasa">
-            <h3 id="nasa-title"></h3>
-            <img src="" id="nasa-img"></img>
-            <p id="nasa-desc"></p>
-        </div>
     </div>
 </body>
 

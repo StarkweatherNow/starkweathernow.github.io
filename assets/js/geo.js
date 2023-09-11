@@ -17,6 +17,8 @@ function getLocation() {
             initMap(lat,lon);
             //Get Weather
             getWeather(lat, lon);
+            //Get Forecast
+            getForecast(lat, lon);
             console.log("geo.js loaded");
             console.log("Latitude: " + lat + " Longitude: " + lon);
             //Print Longitude and Latitude to HTML
