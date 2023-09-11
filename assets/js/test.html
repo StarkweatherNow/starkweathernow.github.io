@@ -1,0 +1,51 @@
+<!--Basic JS Test Environment to get Console Outputs-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Dev - Test Page</title>
+    <script type="text/javascript" src="jquery-3.7.1.js"></script>
+    <link href="https://js.radar.com/v4.1.6/radar.css" rel="stylesheet">
+    <script src="https://js.radar.com/v4.1.6/radar.min.js"></script>
+    <script type="text/javascript" src="NASA.js"></script>
+    <script type="text/javascript" src="geo.js"></script>
+    <script type="text/javascript" src="weather.js"></script>
+    <script type="text/javascript" src="maps.js"></script>
+    <script type="text/javascript" src="google.js"></script>
+</head>
+<body>
+    <h1>Testing JavaScript Here</h1>
+    <div>
+        <h2>GeoLocation Output</h2>
+        <p id="location-status">...Finding Location...</p>
+    </div>
+    <div>
+        <h2>OpenWeather Forecast</h2>
+        <div id="weather">
+            <h3 id="weather-location"></h3>
+            <div src="" id="weather-icon"></div>
+            <p id="weather-temp"></p>
+            <p id="weather-humidity"></p>
+            <p id="weather-wind"></p>
+        </div>
+        <p id="weather-status">...Loading Weather...</p>
+    </div>
+    <div>
+        <h2>Local Highway Traffic</h2>
+        <div id="map">
+            <img src="" id="map-img"></img>
+        </div>
+        <p id="map-status">...Loading Map...</p>
+    </div>
+    <div>
+        <h2>NASA Image of the Day</h2>
+        <div id="nasa">
+            <h3 id="nasa-title"></h3>
+            <img src="" id="nasa-img"></img>
+            <p id="nasa-desc"></p>
+        </div>
+    </div>
+</body>
+
+
+</html>
