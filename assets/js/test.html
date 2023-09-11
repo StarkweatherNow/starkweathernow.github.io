@@ -21,14 +21,12 @@
         <p id="location-status">...Finding Location...</p>
     </div>
     <div>
-        <h2>Google Account</h2>
-        <p id="google-status">Login to Google Account</p>
+        <h2>Google Account Access</h2>
+        <p id="google-status">Authorize Access to Google Account</p>
         <div>
             <!--Add buttons to initiate auth sequence and sign out-->
             <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
             <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
-
-            <pre id="content" style="white-space: pre-wrap;"></pre>
         </div>
     </div>
     <div>
@@ -97,16 +95,8 @@
     </div>
     <div>
         <h2>Google Tasks</h2>
-        <div id="google">
-            <h3 id="google-title"></h3>
-            <p id="google-desc"></p>
-            <ul>
-                <li id="google-task-0"></li>
-                <li id="google-task-1"></li>
-                <li id="google-task-2"></li>
-                <li id="google-task-3"></li>
-                <li id="google-task-4"></li>
-            </ul>
+        <div id="google_tasks">
+            <pre id="google_tasks_content" style="white-space: pre-wrap;"></pre>
         </div>
     </div>
     <script type="text/javascript" src="google.js"></script>

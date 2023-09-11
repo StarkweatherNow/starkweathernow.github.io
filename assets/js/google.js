@@ -24,17 +24,17 @@ let gisInited = false;
 document.getElementById('authorize_button').style.visibility = 'hidden';
 document.getElementById('signout_button').style.visibility = 'hidden';
 
-    /**
-     * Callback after api.js is loaded.
-     */
+/**
+ * Callback after api.js is loaded.
+ */
     function gapiLoaded() {
         gapi.load('client', initializeGapiClient);
     }
 
-    /**
-     * Callback after the API client is loaded. Loads the
-     * discovery doc to initialize the API.
-     */
+/**
+ * Callback after the API client is loaded. Loads the
+ * discovery doc to initialize the API.
+ */
     async function initializeGapiClient() {
         await gapi.client.init({
             apiKey: API_KEY,
@@ -44,9 +44,9 @@ document.getElementById('signout_button').style.visibility = 'hidden';
         maybeEnableButtons();
     }
 
-    /**
-     * Callback after Google Identity Services are loaded.
-     */
+/**
+ * Callback after Google Identity Services are loaded.
+ */
     function gisLoaded() {
         tokenClient = google.accounts.oauth2.initTokenClient({
             client_id: CLIENT_ID,
@@ -57,18 +57,18 @@ document.getElementById('signout_button').style.visibility = 'hidden';
         maybeEnableButtons();
     }
 
-    /**
-     * Enables user interaction after all libraries are loaded.
-     */
+/**
+ * Enables user interaction after all libraries are loaded.
+ */
     function maybeEnableButtons() {
         if (gapiInited && gisInited) {
             document.getElementById('authorize_button').style.visibility = 'visible';
         }
     }
 
-    /**
-     *  Sign in the user upon button click.
-     */
+/**
+ *  Sign in the user upon button click.
+ */
     function handleAuthClick() {
         tokenClient.callback = async (resp) => {
             if (resp.error !== undefined) {
@@ -89,23 +89,23 @@ document.getElementById('signout_button').style.visibility = 'hidden';
         }
     }
 
-    /**
-     *  Sign out the user upon button click.
-     */
+/**
+ *  Sign out the user upon button click.
+ */
     function handleSignoutClick() {
         const token = gapi.client.getToken();
         if (token !== null) {
             google.accounts.oauth2.revoke(token.access_token);
             gapi.client.setToken('');
-            document.getElementById('content').innerText = '';
+            document.getElementById('google_tasks_content').innerText = '';
             document.getElementById('authorize_button').innerText = 'Authorize';
             document.getElementById('signout_button').style.visibility = 'hidden';
         }
     }
 
-    /**
-     * Print task lists.
-     */
+/**
+ * Print task lists.
+ */
     async function fetchTaskLists() {
     let response;
     try {
@@ -113,12 +113,12 @@ document.getElementById('signout_button').style.visibility = 'hidden';
         'maxResults': 10,
         });
     } catch (err) {
-        document.getElementById('content').innerText = err.message;
+        document.getElementById('google_tasks_content').innerText = err.message;
         return;
     }
     const taskLists = response.result.items;
     if (!taskLists || taskLists.length == 0) {
-        document.getElementById('content').innerText = 'No task lists found.';
+        document.getElementById('google_tasks_content').innerText = 'No task lists found.';
         return;
     }
     
@@ -126,7 +126,7 @@ document.getElementById('signout_button').style.visibility = 'hidden';
     const output = taskLists.reduce(
         (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
         'Task lists:\n');
-    document.getElementById('content').innerText = output;
+    document.getElementById('google_tasks_content').innerText = output;
     }
 
 
