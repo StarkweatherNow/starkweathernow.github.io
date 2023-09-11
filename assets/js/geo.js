@@ -8,7 +8,7 @@ var lon;
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
-        console.log("Geolocation is supported by this browser.");
+        //console.log("Geolocation is supported by this browser.");
         //Assign Longitude and Latitude to variables
         function showPosition(position) {
             var lat = position.coords.latitude;
@@ -19,8 +19,8 @@ function getLocation() {
             getWeather(lat, lon);
             //Get Forecast
             getForecast(lat, lon);
-            console.log("geo.js loaded");
-            console.log("Latitude: " + lat + " Longitude: " + lon);
+            //console.log("geo.js loaded");
+            //console.log("Latitude: " + lat + " Longitude: " + lon);
             //Print Longitude and Latitude to HTML
             $("#location-status").html("Latitude: " + lat + " Longitude: " + lon);
         }
