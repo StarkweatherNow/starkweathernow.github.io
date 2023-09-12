@@ -17,11 +17,16 @@ function getWeather(lat, lon) {
         var tempF = Math.round(response.main.temp);
         //Print response to HTML
         $("#weather-status").html(success);
-        $("#weather-location").html(response.name);
-        $("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
-        $("#weather-temp").html(tempF + "&deg;F");
-        $("#weather-humidity").html(response.main.humidity + "%" + " Humidity");
-        $("#weather-wind").html(response.wind.speed + " mph");
+        document.getElementById("weather-location").innerHTML = response.name;
+        //$("#weather-location").html(response.name);
+        document.getElementById("weather-icon").innerHTML = "<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>";
+        //$("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
+        document.getElementById("weather-temp").innerHTML = tempF + "&deg;F";
+        //$("#weather-temp").html(tempF + "&deg;F");
+        document.getElementById("weather-humidity").innerHTML = response.main.humidity + "%" + " Humidity";
+        //$("#weather-humidity").html(response.main.humidity + "%" + " Humidity");
+        document.getElementById("weather-wind").innerHTML = response.wind.speed + " mph";
+        //$("#weather-wind").html(response.wind.speed + " mph");
  
     });
 
