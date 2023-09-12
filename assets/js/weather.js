@@ -62,4 +62,31 @@ function getForecast(lat, lon) {
 
 }
 
-//Function calls handled by geo.js
+//Functions to request current Air Quality Conditions via OpenWeather API
+function getAirQuality(lat, lon) {
+    //Call OpenWeather API
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + lon + "&APPID=" + OpenWeatherAPI,
+        method: "GET"
+    }).then(function(response) {
+        //Print response to HTML
+        $("#weather-aq").html(response.list[0].main.aqi);
+    });
+
+}
+
+//Functions to request current UV Index via OpenWeather API
+function getUVIndex(lat, lon) {
+    //Call OpenWeather API
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + OpenWeatherAPI,
+        method: "GET"
+    }).then(function(response) {
+        //Print response to HTML
+        $("#weather-uv").html(response.value);       
+    });
+
+}
+
+
+//Function calls handled by geo.js - onpageload

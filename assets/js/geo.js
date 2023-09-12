@@ -19,6 +19,10 @@ function getLocation() {
             getWeather(lat, lon);
             //Get Forecast
             getForecast(lat, lon);
+            //Get Air Quality
+            getAirQuality(lat, lon);
+            //Get UV Index
+            getUVIndex(lat, lon);
             //console.log("geo.js loaded");
             //console.log("Latitude: " + lat + " Longitude: " + lon);
             //Print Longitude and Latitude to HTML
