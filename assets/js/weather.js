@@ -71,7 +71,7 @@ function getWeather() {
         url: weatherURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        //console.log(response);
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
         $("#weather").html("<h4>" + response.name + "</h4>");
         $("#weather").append("<p>Temperature: " + tempF.toFixed(2) + " &#8457</p>");
