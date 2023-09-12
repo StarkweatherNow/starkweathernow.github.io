@@ -8,6 +8,12 @@ $.ajax({
     contentType: 'application/json',
     success: function(result) {
         //console.log(result);
+        //parse result into array
+        var quote = JSON.parse(result);
+        console.log(quote);
+        console.log(result.quote);
+        console.log(result.author);
+
         document.getElementById('quote-content').innerHTML = result.quote;
         document.getElementById('quote-author').innerHTML = result.author;
         //$('#quote-content').html(result.quote);
