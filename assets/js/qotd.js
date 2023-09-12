@@ -8,7 +8,8 @@ $.ajax({
     contentType: 'application/json',
     success: function(result) {
         console.log(result);
-        console.log(result.array.quote);
+        //Parse Array from result
+        var result = result[0];
         $('#quote-content').html(result.quote);
         $('#quote-author').html(result.author);
     },
