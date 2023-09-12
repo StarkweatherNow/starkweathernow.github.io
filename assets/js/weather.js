@@ -19,7 +19,7 @@ function getWeather(lat, lon) {
         $("#weather-status").html(success);
         document.getElementById("weather-location").innerHTML = response.name;
         //$("#weather-location").html(response.name);
-        document.getElementById("weather-icon").innerHTML = "<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>";
+        document.getElementById("weather-icon").innerHTML = "<img src='https://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>";
         //$("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
         document.getElementById("weather-temp").innerHTML = tempF + "&deg;F";
         //$("#weather-temp").html(tempF + "&deg;F");
