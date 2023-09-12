@@ -7,7 +7,7 @@ $.ajax({
     headers: { 'X-Api-Key': 'HKbdvSJTDOWdxNPGQtd3wA==N9x9ZynA8zBsTFLA'},
     contentType: 'application/json',
     success: function(result) {
-        console.log(result);
+        //console.log(result);
         document.getElementById('quote-content').innerHTML = result.quote;
         document.getElementById('quote-author').innerHTML = result.author;
         //$('#quote-content').html(result.quote);
