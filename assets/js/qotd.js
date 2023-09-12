@@ -8,8 +8,10 @@ $.ajax({
     contentType: 'application/json',
     success: function(result) {
         console.log(result);
-        $('#quote-content').html(result.quote);
-        $('#quote-author').html(result.author);
+        document.getElementById('quote-content').innerHTML = result.quote;
+        document.getElementById('quote-author').innerHTML = result.author;
+        //$('#quote-content').html(result.quote);
+        //$('#quote-author').html(result.author);
     },
     error: function ajaxError(jqXHR) {
         console.error('Error: ', jqXHR.responseText);
