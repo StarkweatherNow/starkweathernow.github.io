@@ -5,7 +5,7 @@ var country = 'United States'
 $.ajax({
     method: 'GET',
     url: 'https://api.api-ninjas.com/v1/inflation?country=' + country,
-    headers: { 'X-Api-Key': 'YHKbdvSJTDOWdxNPGQtd3wA==N9x9ZynA8zBsTFLA'},
+    headers: { 'X-Api-Key': 'HKbdvSJTDOWdxNPGQtd3wA==N9x9ZynA8zBsTFLA'},
     contentType: 'application/json',
     success: function(result) {
         console.log(result);
