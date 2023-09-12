@@ -65,7 +65,44 @@
                         <h4 class="mb-0">3 Hour Forecast</h4>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Temp</th>
+                                        <th>Humidity</th>
+                                        <th>Wind</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="forecast-time-0"></td>
+                                        <td id="forecast-temp-0"></td>
+                                        <td id="forecast-humidity-0"></td>
+                                        <td id="forecast-wind-0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="forecast-time-1"></td>
+                                        <td id="forecast-temp-1"></td>
+                                        <td id="forecast-humidity-1"></td>
+                                        <td id="forecast-wind-1"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="forecast-time-2"></td>
+                                        <td id="forecast-temp-2"></td>
+                                        <td id="forecast-humidity-2"></td>
+                                        <td id="forecast-wind-2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="forecast-time-3"></td>
+                                        <td id="forecast-temp-3"></td>
+                                        <td id="forecast-humidity-3"></td>
+                                        <td id="forecast-wind-3"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +110,7 @@
     </div>
     <hr>
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-bottom: 10px;">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -87,7 +124,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h3 class="text-center">Local Traffic</h3>
-                <div id="map"><img class="d-xl-flex" id="map-img"></div>
+                <div id="map"><img class="d-xl-flex" id="map-img" style="margin-right: auto;margin-left: auto;"></div>
             </div>
             <div class="col-md-6">
                 <div class="card">
