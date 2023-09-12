@@ -5,12 +5,9 @@ $.ajax({
     url: 'https://api.api-ninjas.com/v1/randomimage?category=' + category,
     headers: { 'X-Api-Key': 'HKbdvSJTDOWdxNPGQtd3wA==N9x9ZynA8zBsTFLA', 'Accept': 'image/jpg'},
     success: function(result) {
-        //Decode Base64 to string
-        result = btoa(result);
-        
         console.log(result);
-        
-        result = '<img src="data:image/jpg;base64,/9j/' + result + '">';
+    
+        result = '<img src="data:image/jpg;base64,' + result + '">';
         document.getElementById('image-content').innerHTML = result;
     },
     error: function ajaxError(jqXHR) {
