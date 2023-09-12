@@ -11,7 +11,7 @@ $.ajax({
         //Parse Array from result
         var result = result[0];
         $('#quote-content').html(result.quote);
-        $('#quote-author').html(result.author);
+        $('#quote-author').html("- " + result.author);
     },
     error: function ajaxError(jqXHR) {
         console.error('Error: ', jqXHR.responseText);

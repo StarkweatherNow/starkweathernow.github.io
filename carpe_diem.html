@@ -12,7 +12,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
-<script src="https://accounts.google.com/gsi/client"></script>
+<!--3rd Party JS Libraries-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script type="text/javascript" src="assets/js/moment.js"></script>
+    <!--My JS Functions-->
+    <script type="text/javascript" src="assets/js/NASA.js"></script>
+    <script type="text/javascript" src="assets/js/geo.js"></script>
+    <script type="text/javascript" src="assets/js/weather.js"></script>
+    <script type="text/javascript" src="assets/js/maps.js"></script>
+    <script type="text/javascript" src="assets/js/qotd.js"></script>
 </head>
 
 <body>
@@ -49,9 +58,9 @@
             <div class="col-12 col-md-4">
                 <figure>
                     <blockquote class="blockquote">
-                        <p class="text-center mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <p class="text-center mb-0" id="quote-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                     </blockquote>
-                    <figcaption class="blockquote-footer text-end">Someone famous</figcaption>
+                    <figcaption class="blockquote-footer text-end" id="quote-author">Someone famous</figcaption>
                 </figure>
             </div>
             <div class="col-md-4"></div>
@@ -61,7 +70,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6" style="margin-bottom: 10px;">
-                <div class="card">
+                <div class="card" style="border-width: 0px;border-radius: 0px;">
                     <div class="card-body">
                         <h3 class="text-center card-title">Current Conditions</h3>
                         <h6 class="text-center text-muted card-subtitle mb-2" id="weather-location">Loading Location</h6>
@@ -132,12 +141,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6" style="margin-bottom: 10px;">
-                <h3 class="text-center">Local Traffic</h3>
-                <div id="map" style="overflow: clip;width: 100%;">
-                    <div style="margin-right: auto;margin-left: auto;width: auto;"><img class="d-xl-flex" id="map-img" style="border-width: 1px;border-radius: 6px;"></div>
-                </div>
-            </div>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
@@ -146,6 +149,12 @@
                     <div class="card-body">
                         <p class="card-text" id="google_tasks_content">Loading...</p>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="margin-bottom: 10px;">
+                <h3 class="text-center">Local Traffic</h3>
+                <div id="map" style="overflow: clip;width: 100%;">
+                    <div style="margin-right: auto;margin-left: auto;width: auto;"><img class="d-xl-flex" id="map-img" style="border-width: 1px;border-radius: 6px;"></div>
                 </div>
             </div>
         </div>
@@ -194,11 +203,6 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/moment.js"></script>
-    <script src="assets/js/NASA.js"></script>
-    <script src="assets/js/geo.js"></script>
-    <script src="assets/js/maps.js"></script>
-    <script src="assets/js/weather.js"></script>
 </body>
 
 </html>
