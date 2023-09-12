@@ -6,7 +6,7 @@ $.ajax({
     headers: { 'X-Api-Key': 'HKbdvSJTDOWdxNPGQtd3wA==N9x9ZynA8zBsTFLA', 'Accept': 'image/jpg'},
     success: function(result) {
         //Decode Base64 to string
-        result = atob(result);
+        result = btoa(result);
         
         console.log(result);
         
