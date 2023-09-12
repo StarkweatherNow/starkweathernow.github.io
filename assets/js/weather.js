@@ -69,6 +69,28 @@ function getAirQuality(lat, lon) {
         url: "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + lon + "&APPID=" + OpenWeatherAPI,
         method: "GET"
     }).then(function(response) {
+        //Assign Air Quality Index to variable
+        var airQualityIndex = response.list[0].main.aqi;
+        //Switch function to assign AQI to color
+        switch (airQualityIndex) {
+            case 1:
+                var airQualityColor = "green";
+                break;
+            case 2:
+                var airQualityColor = "yellow";
+                break;
+            case 3:
+                var airQualityColor = "orange";
+                break;
+            case 4:
+                var airQualityColor = "red";
+                break;
+            case 5:
+                var airQualityColor = "purple";
+                break;
+            default:
+                var airQualityColor = "grey";
+        }
         //Print response to HTML
         $("#weather-aq").html(response.list[0].main.aqi);
     });
@@ -82,6 +104,28 @@ function getUVIndex(lat, lon) {
         url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + OpenWeatherAPI,
         method: "GET"
     }).then(function(response) {
+        //Assign UV Index to variable
+        var uvIndex = response.value;
+        //Switch function to assign UV Index to color
+        switch (true) {
+            case (uvIndex <= 2):
+                var uvIndexColor = "green";
+                break;
+            case (uvIndex <= 5):
+                var uvIndexColor = "yellow";
+                break;
+            case (uvIndex <= 7):
+                var uvIndexColor = "orange";
+                break;
+            case (uvIndex <= 10):
+                var uvIndexColor = "red";
+                break;
+            case (uvIndex >= 11):
+                var uvIndexColor = "purple";
+                break;
+            default:
+                var uvIndexColor = "grey";
+        }
         //Print response to HTML
         $("#weather-uv").html(response.value);       
     });
