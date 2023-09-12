@@ -6,6 +6,8 @@ $.ajax({
     headers: { 'X-Api-Key': 'HKbdvSJTDOWdxNPGQtd3wA==N9x9ZynA8zBsTFLA', 'Accept': 'image/jpg'},
     success: function(result) {
         //console.log(result);
+        //Parse Array from result
+        var result = result[0];
         $('#image-content').html(result.image);
     },
     error: function ajaxError(jqXHR) {
