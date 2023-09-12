@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md bg-body py-3" id="back-to-top">
+    <nav class="navbar navbar-expand-md bg-primary-subtle py-3" id="back-to-top">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary-light d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-lightning">
                         <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"></path>
                     </svg></span><span class="text-primary-emphasis" data-bss-hover-animate="rubberBand">Brandon Starkweather</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -31,6 +31,13 @@
             </div>
         </div>
     </nav>
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="text-white bg-dark border rounded border-0 p-4 p-md-5" style="background: linear-gradient(1deg, black, var(--bs-body-color));">
+                <h1 class="display-1 fw-bold text-center text-muted mb-3">Carpe Diem</h1>
+            </div>
+        </div>
+    </section>
     <div class="card"><img class="card-img w-100 d-block" id="nasa-img">
         <div class="card-img-overlay" style="overflow: visible;">
             <h3 class="text-info" id="nasa-title">NASA - Image of the Day</h3>
@@ -129,7 +136,7 @@
         <div class="row">
             <div class="col-md-6" style="margin-bottom: 10px;">
                 <h3 class="text-center">Local Traffic</h3>
-                <div id="map" style="overflow: clip;"><img class="d-xl-flex" id="map-img" style="margin-right: auto;margin-left: auto;border-width: 1px;border-radius: 6px;"></div>
+                <div id="map" style="overflow: clip;"><img class="d-xl-flex" id="map-img" style="border-width: 1px;border-radius: 6px;margin-right: auto;margin-left: auto;"></div>
             </div>
             <div class="col-md-6">
                 <div class="card">
@@ -143,6 +150,8 @@
             </div>
         </div>
     </div>
+    <hr>
+    <h2 class="text-center text-muted">Memento Mori</h2>
     <hr>
     <footer class="text-center py-4">
         <div class="container">
