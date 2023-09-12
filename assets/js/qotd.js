@@ -14,8 +14,8 @@ $.ajax({
         console.log(result.quote);
         console.log(result.author);
 
-        document.getElementById('quote-content').innerHTML = result.quote;
-        document.getElementById('quote-author').innerHTML = result.author;
+        document.getElementById('quote-content').innerHTML = quote.quote;
+        document.getElementById('quote-author').innerHTML = quote.author;
         //$('#quote-content').html(result.quote);
         //$('#quote-author').html(result.author);
     },
