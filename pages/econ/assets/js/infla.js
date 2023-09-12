@@ -1,12 +1,22 @@
 //JS Function to get the U.S. Inflation Rate
-function getInflationRate() {
-    var url = "https://api.bls.gov/publicAPI/v2/timeseries/data/CUUR0000SA0?registrationkey=6d8b0a4f5f6c4c6c9c6b9f2a5f1c7b2c&latest=true&output=json";
-    $.getJSON(url, function (json) {
-        var results = json.Results.series[0].data[0].value;
-        var inflationRate = results;
-        document.getElementById("inflationRate").innerHTML = inflationRate;
-    });
-}
+var country = 'United States'
+var key = 'HKbdvSJTDOWdxNPGQtd3wA==N9x9ZynA8zBsTFLA'
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/inflation?country=' + country,
+    headers: { 'X-Api-Key':key},
+    contentType: 'application/json',
+    success: function(result) {
+        //console.log(result);
+        //Set the inflation rate to the result
+        var inflationRate = result.data.inflation;
+        //Print to ID inflationRate
+        $('#inflationRate').text('Current U.S. Inflation Rate: ' + inflationRate);
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    }
+});
 
 //Call on page load
 getInflationRate();
