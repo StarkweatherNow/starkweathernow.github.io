@@ -152,6 +152,7 @@ async function listUpcomingEvents() {
         'orderBy': 'startTime',
       };
       response = await gapi.client.calendar.events.list(request);
+      console.log(response);
     } catch (err) {
       document.getElementById('google_calendar_content').innerText = err.message;
       return;
