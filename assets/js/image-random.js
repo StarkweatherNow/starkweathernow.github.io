@@ -6,7 +6,7 @@ $.ajax({
     headers: { 'X-Api-Key': 'HKbdvSJTDOWdxNPGQtd3wA==N9x9ZynA8zBsTFLA', 'Accept': 'image/jpg'},
     success: function(result) {
         //console.log(result);
-        $('#random-image').html(result.image);
+        document.getElementById('random-img').src = result.image;
     },
     error: function ajaxError(jqXHR) {
         console.error('Error: ', jqXHR.responseText);
