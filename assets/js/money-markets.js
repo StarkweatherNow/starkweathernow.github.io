@@ -32,7 +32,7 @@ $.ajax({
 
 //Track the NASDAQ Composite Index
 var index = 'NASDAQ Composite'
-
+var key = 'iQT4cj9qm1Dsp9x29dk_'
 $.ajax({
     method: 'GET',
     url: 'https://data.nasdaq.com/api/v3/datasets/WIKI/AAPL.json?start_date=1985-05-01&end_date=1997-07-01&order=asc&column_index=4&collapse=quarterly&transformation=rdiff',
