@@ -7,3 +7,6 @@ function getInflationRate() {
         document.getElementById("inflationRate").innerHTML = inflationRate;
     });
 }
+
+//Call on page load
+getInflationRate();
