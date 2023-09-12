@@ -7,7 +7,7 @@ $.ajax({
     success: function(result) {
         console.log(result);
         // Convert base64-encoded image in JPEG format to html
-        result = '<img src="data:image/jpg;base64,' + result + '">';
+        result = '<img src="data:image/png;base64,' + result + '">';
         document.getElementById('image-content').innerHTML = result;
     },
     error: function ajaxError(jqXHR) {
