@@ -16,9 +16,12 @@ function getWeather(lat, lon) {
         //Convert Kelvin to Fahrenheit
         var tempF = Math.round(response.main.temp);
         //Print response to HTML
-        $("#weather-status").html(success);
+        //$("#weather-status").html(success);
         document.getElementById("weather-location").innerHTML = response.name;
-        //$("#weather-location").html(response.name);
+        //get element by id and insert url src into style
+        document.getElementById("weather-icon").src = "url('https://openweathermap.org/img/w/" + response.weather[0].icon + ".png')";
+
+
         document.getElementById("weather-icon").innerHTML = "<img src='https://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>";
         //$("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
         document.getElementById("weather-temp").insertAdjacentHTML("afterend") = tempF + "&deg;F";
@@ -116,7 +119,7 @@ function getForecast(lat, lon) {
                 default:
                     var windColor = "grey";
             }
-            
+
         }
 
     });
