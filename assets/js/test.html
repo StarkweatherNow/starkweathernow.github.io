@@ -111,7 +111,7 @@
     <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+    <pre id="tasks-content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
       /* exported gapiLoaded */
@@ -210,7 +210,7 @@
         if (token !== null) {
           google.accounts.oauth2.revoke(token.access_token);
           gapi.client.setToken('');
-          document.getElementById('content').innerText = '';
+          document.getElementById('tasks-content').innerText = '';
           document.getElementById('authorize_button').innerText = 'Authorize';
           document.getElementById('signout_button').style.visibility = 'hidden';
         }
@@ -226,19 +226,19 @@
             'maxResults': 10,
           });
         } catch (err) {
-          document.getElementById('content').innerText = err.message;
+          document.getElementById('tasks-content').innerText = err.message;
           return;
         }
         const taskLists = response.result.items;
         if (!taskLists || taskLists.length == 0) {
-          document.getElementById('content').innerText = 'No task lists found.';
+          document.getElementById('tasks-content').innerText = 'No task lists found.';
           return;
         }
         // Flatten to string to display
         const output = taskLists.reduce(
             (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
             'Task lists:\n');
-        document.getElementById('content').innerText = output;
+        document.getElementById('tasks-content').innerText = output;
       }
     </script>
     </div>
@@ -249,7 +249,7 @@
     <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+    <pre id="cal-content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
       /* exported gapiLoaded */
@@ -348,7 +348,7 @@
         if (token !== null) {
           google.accounts.oauth2.revoke(token.access_token);
           gapi.client.setToken('');
-          document.getElementById('content').innerText = '';
+          document.getElementById('cal-content').innerText = '';
           document.getElementById('authorize_button').innerText = 'Authorize';
           document.getElementById('signout_button').style.visibility = 'hidden';
         }
@@ -372,20 +372,20 @@
           };
           response = await gapi.client.calendar.events.list(request);
         } catch (err) {
-          document.getElementById('content').innerText = err.message;
+          document.getElementById('cal-content').innerText = err.message;
           return;
         }
 
         const events = response.result.items;
         if (!events || events.length == 0) {
-          document.getElementById('content').innerText = 'No events found.';
+          document.getElementById('cal-content').innerText = 'No events found.';
           return;
         }
         // Flatten to string to display
         const output = events.reduce(
             (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
             'Events:\n');
-        document.getElementById('content').innerText = output;
+        document.getElementById('cal-content').innerText = output;
       }
     </script>
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
