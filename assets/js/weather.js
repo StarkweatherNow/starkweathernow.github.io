@@ -4,6 +4,15 @@
 var OpenWeatherAPI = "92282d7a9bd391d5a486ae5655c7c080";
 var success = "Weather Loaded";
 var fail = "Weather Failed to Load";
+//Bootswatch - Assigning theme color to weather conditions
+var blue = "list-group-item-primary";
+var green = "list-group-item-success";
+var yellow = "list-group-item-warning";
+var orange = "list-group-item-warning";
+var red = "list-group-item-danger";
+var purple = "list-group-item-dark";
+var grey = "list-group-item-secondary";
+
 
 //Function to call OpenWeather API
 function getWeather(lat, lon) {
@@ -54,62 +63,62 @@ function getForecast(lat, lon) {
             //Switch to assign color to temperature
             switch (true) {
                 case (tempF <= 40):
-                    var tempColor = "blue";
+                    var tempColor = blue;
                     break;
                 case (tempF <= 60):
-                    var tempColor = "green";
+                    var tempColor = green;
                     break;
                 case (tempF <= 80):
-                    var tempColor = "yellow";
+                    var tempColor = yellow;
                     break;
                 case (tempF <= 90):
-                    var tempColor = "orange";
+                    var tempColor = orange;
                     break;
                 case (tempF >= 91):
-                    var tempColor = "red";
+                    var tempColor = red;
                     break;
                 default:
-                    var tempColor = "grey";
+                    var tempColor = grey;
             }
             //Switch to assign color to humidity
             switch (true) {
                 case (forecastArray[i].main.humidity <= 40):
-                    var humidityColor = "blue";
+                    var humidityColor = blue;
                     break;
                 case (forecastArray[i].main.humidity <= 60):
-                    var humidityColor = "green";
+                    var humidityColor = green;
                     break;
                 case (forecastArray[i].main.humidity <= 80):
-                    var humidityColor = "yellow";
+                    var humidityColor = yellow;
                     break;
                 case (forecastArray[i].main.humidity <= 90):
-                    var humidityColor = "orange";
+                    var humidityColor = orange;
                     break;
                 case (forecastArray[i].main.humidity >= 91):
-                    var humidityColor = "red";
+                    var humidityColor = red;
                     break;
                 default:
-                    var humidityColor = "grey";
+                    var humidityColor = grey;
             }
             //Switch to assign color to wind
             switch (true) {
                 case (forecastArray[i].wind.speed <= 5):
-                    var windColor = "blue";
+                    var windColor = blue;
                     break;
                 case (forecastArray[i].wind.speed <= 10):
-                    var windColor = "green";
+                    var windColor = green;
                     break;
                 case (forecastArray[i].wind.speed <= 15):
-                    var windColor = "yellow";
+                    var windColor = yellow;
                     break;
                 case (forecastArray[i].wind.speed <= 20):
-                    var windColor = "orange";
+                    var windColor = orange;
                     break;
                 case (forecastArray[i].wind.speed >= 21):
-                    var windColor = "red";
+                    var windColor = red;
                     break;
                 default:
-                    var windColor = "grey";
+                    var windColor = grey;
             }
 
         }
@@ -130,22 +139,22 @@ function getAirQuality(lat, lon) {
         //Switch function to assign AQI to color
         switch (airQualityIndex) {
             case 1:
-                var airQualityColor = "green";
+                var airQualityColor = green;
                 break;
             case 2:
-                var airQualityColor = "yellow";
+                var airQualityColor = yellow;
                 break;
             case 3:
-                var airQualityColor = "orange";
+                var airQualityColor = orange;
                 break;
             case 4:
-                var airQualityColor = "red";
+                var airQualityColor = red;
                 break;
             case 5:
-                var airQualityColor = "purple";
+                var airQualityColor = purple;
                 break;
             default:
-                var airQualityColor = "grey";
+                var airQualityColor = grey;
         }
         //Print response to HTML
         $("#weather-aq").html("Air Quality: " + response.list[0].main.aqi);
@@ -165,26 +174,33 @@ function getUVIndex(lat, lon) {
         //Switch function to assign UV Index to color
         switch (true) {
             case (uvIndex <= 2):
-                var uvIndexColor = "green";
+                var uvIndexColor = green;
                 break;
             case (uvIndex <= 5):
-                var uvIndexColor = "yellow";
+                var uvIndexColor = yellow;
                 break;
             case (uvIndex <= 7):
-                var uvIndexColor = "orange";
+                var uvIndexColor = orange;
                 break;
             case (uvIndex <= 10):
-                var uvIndexColor = "red";
+                var uvIndexColor = red;
                 break;
             case (uvIndex >= 11):
-                var uvIndexColor = "purple";
+                var uvIndexColor = purple;
                 break;
             default:
-                var uvIndexColor = "grey";
+                var uvIndexColor = grey;
         }
         //Print response to HTML
         $("#weather-uv").html("UV Index: " + response.value);       
     });
+
+    //Assign colors to element classes via ID
+    $("#class-uv").addClass(uvIndexColor);
+    $("#class-aq").addClass(airQualityColor);
+    $("#class-temp").addClass(tempColor);
+    $("#class-humidity").addClass(humidityColor);
+    $("#class-wind").addClass(windColor);    
 
 }
 
