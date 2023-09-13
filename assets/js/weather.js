@@ -20,7 +20,7 @@ function getWeather(lat, lon) {
         $("#weather-location").html(response.name);
         $("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
-        $("#weather-humidity").html("Humidity" + response.main.humidity + "%");
+        $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
  
     });
