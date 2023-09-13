@@ -24,10 +24,12 @@
     <div>
         <h2>Google Account Access</h2>
         <p id="google-status">Authorize Access to Google Account</p>
-        <div>
-            <!--Add buttons to initiate auth sequence and sign out-->
-            <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-            <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+        <div id="g_id_onload"
+            data-client_id="821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com"
+            data-context="signin"
+            data-callback="https://brandonstarkweather.com/assets/js/login.js"
+            data-auto_select="true"
+            data-itp_support="true">
         </div>
     </div>
     <div>
@@ -112,12 +114,6 @@
         <h2>Google Calendar</h2>
         <div id="google_calendar">
             <pre id="google_calendar_content" style="white-space: pre-wrap;"></pre>
-        </div>
-    </div>
-    <div>
-        <h2>Money Markets</h2>
-        <div id="money-markets">
-            <pre id="money-markets-content" style="white-space: pre-wrap;"></pre>
         </div>
     </div>
     <script type="text/javascript" src="google.js"></script>
