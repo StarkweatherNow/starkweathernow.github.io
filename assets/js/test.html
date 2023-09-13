@@ -1,0 +1,394 @@
+<!--Basic JS Test Environment to get Console Outputs-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Dev - Test Page</title>
+    <!--3rd Party JS Libraries-->
+    <script type="text/javascript" src="jquery-3.7.1.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script type="text/javascript" src="moment.js"></script>
+    <!--My JS Functions-->
+    <script type="text/javascript" src="NASA.js"></script>
+    <script type="text/javascript" src="geo.js"></script>
+    <script type="text/javascript" src="weather.js"></script>
+    <script type="text/javascript" src="maps.js"></script>
+    <script type="text/javascript" src="qotd.js"></script>
+</head>
+<body>
+    <h1>Testing JavaScript Here</h1>
+    <div>
+        <h2>GeoLocation Output</h2>
+        <p id="location-status">...Finding Location...</p>
+    </div>
+    <div>
+        <h2>Google Account Access</h2>
+        <p id="google-status">Authorize Access to Google Account</p>
+        <div id="g_id_onload"
+            data-client_id="821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com"
+            data-context="signin"
+            data-callback="https://brandonstarkweather.com/assets/js/login.js"
+            data-auto_select="true"
+            data-itp_support="true">
+        </div>
+    </div>
+    <div>
+        <h2>NASA Image of the Day</h2>
+        <div id="nasa">
+            <h3 id="nasa-title"></h3>
+            <img src="" id="nasa-img"></img>
+            <p id="nasa-desc"></p>
+        </div>
+    </div>
+    <div>
+        <h2>Quote of the Day</h2>
+        <div id="quote">
+            <p id="quote-content"></p>
+            <p id="quote-author"></p>
+    </div>
+    <div>
+        <h2>OpenWeather Conditions</h2>
+        <div id="weather">
+            <h3 id="weather-location"></h3>
+            <div src="" id="weather-icon"></div>
+            <p id="weather-temp"></p>
+            <p id="weather-humidity"></p>
+            <p id="weather-wind"></p>
+            <p id="weather-aq"></p>
+            <p id="weather-uv"></p>
+        </div>
+        <p id="weather-status">...Loading Weather...</p>
+    </div>
+    <div>
+        <h2>OpenWeather Forecast</h2>
+        <div id="forecast">
+            <!--Table with 4 Columns and 5 Rows-->
+            <table id="forecast-table">
+                <tr>
+                    <th>Time</th>
+                    <th>Temp</th>
+                    <th>Humidity</th>
+                    <th>Wind</th>
+                </tr>
+                <tr>
+                    <td id="forecast-time-0"></td>
+                    <td id="forecast-temp-0"></td>
+                    <td id="forecast-humidity-0"></td>
+                    <td id="forecast-wind-0"></td>                
+                </tr>
+                <tr>
+                    <td id="forecast-time-1"></td>
+                    <td id="forecast-temp-1"></td>
+                    <td id="forecast-humidity-1"></td>
+                    <td id="forecast-wind-1"></td>
+                </tr>
+                <tr>
+                    <td id="forecast-time-2"></td>
+                    <td id="forecast-temp-2"></td>
+                    <td id="forecast-humidity-2"></td>
+                    <td id="forecast-wind-2"></td>
+                </tr>
+                <tr>
+                    <td id="forecast-time-3"></td>
+                    <td id="forecast-temp-3"></td>
+                    <td id="forecast-humidity-3"></td>
+                    <td id="forecast-wind-3"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <h2>Local Highway Traffic</h2>
+        <div id="map">
+            <img src="" id="map-img"></img>
+        </div>
+        <p id="map-status">...Loading Map...</p>
+    </div>
+    <div>
+        <h2>Google Tasks API Quickstart</h2>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+
+    <pre id="tasks-content" style="white-space: pre-wrap;"></pre>
+
+    <script type="text/javascript">
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
+
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const CLIENT_ID = '821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com';
+      const API_KEY = 'AIzaSyCMsEWCT7HVaedHBid5YJ6ehFWJQZ4xf3U';
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest';
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES = 'https://www.googleapis.com/auth/tasks.readonly';
+
+      let tokenClient;
+      let gapiInited = false;
+      let gisInited = false;
+
+      document.getElementById('authorize_button').style.visibility = 'hidden';
+      document.getElementById('signout_button').style.visibility = 'hidden';
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoaded() {
+        gapi.load('client', initializeGapiClient);
+      }
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function initializeGapiClient() {
+        await gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: [DISCOVERY_DOC],
+        });
+        gapiInited = true;
+        maybeEnableButtons();
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoaded() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CLIENT_ID,
+          scope: SCOPES,
+          callback: '', // defined later
+        });
+        gisInited = true;
+        maybeEnableButtons();
+      }
+
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtons() {
+        if (gapiInited && gisInited) {
+          document.getElementById('authorize_button').style.visibility = 'visible';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick() {
+        tokenClient.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          document.getElementById('signout_button').style.visibility = 'visible';
+          document.getElementById('authorize_button').innerText = 'Refresh';
+          await fetchTaskLists();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClient.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick() {
+        const token = gapi.client.getToken();
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token);
+          gapi.client.setToken('');
+          document.getElementById('tasks-content').innerText = '';
+          document.getElementById('authorize_button').innerText = 'Authorize';
+          document.getElementById('signout_button').style.visibility = 'hidden';
+        }
+      }
+
+      /**
+       * Print task lists.
+       */
+      async function fetchTaskLists() {
+        let response;
+        try {
+          response = await gapi.client.tasks.tasklists.list({
+            'maxResults': 10,
+          });
+        } catch (err) {
+          document.getElementById('tasks-content').innerText = err.message;
+          return;
+        }
+        const taskLists = response.result.items;
+        if (!taskLists || taskLists.length == 0) {
+          document.getElementById('tasks-content').innerText = 'No task lists found.';
+          return;
+        }
+        // Flatten to string to display
+        const output = taskLists.reduce(
+            (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
+            'Task lists:\n');
+        document.getElementById('tasks-content').innerText = output;
+      }
+    </script>
+    </div>
+    <div>
+        <h2>Google Calendar API Quickstart</h2>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+
+    <pre id="cal-content" style="white-space: pre-wrap;"></pre>
+
+    <script type="text/javascript">
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+
+      let tokenClient;
+      let gapiInited = false;
+      let gisInited = false;
+
+      document.getElementById('authorize_button').style.visibility = 'hidden';
+      document.getElementById('signout_button').style.visibility = 'hidden';
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoaded() {
+        gapi.load('client', initializeGapiClient);
+      }
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function initializeGapiClient() {
+        await gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: [DISCOVERY_DOC],
+        });
+        gapiInited = true;
+        maybeEnableButtons();
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoaded() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CLIENT_ID,
+          scope: SCOPES,
+          callback: '', // defined later
+        });
+        gisInited = true;
+        maybeEnableButtons();
+      }
+
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtons() {
+        if (gapiInited && gisInited) {
+          document.getElementById('authorize_button').style.visibility = 'visible';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick() {
+        tokenClient.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          document.getElementById('signout_button').style.visibility = 'visible';
+          document.getElementById('authorize_button').innerText = 'Refresh';
+          await listUpcomingEvents();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClient.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick() {
+        const token = gapi.client.getToken();
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token);
+          gapi.client.setToken('');
+          document.getElementById('cal-content').innerText = '';
+          document.getElementById('authorize_button').innerText = 'Authorize';
+          document.getElementById('signout_button').style.visibility = 'hidden';
+        }
+      }
+
+      /**
+       * Print the summary and start datetime/date of the next ten events in
+       * the authorized user's calendar. If no events are found an
+       * appropriate message is printed.
+       */
+      async function listUpcomingEvents() {
+        let response;
+        try {
+          const request = {
+            'calendarId': 'primary',
+            'timeMin': (new Date()).toISOString(),
+            'showDeleted': false,
+            'singleEvents': true,
+            'maxResults': 10,
+            'orderBy': 'startTime',
+          };
+          response = await gapi.client.calendar.events.list(request);
+        } catch (err) {
+          document.getElementById('cal-content').innerText = err.message;
+          return;
+        }
+
+        const events = response.result.items;
+        if (!events || events.length == 0) {
+          document.getElementById('cal-content').innerText = 'No events found.';
+          return;
+        }
+        // Flatten to string to display
+        const output = events.reduce(
+            (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
+            'Events:\n');
+        document.getElementById('cal-content').innerText = output;
+      }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+    </div>
+    <script type="text/javascript" src="google.js"></script>
+</body>
+
+
+</html>

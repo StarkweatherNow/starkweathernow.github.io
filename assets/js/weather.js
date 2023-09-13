@@ -1,73 +1,231 @@
-//Widget to display weather information
-// - Uses OpenWeatherMap API
-// - Displays the following info: Tempature, Weather Description, Air Quality, Humidity
-// - Uses the following icons: https://openweathermap.org/weather-conditions
-// - Uses the following API: https://openweathermap.org/api/air-pollution
+//JS Functions to call and draw OpenWeather API
 
-//OpenWeather API Key  
-const API_KEY = "92282d7a9bd391d5a486ae5655c7c080";
+//Global variables
+var OpenWeatherAPI = "92282d7a9bd391d5a486ae5655c7c080";
+var success = "Weather Loaded";
+var fail = "Weather Failed to Load";
+//Bootswatch - Assigning theme color to weather conditions
+var blue = "list-group-item-primary";
+var green = "list-group-item-success";
+var yellow = "list-group-item-warning";
+var orange = "list-group-item-warning";
+var red = "list-group-item-danger";
+var purple = "list-group-item-dark";
+var grey = "list-group-item-secondary";
 
-//Get the weather information
-function getWeather(lat,long) {
-    
-    //Get the weather information from OpenWeatherMap API
-    fetch('https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&appid='+API_KEY)
-    .then(function(resp) { return resp.json() }) // Convert data to json
-    .then(function(data) {
-        console.log(data);
-        drawWeather(data);
-    })
-    .catch(function() {
-        // catch any errors
+
+//Function to call OpenWeather API
+function getWeather(lat, lon) {
+    //Call OpenWeather API
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
+        method: "GET"
+    }).then(function(response) {
+        //console.log(response);
+        //Convert Kelvin to Fahrenheit
+        var tempF = Math.round(response.main.temp);
+        //Print response to HTML
+        //$("#weather-status").html(success);
+        $("#weather-location").html(response.name);
+        $("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
+        $("#weather-temp").html("Temp: " + tempF + "&deg;F");
+        $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
+        $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
+ 
     });
 
-    //Get the air quality information from OpenWeatherMap API
-    fetch('https://api.openweathermap.org/data/2.5/air_pollution?lat='+lat+'&lon='+long+'&appid='+API_KEY)
-    .then(function(resp) { return resp.json() }) // Convert data to json
-    .then(function(data) {
-        console.log(data);
-        drawAirQuality(data);
-    })
-    .catch(function() {
-        // catch any errors
-    });
-    
 }
 
-function drawWeather(data) {
-    var fahrenheit = Math.round(((parseFloat(data.main.temp)-273.15)*1.8)+32);
-    var description = data.weather[0].description;
-    //Capitalizes the first letter of each word in the description
-    const words = description.split(" ");
-        for (let i = 0; i < words.length; i++) {
-            words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+//Function to call OpenWeather API Forecast
+function getForecast(lat, lon) {
+    //Call OpenWeather API
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
+        method: "GET"
+    }).then(function(response) {
+        //console.log(response);
+        //Parse response.list to Array
+        var forecastArray = response.list;
+        //Print array to console
+        //console.log(forecastArray);
+        //Loop through Array
+        for (var i = 0; i <= 3; i++) {           
+            //console.log(i);
+            //Convert Unix Time to Current Time
+            var forecastDate = moment.unix(forecastArray[i].dt).format("HH:MM");
+            //Convert Kelvin to Fahrenheit
+            var tempF = Math.round(forecastArray[i].main.temp);
+            //Print response to HTML
+            $("#forecast-time-" + i).html(forecastDate);
+            $("#forecast-temp-" + i).html(tempF + "&deg;F");
+            $("#forecast-humidity-" + i).html(forecastArray[i].main.humidity + "%");
+            $("#forecast-wind-" + i).html(forecastArray[i].wind.speed + " mph");
+            //Switch to assign color to temperature
+            switch (true) {
+                case (tempF <= 40):
+                    var tempColor = blue;
+                    $("#class-temp").addClass(tempColor);
+                    break;
+                case (tempF <= 60):
+                    var tempColor = green;
+                    $("#class-temp").addClass(tempColor);
+                    break;
+                case (tempF <= 80):
+                    var tempColor = yellow;
+                    $("#class-temp").addClass(tempColor);
+                    break;
+                case (tempF <= 90):
+                    var tempColor = orange;
+                    $("#class-temp").addClass(tempColor);
+                    break;
+                case (tempF >= 91):
+                    var tempColor = red;
+                    $("#class-temp").addClass(tempColor);
+                    break;
+                default:
+                    var tempColor = grey;
+                    $("#class-temp").addClass(tempColor);
+            }
+            //Switch to assign color to humidity
+            switch (true) {
+                case (forecastArray[i].main.humidity <= 40):
+                    var humidityColor = blue;
+                    $("#class-humidity").addClass(humidityColor);
+                    break;
+                case (forecastArray[i].main.humidity <= 60):
+                    var humidityColor = green;
+                    $("#class-humidity").addClass(humidityColor);
+                    break;
+                case (forecastArray[i].main.humidity <= 80):
+                    var humidityColor = yellow;
+                    $("#class-humidity").addClass(humidityColor);
+                    break;
+                case (forecastArray[i].main.humidity <= 90):
+                    var humidityColor = orange;
+                    $("#class-humidity").addClass(humidityColor);
+                    break;
+                case (forecastArray[i].main.humidity >= 91):
+                    var humidityColor = red;
+                    $("#class-humidity").addClass(humidityColor);
+                    break;
+                default:
+                    var humidityColor = grey;
+                    $("#class-humidity").addClass(humidityColor);
+            }
+            //Switch to assign color to wind
+            switch (true) {
+                case (forecastArray[i].wind.speed <= 5):
+                    var windColor = blue;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                case (forecastArray[i].wind.speed <= 10):
+                    var windColor = green;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                case (forecastArray[i].wind.speed <= 15):
+                    var windColor = yellow;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                case (forecastArray[i].wind.speed <= 20):
+                    var windColor = orange;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                case (forecastArray[i].wind.speed >= 21):
+                    var windColor = red;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                default:
+                    var windColor = grey;
+                    $("#class-wind").addClass(windColor);
+            }
+
         }
-    var description = words.join(" ");
-    var humidity = data.main.humidity;
-    var icon = data.weather[0].icon;
-    var name = data.name;
-    document.getElementById('weather-widget__location').innerHTML = name;
-    document.getElementById('weather-widget__icon').src = "http://openweathermap.org/img/w/" + icon + ".png";
-    document.getElementById('weather-widget__description').innerHTML = description;
-    document.getElementById('weather-widget__temperature-value').innerHTML = fahrenheit + '&deg;';
-    document.getElementById('weather-widget__humidity').innerHTML = humidity + '%';
-};
-    
-function drawAirQuality(data) {
-    var aqi = data.list[0].main.aqi;
-    //If Else statement to determine the AQI
-    if (aqi == 1) {
-        aqi = "Good";
-    } else if (aqi == 2) {
-        aqi = "Fair";
-    } else if (aqi == 3) {
-        aqi = "Moderate";
-    } else if (aqi == 4) {
-        aqi = "Poor";
-    } else if (aqi == 5) {
-        aqi = "Very Poor";
-    } else {
-        aqi = "Unknown";
-    };
-    document.getElementById('weather-widget__AQ').innerHTML = aqi;
-};
+
+    });
+
+}
+
+//Functions to request current Air Quality Conditions via OpenWeather API
+function getAirQuality(lat, lon) {
+    //Call OpenWeather API
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + lon + "&APPID=" + OpenWeatherAPI,
+        method: "GET"
+    }).then(function(response) {
+        //Assign Air Quality Index to variable
+        var airQualityIndex = response.list[0].main.aqi;
+        //Switch function to assign AQI to color
+        switch (airQualityIndex) {
+            case 1:
+                var airQualityColor = green;
+                $("#class-aq").addClass(airQualityColor);
+                break;
+            case 2:
+                var airQualityColor = yellow;
+                $("#class-aq").addClass(airQualityColor);
+                break;
+            case 3:
+                var airQualityColor = orange;
+                $("#class-aq").addClass(airQualityColor);
+                break;
+            case 4:
+                var airQualityColor = red;
+                $("#class-aq").addClass(airQualityColor);
+                break;
+            case 5:
+                var airQualityColor = purple;
+                $("#class-aq").addClass(airQualityColor);
+                break;
+            default:
+                var airQualityColor = grey;
+                $("#class-aq").addClass(airQualityColor);
+        }
+        //Print response to HTML
+        $("#weather-aq").html("Air Quality: " + response.list[0].main.aqi);
+    });
+
+}
+
+//Functions to request current UV Index via OpenWeather API
+function getUVIndex(lat, lon) {
+    //Call OpenWeather API
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + OpenWeatherAPI,
+        method: "GET"
+    }).then(function(response) {
+        //Assign UV Index to variable
+        var uvIndex = response.value;
+        //Switch function to assign UV Index to color
+        switch (true) {
+            case (uvIndex <= 2):
+                var uvIndexColor = green;
+                $("#class-uv").addClass(uvIndexColor);
+                break;
+            case (uvIndex <= 5):
+                var uvIndexColor = yellow;
+                $("#class-uv").addClass(uvIndexColor);
+                break;
+            case (uvIndex <= 7):
+                var uvIndexColor = orange;
+                $("#class-uv").addClass(uvIndexColor);
+                break;
+            case (uvIndex <= 10):
+                var uvIndexColor = red;
+                $("#class-uv").addClass(uvIndexColor);
+                break;
+            case (uvIndex >= 11):
+                var uvIndexColor = purple;
+                $("#class-uv").addClass(uvIndexColor);
+                break;
+            default:
+                var uvIndexColor = grey;
+                $("#class-uv").addClass(uvIndexColor);
+        }
+        //Print response to HTML
+        $("#weather-uv").html("UV Index: " + response.value);       
+    });
+
+}
+
+
+//Function calls handled by geo.js - onpageload
