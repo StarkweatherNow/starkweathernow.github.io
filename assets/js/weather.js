@@ -21,7 +21,7 @@ function getWeather(lat, lon) {
         //$("#weather-location").html(response.name);
         document.getElementById("weather-icon").innerHTML = "<img src='https://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>";
         //$("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
-        document.getElementById("weather-temp").innerHTML = tempF + "&deg;F";
+        document.getElementById("weather-temp").insertAdjacentHTML("afterend") = tempF + "&deg;F";
         //$("#weather-temp").html(tempF + "&deg;F");
         document.getElementById("weather-humidity").innerHTML = response.main.humidity + "%" + " Humidity";
         //$("#weather-humidity").html(response.main.humidity + "%" + " Humidity");
@@ -56,6 +56,67 @@ function getForecast(lat, lon) {
             $("#forecast-temp-" + i).html(tempF + "&deg;F");
             $("#forecast-humidity-" + i).html(forecastArray[i].main.humidity + "%");
             $("#forecast-wind-" + i).html(forecastArray[i].wind.speed + " mph");
+            //Switch to assign color to temperature
+            switch (true) {
+                case (tempF <= 40):
+                    var tempColor = "blue";
+                    break;
+                case (tempF <= 60):
+                    var tempColor = "green";
+                    break;
+                case (tempF <= 80):
+                    var tempColor = "yellow";
+                    break;
+                case (tempF <= 90):
+                    var tempColor = "orange";
+                    break;
+                case (tempF >= 91):
+                    var tempColor = "red";
+                    break;
+                default:
+                    var tempColor = "grey";
+            }
+            //Switch to assign color to humidity
+            switch (true) {
+                case (forecastArray[i].main.humidity <= 40):
+                    var humidityColor = "blue";
+                    break;
+                case (forecastArray[i].main.humidity <= 60):
+                    var humidityColor = "green";
+                    break;
+                case (forecastArray[i].main.humidity <= 80):
+                    var humidityColor = "yellow";
+                    break;
+                case (forecastArray[i].main.humidity <= 90):
+                    var humidityColor = "orange";
+                    break;
+                case (forecastArray[i].main.humidity >= 91):
+                    var humidityColor = "red";
+                    break;
+                default:
+                    var humidityColor = "grey";
+            }
+            //Switch to assign color to wind
+            switch (true) {
+                case (forecastArray[i].wind.speed <= 5):
+                    var windColor = "blue";
+                    break;
+                case (forecastArray[i].wind.speed <= 10):
+                    var windColor = "green";
+                    break;
+                case (forecastArray[i].wind.speed <= 15):
+                    var windColor = "yellow";
+                    break;
+                case (forecastArray[i].wind.speed <= 20):
+                    var windColor = "orange";
+                    break;
+                case (forecastArray[i].wind.speed >= 21):
+                    var windColor = "red";
+                    break;
+                default:
+                    var windColor = "grey";
+            }
+            
         }
 
     });
