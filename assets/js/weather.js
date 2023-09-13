@@ -17,19 +17,11 @@ function getWeather(lat, lon) {
         var tempF = Math.round(response.main.temp);
         //Print response to HTML
         //$("#weather-status").html(success);
-        document.getElementById("weather-location").innerHTML = response.name;
-        //get element by id and insert url src into style
-        document.getElementById("weather-icon").src = "url('https://openweathermap.org/img/w/" + response.weather[0].icon + ".png')";
-
-
-        document.getElementById("weather-icon").innerHTML = "<img src='https://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>";
-        //$("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
-        document.getElementById("weather-temp").insertAdjacentHTML("afterend") = tempF + "&deg;F";
-        //$("#weather-temp").html(tempF + "&deg;F");
-        document.getElementById("weather-humidity").innerHTML = response.main.humidity + "%" + " Humidity";
-        //$("#weather-humidity").html(response.main.humidity + "%" + " Humidity");
-        document.getElementById("weather-wind").innerHTML = response.wind.speed + " mph";
-        //$("#weather-wind").html(response.wind.speed + " mph");
+        $("#weather-location").html(response.name);
+        $("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
+        $("#weather-temp").html("Temp: " + tempF + "&deg;F");
+        $("#weather-humidity").html("Humidity" + response.main.humidity + "%");
+        $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
  
     });
 
@@ -156,7 +148,7 @@ function getAirQuality(lat, lon) {
                 var airQualityColor = "grey";
         }
         //Print response to HTML
-        $("#weather-aq").html(response.list[0].main.aqi);
+        $("#weather-aq").html("Air Quality: " + response.list[0].main.aqi);
     });
 
 }
@@ -191,7 +183,7 @@ function getUVIndex(lat, lon) {
                 var uvIndexColor = "grey";
         }
         //Print response to HTML
-        $("#weather-uv").html(response.value);       
+        $("#weather-uv").html("UV Index: " + response.value);       
     });
 
 }
