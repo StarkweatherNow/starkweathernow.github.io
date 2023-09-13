@@ -12,7 +12,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
-<script src="https://accounts.google.com/gsi/client"></script>
+<!--3rd Party JS Libraries-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script type="text/javascript" src="assets/js/moment.js"></script>
+    <!--My JS Functions-->
+    <script type="text/javascript" src="assets/js/NASA.js"></script>
+    <script type="text/javascript" src="assets/js/geo.js"></script>
+    <script type="text/javascript" src="assets/js/weather.js"></script>
+    <script type="text/javascript" src="assets/js/maps.js"></script>
+    <script type="text/javascript" src="assets/js/qotd.js"></script>
 </head>
 
 <body>
@@ -31,15 +40,15 @@
     </nav>
     <section class="py-4 py-xl-5">
         <div class="container">
-            <div class="text-white bg-dark border rounded border-0 pulse animated p-4 p-md-5" style="background: linear-gradient(1deg, black, var(--bs-body-color));">
-                <h1 class="display-1 fw-bold text-center text-muted mb-3">Carpe Diem</h1>
+            <div class="text-white bg-dark border rounded border-0 p-4 p-md-5" data-bss-hover-animate="bounce" style="background: linear-gradient(1deg, black, var(--bs-body-color));">
+                <h1 class="display-1 fw-bold text-center text-muted wobble animated mb-3">Carpe Diem</h1>
             </div>
         </div>
     </section>
     <div class="card"><img class="card-img w-100 d-block" id="nasa-img">
         <div class="card-img-overlay" style="overflow: visible;">
-            <h3 class="text-info" id="nasa-title">NASA - Image of the Day</h3>
-            <p class="d-none d-print-inline d-sm-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline" id="nasa-desc" style="overflow: visible;"><span class="spinner-border text-danger-emphasis" role="status"></span></p>
+            <h3 class="text-info" id="nasa-title" style="background: rgba(0,0,0,0.75);">NASA - Image of the Day</h3>
+            <p class="d-none d-print-inline d-sm-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline" id="nasa-desc" style="overflow: visible;background: rgba(0,0,0,0.75);"><span class="spinner-border text-danger-emphasis" role="status"></span></p>
         </div>
     </div>
     <hr>
@@ -49,9 +58,9 @@
             <div class="col-12 col-md-4">
                 <figure>
                     <blockquote class="blockquote">
-                        <p class="text-center mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <p class="text-center mb-0" id="quote-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                     </blockquote>
-                    <figcaption class="blockquote-footer text-end">Someone famous</figcaption>
+                    <figcaption class="blockquote-footer text-end" id="quote-author">Someone famous</figcaption>
                 </figure>
             </div>
             <div class="col-md-4"></div>
@@ -61,11 +70,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6" style="margin-bottom: 10px;">
-                <div class="card">
+                <div class="card" style="border-width: 0px;border-radius: 0px;">
                     <div class="card-body">
                         <h3 class="text-center card-title">Current Conditions</h3>
                         <h6 class="text-center text-muted card-subtitle mb-2" id="weather-location">Loading Location</h6>
-                        <p class="card-text" id="weather-icon" style="margin-right: auto;margin-left: auto;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a class="card-link" id="weather-temp">Temp</a><a class="card-link" id="weather-humidity">Humidity</a><a class="card-link" id="weather-wind">Wind</a>
+                        <div id="weather-icon" class="text-center" style="padding: 10px;"></div>
+                        <ul class="list-group">
+                            <li class="list-group-item text-center" id="class-temp"><span id="weather-temp">Temp:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-humidity"><span id="weather-humidity">Humidity:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-wind"><span id="weather-wind">Wind Speed:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-aq"><span id="weather-aq">Air Quality:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-uv"><span id="weather-uv">UV Index:&nbsp;</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -80,34 +96,34 @@
                                 <thead>
                                     <tr>
                                         <th>Time</th>
-                                        <th>Temp</th>
-                                        <th>Humidity</th>
+                                        <th class="text-center">Temp</th>
+                                        <th class="text-center">Humidity</th>
                                         <th>Wind</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td id="forecast-time-0"></td>
-                                        <td id="forecast-temp-0"></td>
-                                        <td id="forecast-humidity-0"></td>
+                                        <td class="text-center" id="forecast-temp-0"></td>
+                                        <td class="text-center" id="forecast-humidity-0"></td>
                                         <td id="forecast-wind-0"></td>
                                     </tr>
                                     <tr>
                                         <td id="forecast-time-1"></td>
-                                        <td id="forecast-temp-1"></td>
-                                        <td id="forecast-humidity-1"></td>
+                                        <td class="text-center" id="forecast-temp-1"></td>
+                                        <td class="text-center" id="forecast-humidity-1"></td>
                                         <td id="forecast-wind-1"></td>
                                     </tr>
                                     <tr>
                                         <td id="forecast-time-2"></td>
-                                        <td id="forecast-temp-2"></td>
-                                        <td id="forecast-humidity-2"></td>
+                                        <td class="text-center" id="forecast-temp-2"></td>
+                                        <td class="text-center" id="forecast-humidity-2"></td>
                                         <td id="forecast-wind-2"></td>
                                     </tr>
                                     <tr>
                                         <td id="forecast-time-3"></td>
-                                        <td id="forecast-temp-3"></td>
-                                        <td id="forecast-humidity-3"></td>
+                                        <td class="text-center" id="forecast-temp-3"></td>
+                                        <td class="text-center" id="forecast-humidity-3"></td>
                                         <td id="forecast-wind-3"></td>
                                     </tr>
                                 </tbody>
@@ -132,12 +148,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6" style="margin-bottom: 10px;">
-                <h3 class="text-center">Local Traffic</h3>
-                <div id="map" style="overflow: clip;width: 100%;">
-                    <div style="margin-right: auto;margin-left: auto;width: auto;"><img class="d-xl-flex" id="map-img" style="border-width: 1px;border-radius: 6px;"></div>
-                </div>
-            </div>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
@@ -147,6 +157,10 @@
                         <p class="card-text" id="google_tasks_content">Loading...</p>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6" style="margin-bottom: 10px;">
+                <h3 class="text-center">Local Traffic</h3>
+                <div id="map" style="overflow: clip;width: 100%;"><img class="d-xl-flex" id="map-img" style="border-width: 1px;border-radius: 6px;margin-right: auto;margin-left: auto;max-width: 100%;display: block;"></div>
             </div>
         </div>
     </div>
@@ -194,11 +208,6 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/moment.js"></script>
-    <script src="assets/js/NASA.js"></script>
-    <script src="assets/js/geo.js"></script>
-    <script src="assets/js/maps.js"></script>
-    <script src="assets/js/weather.js"></script>
 </body>
 
 </html>
