@@ -29,6 +29,8 @@ function getWeather(lat, lon) {
         var weatherDate = moment.unix(response.dt).format("HH:MM");
         //Convert military time to standard time
         var weatherTime = moment(weatherDate, "HH:mm").format("h:mm A");
+        //Assign rain to variable
+        var rain = response.rain;
         //Print response to HTML
         //$("#weather-status").html(success);
         $("#weather-location").html(response.name);
@@ -135,22 +137,6 @@ function getWeather(lat, lon) {
                 var windColor = grey;
                 $("#class-wind").addClass(windColor);
         }
- 
-    });
-
-}
-
-//Function to call OpenWeather API to get the current rain conditions
-function getRain(lat, lon) {
-    //Call OpenWeather API
-    $.ajax({
-        url: "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
-        method: "GET"
-    }).then(function(response) {
-        console.log("Rain API Response");
-        console.log(response);
-        //Assign rain to variable
-        var rain = response.minutely[0].precipitation;
         //Switch to assign color to rain
         switch (true) {
             case (rain <= 40):
@@ -177,8 +163,7 @@ function getRain(lat, lon) {
                 var rainColor = grey;
                 $("#class-rain").addClass(rainColor);
         }
-        //Print response to HTML
-        $("#weather-rain").html("Rain: " + response.current.rain + "%");
+ 
     });
 
 }
