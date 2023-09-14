@@ -25,6 +25,10 @@ function getWeather(lat, lon) {
         console.log(response);
         //Convert Kelvin to Fahrenheit
         var tempF = Math.round(response.main.temp);
+        //Convert Unix Time to Current Time
+        var weatherDate = moment.unix(response.dt).format("HH:MM");
+        //Convert military time to standard time
+        var weatherTime = moment(weatherDate, "HH:mm").format("h:mm A");
         //Print response to HTML
         //$("#weather-status").html(success);
         $("#weather-location").html(response.name);
@@ -33,7 +37,7 @@ function getWeather(lat, lon) {
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
         $("#weather-rain").html("Rain: " + response.rain + "%");
-        $("#weather-time").html("Time: " + moment.unix(response.dt).format("HH:MM"));       
+        $("#weather-time").html("Time: " + weatherTime);      
 
         //Switch to assign color to time based on sunrise and sunset
         switch (true) {
@@ -71,10 +75,12 @@ function getForecast(lat, lon) {
             //console.log(i);
             //Convert Unix Time to Current Time
             var forecastDate = moment.unix(forecastArray[i].dt).format("HH:MM");
+            //Convert military time to standard time
+            var forecastTime = moment(forecastDate, "HH:mm").format("h:mm A");
             //Convert Kelvin to Fahrenheit
             var tempF = Math.round(forecastArray[i].main.temp);
             //Print response to HTML
-            $("#forecast-time-" + i).html(forecastDate);
+            $("#forecast-time-" + i).html(forecastTime);
             $("#forecast-temp-" + i).html(tempF + "&deg;F");
             $("#forecast-humidity-" + i).html(forecastArray[i].main.humidity + "%");
             $("#forecast-rain-" + i).html(forecastArray[i].pop + "%");
