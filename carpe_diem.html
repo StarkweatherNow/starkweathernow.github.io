@@ -57,8 +57,8 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col"></div>
-            <div class="col col-6">
+            <div class="col-2"></div>
+            <div class="col-8">
                 <figure>
                     <blockquote class="blockquote">
                         <p class="text-center mb-0" id="quote-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -66,7 +66,7 @@
                     <figcaption class="blockquote-footer text-end text-warning-emphasis" id="quote-author">Someone famous</figcaption>
                 </figure>
             </div>
-            <div class="col"></div>
+            <div class="col-2"></div>
         </div>
     </div>
     <hr>
@@ -74,10 +74,13 @@
         <div class="row" style="margin-bottom: 10px;">
             <div class="col">
                 <div class="card">
-                    <div class="card-body" style="padding: 0px;">
-                        <h3 class="text-center card-title">Current Conditions</h3>
+                    <div class="card-header">
+                        <h4 class="text-center mb-0">Current Conditions</h4>
+                    </div>
+                    <div class="card-body">
                         <h6 class="text-center text-warning card-subtitle mb-2" id="weather-location">Loading Location</h6>
                         <div id="weather-icon" class="text-center" style="padding: 10px;"></div>
+                        <p class="text-center" id="weather-description">Paragraph</p>
                     </div>
                 </div>
             </div>
@@ -89,7 +92,6 @@
                         <ul class="list-group">
                             <li class="list-group-item text-center" id="class-time"><span id="weather-time">Time:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-temp"><span id="weather-temp">Temp:&nbsp;</span></li>
-                            <li class="list-group-item text-center" id="class-rain"><span id="weather-rain">Rain:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-humidity"><span id="weather-humidity">Humidity:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-wind"><span id="weather-wind">Wind Speed:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-aq"><span id="weather-aq">Air Quality:&nbsp;</span></li>
@@ -101,7 +103,7 @@
             <div class="col-md-6" style="margin-bottom: 10px;">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center mb-0">3 Hour Forecast</h4>
+                        <h4 class="text-center mb-0">12 Hour Forecast</h4>
                     </div>
                     <div class="card-body" style="padding-bottom: 0px;">
                         <div class="table-responsive">
@@ -211,7 +213,7 @@
                 </div>
                 <div class="col">
                     <ul class="list-inline my-2">
-                        <li class="list-inline-item"><a class="link-secondary" href="#back-to-top"><button class="btn btn-outline-warning" type="button" data-bs-target="#modal-1" data-bs-toggle="modal">How It's Made</button></a></li>
+                        <li class="list-inline-item"><a class="link-secondary" href="#back-to-top"><button class="btn btn-outline-warning me-2" type="button" data-bs-target="#modal-1" data-bs-toggle="modal">How It's Made</button></a></li>
                         <li class="list-inline-item"><a class="link-secondary" href="#back-to-top">Back to Top&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-up-short fs-4">
                                     <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"></path>
                                 </svg></a></li>
