@@ -21,8 +21,8 @@ function getWeather(lat, lon) {
         url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
         method: "GET"
     }).then(function(response) {
-        console.log("Weather API Response");
-        console.log(response);
+        //console.log("Weather API Response");
+        //console.log(response);
         //Convert Kelvin to Fahrenheit
         var tempF = Math.round(response.main.temp);
         //Convert Unix Time to Current Time
@@ -30,7 +30,7 @@ function getWeather(lat, lon) {
         //Convert military time to standard time
         var weatherTime = moment(weatherDate, "HH:mm").format("h:mm A");
         //Assign rain to variable
-        var rain = response.rain;
+        //var rain = response.rain;
         //Print response to HTML
         //$("#weather-status").html(success);
         $("#weather-location").html(response.name);
@@ -39,7 +39,7 @@ function getWeather(lat, lon) {
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
-        $("#weather-rain").html("Rain: " + response.rain + "%");
+        //$("#weather-rain").html("Rain: " + response.rain + "%");
         $("#weather-time").html("Time: " + weatherTime);      
 
         //Switch to assign color to current time based on sunrise and sunset
@@ -138,7 +138,7 @@ function getWeather(lat, lon) {
                 var windColor = grey;
                 $("#class-wind").addClass(windColor);
         }
-        //Switch to assign color to rain
+        /**Switch to assign color to rain
         switch (true) {
             case (rain <= 40):
                 var rainColor = blue;
@@ -163,7 +163,7 @@ function getWeather(lat, lon) {
             default:
                 var rainColor = grey;
                 $("#class-rain").addClass(rainColor);
-        }
+        }**/
  
     });
 
