@@ -32,7 +32,7 @@ function getWeather(lat, lon) {
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
-        $("#weather-rain").html("Rain: " + response.clouds.all + "%");
+        $("#weather-rain").html("Rain: " + response.pop + "%");
         $("#weather-time").html("Time: " + moment.unix(response.dt).format("HH:MM"));       
 
         //Switch to assign color to time based on sunrise and sunset
