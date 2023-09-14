@@ -35,6 +35,7 @@ function getWeather(lat, lon) {
         //$("#weather-status").html(success);
         $("#weather-location").html(response.name);
         $("#weather-icon").html("<img src='https://openweathermap.org/img/wn/" + response.weather[0].icon + "@4x.png'>");
+        $("#weather-description").html(response.weather[0].description);
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
