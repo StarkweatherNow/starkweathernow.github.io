@@ -7,7 +7,7 @@ var fail = "Weather Failed to Load";
 //Bootswatch - Assigning theme color to weather conditions
 var blue = "list-group-item-primary";
 var green = "list-group-item-success";
-var yellow = "list-group-item-warning";
+var yellow = "list-group-item-warning-emphasis";
 var orange = "list-group-item-warning";
 var red = "list-group-item-danger";
 var purple = "list-group-item-dark";
@@ -46,7 +46,7 @@ function getWeather(lat, lon) {
                 $("#class-time").addClass(timeColor);
                 break;
             case (response.dt <= response.sys.sunset):
-                var timeColor = yellow;
+                var timeColor = blue;
                 $("#class-time").addClass(timeColor);
                 break;
             case (response.dt >= response.sys.sunset):
@@ -86,11 +86,11 @@ function getWeather(lat, lon) {
         //Switch to assign color to humidity
         switch (true) {
             case (response.main.humidity <= 40):
-                var humidityColor = blue;
+                var humidityColor = green;
                 $("#class-humidity").addClass(humidityColor);
                 break;
             case (response.main.humidity <= 60):
-                var humidityColor = green;
+                var humidityColor = blue;
                 $("#class-humidity").addClass(humidityColor);
                 break;
             case (response.main.humidity <= 80):
@@ -112,11 +112,11 @@ function getWeather(lat, lon) {
         //Switch to assign color to wind
         switch (true) {
             case (response.wind.speed <= 5):
-                var windColor = blue;
+                var windColor = green;
                 $("#class-wind").addClass(windColor);
                 break;
             case (response.wind.speed <= 10):
-                var windColor = green;
+                var windColor = blue;
                 $("#class-wind").addClass(windColor);
                 break;
             case (response.wind.speed <= 15):
