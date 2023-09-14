@@ -21,8 +21,8 @@ function getWeather(lat, lon) {
         url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
         method: "GET"
     }).then(function(response) {
-        console.log("Weather API Response");
-        console.log(response);
+        //console.log("Weather API Response");
+        //console.log(response);
         //Convert Kelvin to Fahrenheit
         var tempF = Math.round(response.main.temp);
         //Convert Unix Time to Current Time
