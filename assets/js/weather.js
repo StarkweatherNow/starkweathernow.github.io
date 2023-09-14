@@ -21,7 +21,8 @@ function getWeather(lat, lon) {
         url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
         method: "GET"
     }).then(function(response) {
-        //console.log(response);
+        console.log("Weather API Response");
+        console.log(response);
         //Convert Kelvin to Fahrenheit
         var tempF = Math.round(response.main.temp);
         //Print response to HTML
@@ -31,6 +32,8 @@ function getWeather(lat, lon) {
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
+        //print response.time to html
+        
  
     });
 
