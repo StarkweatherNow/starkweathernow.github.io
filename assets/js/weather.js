@@ -28,11 +28,11 @@ function getWeather(lat, lon) {
         //Print response to HTML
         //$("#weather-status").html(success);
         $("#weather-location").html(response.name);
-        $("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + "@4.png'>");
+        $("#weather-icon").html("<img src='http://openweathermap.org/img/wn/" + response.weather[0].icon + "@4.png'>");
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
-        $("#weather-rain").html("Rain: " + response.pop + "%");
+        $("#weather-rain").html("Rain: " + response.rain.1h + "%");
         $("#weather-time").html("Time: " + moment.unix(response.dt).format("HH:MM"));       
 
         //Switch to assign color to time based on sunrise and sunset
