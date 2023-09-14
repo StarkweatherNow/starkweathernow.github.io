@@ -41,15 +41,15 @@ function getWeather(lat, lon) {
 
         //Switch to assign color to current time based on sunrise and sunset
         switch (true) {
-            case (weatherTime <= response.sys.sunrise):
+            case (response.dt <= response.sys.sunrise):
                 var timeColor = purple;
                 $("#class-time").addClass(timeColor);
                 break;
-            case (weatherTime <= response.sys.sunset):
+            case (response.dt <= response.sys.sunset):
                 var timeColor = yellow;
                 $("#class-time").addClass(timeColor);
                 break;
-            case (weatherTime >= response.sys.sunset):
+            case (response.dt >= response.sys.sunset):
                 var timeColor = purple;
                 $("#class-time").addClass(timeColor);
                 break;
