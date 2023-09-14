@@ -28,7 +28,7 @@ function getWeather(lat, lon) {
         //Print response to HTML
         //$("#weather-status").html(success);
         $("#weather-location").html(response.name);
-        $("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png'>");
+        $("#weather-icon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + "@4.png'>");
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
