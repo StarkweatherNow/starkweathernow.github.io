@@ -81,23 +81,23 @@ function getWeather(lat, lon) {
         }
         //Switch to assign color to humidity
         switch (true) {
-            case (forecastArray[i].main.humidity <= 40):
+            case (response.main.humidity <= 40):
                 var humidityColor = blue;
                 $("#class-humidity").addClass(humidityColor);
                 break;
-            case (forecastArray[i].main.humidity <= 60):
+            case (response.main.humidity <= 60):
                 var humidityColor = green;
                 $("#class-humidity").addClass(humidityColor);
                 break;
-            case (forecastArray[i].main.humidity <= 80):
+            case (response.main.humidity <= 80):
                 var humidityColor = yellow;
                 $("#class-humidity").addClass(humidityColor);
                 break;
-            case (forecastArray[i].main.humidity <= 90):
+            case (response.main.humidity <= 90):
                 var humidityColor = orange;
                 $("#class-humidity").addClass(humidityColor);
                 break;
-            case (forecastArray[i].main.humidity >= 91):
+            case (response.main.humidity >= 91):
                 var humidityColor = red;
                 $("#class-humidity").addClass(humidityColor);
                 break;
@@ -107,23 +107,23 @@ function getWeather(lat, lon) {
         }
         //Switch to assign color to wind
         switch (true) {
-            case (forecastArray[i].wind.speed <= 5):
+            case (response.wind.speed <= 5):
                 var windColor = blue;
                 $("#class-wind").addClass(windColor);
                 break;
-            case (forecastArray[i].wind.speed <= 10):
+            case (response.wind.speed <= 10):
                 var windColor = green;
                 $("#class-wind").addClass(windColor);
                 break;
-            case (forecastArray[i].wind.speed <= 15):
+            case (response.wind.speed <= 15):
                 var windColor = yellow;
                 $("#class-wind").addClass(windColor);
                 break;
-            case (forecastArray[i].wind.speed <= 20):
+            case (response.wind.speed <= 20):
                 var windColor = orange;
                 $("#class-wind").addClass(windColor);
                 break;
-            case (forecastArray[i].wind.speed >= 21):
+            case (response.wind.speed >= 21):
                 var windColor = red;
                 $("#class-wind").addClass(windColor);
                 break;
@@ -143,7 +143,8 @@ function getRain(lat, lon) {
         url: "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
         method: "GET"
     }).then(function(response) {
-        //console.log(response);
+        console.log("Rain API Response");
+        console.log(response);
         //Assign rain to variable
         var rain = response.current.rain;
         //Switch to assign color to rain
