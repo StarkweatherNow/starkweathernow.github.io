@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
 <!--3rd Party JS Libraries-->
@@ -41,14 +42,16 @@
     <section class="py-4 py-xl-5">
         <div class="container">
             <div class="text-white bg-dark border rounded border-0 p-4 p-md-5" data-bss-hover-animate="bounce" style="background: linear-gradient(1deg, black, var(--bs-body-color));">
-                <h1 class="display-1 fw-bold text-center text-muted wobble animated mb-3">Carpe Diem</h1>
+                <h1 class="display-1 fw-bold text-center text-muted mb-3" style="text-shadow: 3px 3px 5px var(--bs-primary-bg-subtle);">Carpe Diem</h1>
             </div>
         </div>
     </section>
-    <div class="card"><img class="card-img w-100 d-block" id="nasa-img">
-        <div class="card-img-overlay" style="overflow: visible;">
-            <h3 class="text-info" id="nasa-title" style="background: rgba(0,0,0,0.75);">NASA - Image of the Day</h3>
-            <p class="d-none d-print-inline d-sm-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline" id="nasa-desc" style="overflow: visible;background: rgba(0,0,0,0.75);"><span class="spinner-border text-danger-emphasis" role="status"></span></p>
+    <div class="container">
+        <div class="card"><img class="card-img w-100 d-block" id="nasa-img">
+            <div class="card-img-overlay" style="overflow: visible;">
+                <h3 class="text-warning" id="nasa-title" style="background: rgba(0,0,0,0.75);">NASA - Image of the Day</h3>
+                <p class="d-none d-print-inline d-sm-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline" id="nasa-desc" style="overflow: visible;background: rgba(0,0,0,0.75);"><span class="spinner-border text-danger-emphasis" role="status"></span></p>
+            </div>
         </div>
     </div>
     <hr>
@@ -60,7 +63,7 @@
                     <blockquote class="blockquote">
                         <p class="text-center mb-0" id="quote-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                     </blockquote>
-                    <figcaption class="blockquote-footer text-end" id="quote-author">Someone famous</figcaption>
+                    <figcaption class="blockquote-footer text-end text-warning-emphasis" id="quote-author">Someone famous</figcaption>
                 </figure>
             </div>
             <div class="col-md-4"></div>
@@ -68,13 +71,21 @@
     </div>
     <hr>
     <div class="container">
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body" style="padding: 0px;">
+                        <h3 class="text-center card-title">Current Conditions</h3>
+                        <h6 class="text-center text-warning card-subtitle mb-2" id="weather-location">Loading Location</h6>
+                        <div id="weather-icon" class="text-center" style="padding: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6" style="margin-bottom: 10px;">
                 <div class="card" style="border-width: 0px;border-radius: 0px;">
-                    <div class="card-body">
-                        <h3 class="text-center card-title">Current Conditions</h3>
-                        <h6 class="text-center text-muted card-subtitle mb-2" id="weather-location">Loading Location</h6>
-                        <div id="weather-icon" class="text-center" style="padding: 10px;"></div>
+                    <div class="card-body" style="padding: 0;">
                         <ul class="list-group">
                             <li class="list-group-item text-center" id="class-temp"><span id="weather-temp">Temp:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-humidity"><span id="weather-humidity">Humidity:&nbsp;</span></li>
@@ -85,7 +96,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin-bottom: 10px;">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="text-center mb-0">3 Hour Forecast</h4>
@@ -98,7 +109,7 @@
                                         <th>Time</th>
                                         <th class="text-center">Temp</th>
                                         <th class="text-center">Humidity</th>
-                                        <th>Wind</th>
+                                        <th class="text-center">Wind</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -142,19 +153,13 @@
                     <div class="card-body">
                         <h4 class="text-center card-title">Google Auth</h4>
                         <h6 class="text-center text-muted card-subtitle mb-2">Login to Google to access Tasks and Calendar</h6>
-                        <div id="g_id_onload"
-                            data-client_id="821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com"
-                            data-context="signin"
-                            data-callback="https://brandonstarkweather.com/assets/js/login.js"
-                            data-auto_select="true"
-                            data-itp_support="true">
-                        </div>
+                        <p class="text-center card-text">Loading...</p><button class="btn btn-dark me-2" id="authorize_button" type="button">Authorize</button><button class="btn btn-dark" id="signout_button" type="button">Sign Out</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin-bottom: 10px;">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="text-center mb-0">ToDo List</h3>
@@ -166,7 +171,7 @@
             </div>
             <div class="col-md-6" style="margin-bottom: 10px;">
                 <h3 class="text-center">Local Traffic</h3>
-                <div id="map" style="overflow: clip;width: 100%;"><img class="d-xl-flex" id="map-img" style="border-width: 1px;border-radius: 6px;margin-right: auto;margin-left: auto;max-width: 100%;display: block;"></div>
+                <div id="map" style="overflow: clip;width: 100%;"><img class="d-xl-flex" id="map-img" style="border-radius: 6px;margin-right: auto;margin-left: auto;max-width: 100%;display: block;"></div>
             </div>
         </div>
     </div>
@@ -177,7 +182,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-3">
                 <div class="col">
-                    <p class="text-muted my-2">Copyright&nbsp;© 2023 Brandon Starkweather</p>
+                    <p class="text-muted my-2">Copyright&nbsp;© 2023<a href="https://brandonstarkweather.com"><br><span style="color: rgba(223, 215, 202, 0.75);">Brandon Starkweather</span></a></p>
                 </div>
                 <div class="col">
                     <ul class="list-inline my-2">
@@ -201,6 +206,7 @@
                 </div>
                 <div class="col">
                     <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a class="link-secondary" href="#back-to-top"><button class="btn btn-outline-warning" type="button" data-bs-target="#modal-1" data-bs-toggle="modal">How It's Made</button></a></li>
                         <li class="list-inline-item"><a class="link-secondary" href="#back-to-top">Back to Top&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-up-short fs-4">
                                     <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"></path>
                                 </svg></a></li>
@@ -208,7 +214,20 @@
                 </div>
             </div>
         </div>
-    </footer><script type="text/javascript" src="assets/js/google.js"></script>
+    </footer>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">How It's Made&nbsp;<i class="fa fa-gears"></i></h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Carpe Diem was made with the following technologies.</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Code on GitHub</button><button class="btn btn-primary" type="button">Contact Me</button></div>
+            </div>
+        </div>
+    </div><script type="text/javascript" src="assets/js/google.js"></script>
 <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
 <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
     <script src="assets/js/jquery.min.js"></script>
