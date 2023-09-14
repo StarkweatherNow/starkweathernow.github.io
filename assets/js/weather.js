@@ -39,14 +39,18 @@ function getWeather(lat, lon) {
         $("#weather-rain").html("Rain: " + response.rain + "%");
         $("#weather-time").html("Time: " + weatherTime);      
 
-        //Switch to assign color to time based on sunrise and sunset
+        //Switch to assign color to current time based on sunrise and sunset
         switch (true) {
-            case (response.dt <= response.sys.sunrise):
-                var timeColor = blue;
+            case (weatherTime <= response.sys.sunrise):
+                var timeColor = purple;
                 $("#class-time").addClass(timeColor);
                 break;
-            case (response.dt >= response.sys.sunset):
-                var timeColor = blue;
+            case (weatherTime <= response.sys.sunset):
+                var timeColor = yellow;
+                $("#class-time").addClass(timeColor);
+                break;
+            case (weatherTime >= response.sys.sunset):
+                var timeColor = purple;
                 $("#class-time").addClass(timeColor);
                 break;
             default:
