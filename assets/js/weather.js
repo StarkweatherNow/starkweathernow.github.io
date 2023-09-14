@@ -144,7 +144,7 @@ function getWeather(lat, lon) {
 function getRain(lat, lon) {
     //Call OpenWeather API
     $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
+        url: "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&APPID=" + OpenWeatherAPI,
         method: "GET"
     }).then(function(response) {
         console.log("Rain API Response");
