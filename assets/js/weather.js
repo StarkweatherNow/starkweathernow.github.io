@@ -150,7 +150,7 @@ function getRain(lat, lon) {
         console.log("Rain API Response");
         console.log(response);
         //Assign rain to variable
-        var rain = response.current.rain;
+        var rain = response.minutely[0].precipitation;
         //Switch to assign color to rain
         switch (true) {
             case (rain <= 40):
