@@ -32,8 +32,23 @@ function getWeather(lat, lon) {
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
-        //print response.time to html
-        
+        //print current time from response to html
+        $("#weather-time").html(moment.unix(response.dt).format("HH:MM"));       
+
+        //Switch to assign color to time based on sunrise and sunset
+        switch (true) {
+            case (response.dt <= response.sys.sunrise):
+                var timeColor = blue;
+                $("#class-time").addClass(timeColor);
+                break;
+            case (response.dt >= response.sys.sunset):
+                var timeColor = blue;
+                $("#class-time").addClass(timeColor);
+                break;
+            default:
+                var timeColor = grey;
+                $("#class-time").addClass(timeColor);
+        }
  
     });
 
@@ -62,7 +77,7 @@ function getForecast(lat, lon) {
             $("#forecast-time-" + i).html(forecastDate);
             $("#forecast-temp-" + i).html(tempF + "&deg;F");
             $("#forecast-humidity-" + i).html(forecastArray[i].main.humidity + "%");
-            $("#forecast-wind-" + i).html(forecastArray[i].wind.speed + " mph");
+            $("#forecast-rain-" + i).html(forecastArray[i].pop + "%");
             //Switch to assign color to temperature
             switch (true) {
                 case (tempF <= 40):
@@ -115,31 +130,31 @@ function getForecast(lat, lon) {
                     var humidityColor = grey;
                     $("#class-humidity").addClass(humidityColor);
             }
-            //Switch to assign color to wind
+            //Switch to assign color to rain
             switch (true) {
-                case (forecastArray[i].wind.speed <= 5):
-                    var windColor = blue;
-                    $("#class-wind").addClass(windColor);
+                case (forecastArray[i].pop <= 40):
+                    var rainColor = blue;
+                    $("#class-rain").addClass(rainColor);
                     break;
-                case (forecastArray[i].wind.speed <= 10):
-                    var windColor = green;
-                    $("#class-wind").addClass(windColor);
+                case (forecastArray[i].pop <= 60):
+                    var rainColor = green;
+                    $("#class-rain").addClass(rainColor);
                     break;
-                case (forecastArray[i].wind.speed <= 15):
-                    var windColor = yellow;
-                    $("#class-wind").addClass(windColor);
+                case (forecastArray[i].pop <= 80):
+                    var rainColor = yellow;
+                    $("#class-rain").addClass(rainColor);
                     break;
-                case (forecastArray[i].wind.speed <= 20):
-                    var windColor = orange;
-                    $("#class-wind").addClass(windColor);
+                case (forecastArray[i].pop <= 90):
+                    var rainColor = orange;
+                    $("#class-rain").addClass(rainColor);
                     break;
-                case (forecastArray[i].wind.speed >= 21):
-                    var windColor = red;
-                    $("#class-wind").addClass(windColor);
+                case (forecastArray[i].pop >= 91):
+                    var rainColor = red;
+                    $("#class-rain").addClass(rainColor);
                     break;
                 default:
-                    var windColor = grey;
-                    $("#class-wind").addClass(windColor);
+                    var rainColor = grey;
+                    $("#class-rain").addClass(rainColor);
             }
 
         }
