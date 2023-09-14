@@ -5,9 +5,9 @@ var OpenWeatherAPI = "92282d7a9bd391d5a486ae5655c7c080";
 var success = "Weather Loaded";
 var fail = "Weather Failed to Load";
 //Bootswatch - Assigning theme color to weather conditions
-var blue = "list-group-item-primary";
+var blue = "list-group-item-info";
 var green = "list-group-item-success";
-var yellow = "list-group-item-warning-emphasis";
+var yellow = "list-group-item-warning";
 var orange = "list-group-item-warning";
 var red = "list-group-item-danger";
 var purple = "list-group-item-dark";
