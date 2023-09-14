@@ -130,6 +130,32 @@ function getForecast(lat, lon) {
                     var humidityColor = grey;
                     $("#class-humidity").addClass(humidityColor);
             }
+            //Switch to assign color to wind
+            switch (true) {
+                case (forecastArray[i].wind.speed <= 5):
+                    var windColor = blue;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                case (forecastArray[i].wind.speed <= 10):
+                    var windColor = green;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                case (forecastArray[i].wind.speed <= 15):
+                    var windColor = yellow;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                case (forecastArray[i].wind.speed <= 20):
+                    var windColor = orange;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                case (forecastArray[i].wind.speed >= 21):
+                    var windColor = red;
+                    $("#class-wind").addClass(windColor);
+                    break;
+                default:
+                    var windColor = grey;
+                    $("#class-wind").addClass(windColor);
+            }
             //Switch to assign color to rain
             switch (true) {
                 case (forecastArray[i].pop <= 40):
