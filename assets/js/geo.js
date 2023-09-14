@@ -17,6 +17,8 @@ function getLocation() {
             initMap(lat,lon);
             //Get Weather
             getWeather(lat, lon);
+            //Get Rain
+            getRain(lat, lon);
             //Get Forecast
             getForecast(lat, lon);
             //Get Air Quality
