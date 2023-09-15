@@ -226,11 +226,6 @@
         try {
           response = await gapi.client.tasks.tasklists.list({
             'maxResults': 10,
-            // Flatten to string to display
-            const output = taskLists.reduce(
-              (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
-            'Task lists:\n');
-              document.getElementById('tasks-content').innerText = output;
           });
         } catch (err) {
           document.getElementById('tasks-content').innerText = err.message;
@@ -241,6 +236,10 @@
           document.getElementById('tasks-content').innerText = 'No task lists found.';
           return;
         }
+        // Flatten to string to display
+        const output = taskLists.reduce(
+            (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
+            'Task lists:\n');
       }
       /**
        * Print tasks.
@@ -257,6 +256,7 @@
           return;
         }
         
+        document.getElementById('tasks-content').innerText = output;
         // Print the first task list
         await fetchTaskLists(taskLists[0].id);
         // Print the first task
