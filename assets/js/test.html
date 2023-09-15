@@ -125,11 +125,11 @@
       const API_KEY = 'AIzaSyCMsEWCT7HVaedHBid5YJ6ehFWJQZ4xf3U';
 
       // Discovery doc URL for APIs used by the quickstart
-      const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest';
+      const DISCOVERY_DOC_TASKS = 'https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest';
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      const SCOPES = 'https://www.googleapis.com/auth/tasks.readonly';
+      const SCOPES_TASKS = 'https://www.googleapis.com/auth/tasks.readonly';
 
       let tokenClient;
       let gapiInited = false;
@@ -152,7 +152,7 @@
       async function initializeGapiClient() {
         await gapi.client.init({
           apiKey: API_KEY,
-          discoveryDocs: [DISCOVERY_DOC],
+          discoveryDocs: [DISCOVERY_DOC_TASKS],
         });
         gapiInited = true;
         maybeEnableButtons();
@@ -164,7 +164,7 @@
       function gisLoaded() {
         tokenClient = google.accounts.oauth2.initTokenClient({
           client_id: CLIENT_ID,
-          scope: SCOPES,
+          scope: SCOPES_TASKS,
           callback: '', // defined later
         });
         gisInited = true;
@@ -259,11 +259,11 @@
       /* exported handleSignoutClick */
 
       // Discovery doc URL for APIs used by the quickstart
-      const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+      const DISCOVERY_DOC_CALENDAR = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+      const SCOPES_CALENDAR = 'https://www.googleapis.com/auth/calendar.readonly';
 
       let tokenClient;
       let gapiInited = false;
@@ -286,7 +286,7 @@
       async function initializeGapiClient() {
         await gapi.client.init({
           apiKey: API_KEY,
-          discoveryDocs: [DISCOVERY_DOC],
+          discoveryDocs: [DISCOVERY_DOC_CALENDAR],
         });
         gapiInited = true;
         maybeEnableButtons();
@@ -298,7 +298,7 @@
       function gisLoaded() {
         tokenClient = google.accounts.oauth2.initTokenClient({
           client_id: CLIENT_ID,
-          scope: SCOPES,
+          scope: SCOPES_CALENDAR,
           callback: '', // defined later
         });
         gisInited = true;
