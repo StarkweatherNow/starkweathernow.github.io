@@ -139,7 +139,7 @@
       /**
        * Callback after api.js is loaded.
        */
-      function gapiLoaded() {
+      function gapiLoadedTasks() {
         gapi.load('client', initializeGapiClient);
       }
 
@@ -159,7 +159,7 @@
       /**
        * Callback after Google Identity Services are loaded.
        */
-      function gisLoaded() {
+      function gisLoadedTasks() {
         tokenClient = google.accounts.oauth2.initTokenClient({
           client_id: TASKS_CLIENT_ID,
           scope: SCOPES_TASKS,
@@ -263,6 +263,8 @@
       }
 
     </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoadedTasks()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoadedTasks()"></script>
     </div>
     <div>
         <h2>Google Calendar API Quickstart</h2>
@@ -300,7 +302,7 @@
       /**
        * Callback after api.js is loaded.
        */
-      function gapiLoaded() {
+      function gapiLoadedCal() {
         gapi.load('client', initializeGapiClient);
       }
 
@@ -320,7 +322,7 @@
       /**
        * Callback after Google Identity Services are loaded.
        */
-      function gisLoaded() {
+      function gisLoadedCal() {
         tokenClient = google.accounts.oauth2.initTokenClient({
           client_id: CAL_CLIENT_ID,
           scope: SCOPES_CALENDAR,
@@ -410,8 +412,8 @@
         document.getElementById('cal-content').innerText = output;
       }
     </script>
-    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoadedCal()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoadedCal()"></script>
     </div>
 </body>
 
