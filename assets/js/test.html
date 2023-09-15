@@ -107,8 +107,8 @@
         <h2>Google Tasks API Quickstart</h2>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="tasks_authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="tasks_signout_button" onclick="handleSignoutClick()">Sign Out</button>
+    <button id="tasks_authorize_button" onclick="handleAuthClickTasks()">Authorize</button>
+    <button id="tasks_signout_button" onclick="handleSignoutClickTasks()">Sign Out</button>
 
     <pre id="tasks-content" style="white-space: pre-wrap;"></pre>
 
@@ -129,7 +129,7 @@
       // included, separated by spaces.
       const SCOPES_TASKS = 'https://www.googleapis.com/auth/tasks.readonly';
 
-      let tokenClient;
+      let tokenClientTasks;
       let gapiInitedTasks = false;
       let gisInitedTasks = false;
 
@@ -140,39 +140,39 @@
        * Callback after api.js is loaded.
        */
       function gapiLoadedTasks() {
-        gapi.load('client', initializeGapiClient);
+        gapi.load('client', initializeGapiClientTasks);
       }
 
       /**
        * Callback after the API client is loaded. Loads the
        * discovery doc to initialize the API.
        */
-      async function initializeGapiClient() {
+      async function initializeGapiClientTasks() {
         await gapi.client.init({
           apiKey: TASKS_API_KEY,
           discoveryDocs: [DISCOVERY_DOC_TASKS],
         });
         gapiInitedTasks = true;
-        maybeEnableButtons();
+        maybeEnableButtonsTasks();
       }
 
       /**
        * Callback after Google Identity Services are loaded.
        */
       function gisLoadedTasks() {
-        tokenClient = google.accounts.oauth2.initTokenClient({
+        tokenClientTasks = google.accounts.oauth2.initTokenClient({
           client_id: TASKS_CLIENT_ID,
           scope: SCOPES_TASKS,
           callback: '', // defined later
         });
         gisInitedTasks = true;
-        maybeEnableButtons();
+        maybeEnableButtonsTasks();
       }
 
       /**
        * Enables user interaction after all libraries are loaded.
        */
-      function maybeEnableButtons() {
+      function maybeEnableButtonsTasks() {
         if (gapiInitedTasks && gisInitedTasks) {
           document.getElementById('tasks_authorize_button').style.visibility = 'visible';
         }
@@ -181,8 +181,8 @@
       /**
        *  Sign in the user upon button click.
        */
-      function handleAuthClick() {
-        tokenClient.callback = async (resp) => {
+      function handleAuthClickTasks() {
+        tokenClientTasks.callback = async (resp) => {
           if (resp.error !== undefined) {
             throw (resp);
           }
@@ -195,17 +195,17 @@
         if (gapi.client.getToken() === null) {
           // Prompt the user to select a Google Account and ask for consent to share their data
           // when establishing a new session.
-          tokenClient.requestAccessToken({prompt: 'consent'});
+          tokenClientTasks.requestAccessToken({prompt: 'consent'});
         } else {
           // Skip display of account chooser and consent dialog for an existing session.
-          tokenClient.requestAccessToken({prompt: ''});
+          tokenClientTasks.requestAccessToken({prompt: ''});
         }
       }
 
       /**
        *  Sign out the user upon button click.
        */
-      function handleSignoutClick() {
+      function handleSignoutClickTasks() {
         const token = gapi.client.getToken();
         if (token !== null) {
           google.accounts.oauth2.revoke(token.access_token);
@@ -270,8 +270,8 @@
         <h2>Google Calendar API Quickstart</h2>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="cal_authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="cal_signout_button" onclick="handleSignoutClick()">Sign Out</button>
+    <button id="cal_authorize_button" onclick="handleAuthClickCal()">Authorize</button>
+    <button id="cal_signout_button" onclick="handleSignoutClickCal()">Sign Out</button>
 
     <pre id="cal-content" style="white-space: pre-wrap;"></pre>
 
@@ -310,13 +310,13 @@
        * Callback after the API client is loaded. Loads the
        * discovery doc to initialize the API.
        */
-      async function initializeGapiClient() {
+      async function initializeGapiClientCal() {
         await gapi.client.init({
           apiKey: CAL_API_KEY,
           discoveryDocs: [DISCOVERY_DOC_CALENDAR],
         });
         gapiInitedCal = true;
-        maybeEnableButtons();
+        maybeEnableButtonsCal();
       }
 
       /**
@@ -329,13 +329,13 @@
           callback: '', // defined later
         });
         gisInitedCal = true;
-        maybeEnableButtons();
+        maybeEnableButtonsCal();
       }
 
       /**
        * Enables user interaction after all libraries are loaded.
        */
-      function maybeEnableButtons() {
+      function maybeEnableButtonsCal() {
         if (gapiInitedCal && gisInitedCal) {
           document.getElementById('cal_authorize_button').style.visibility = 'visible';
         }
@@ -344,7 +344,7 @@
       /**
        *  Sign in the user upon button click.
        */
-      function handleAuthClick() {
+      function handleAuthClickCal() {
         tokenClient.callback = async (resp) => {
           if (resp.error !== undefined) {
             throw (resp);
@@ -367,7 +367,7 @@
       /**
        *  Sign out the user upon button click.
        */
-      function handleSignoutClick() {
+      function handleSignoutClickCal() {
         const token = gapi.client.getToken();
         if (token !== null) {
           google.accounts.oauth2.revoke(token.access_token);
