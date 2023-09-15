@@ -235,17 +235,31 @@
           document.getElementById('tasks-content').innerText = 'No task lists found.';
           return;
         }
+      /**
+       * Print tasks.
+       */
+      async function fetchTasks(taskListId) {
+        let response;
+        try {
+          response = await gapi.client.tasks.tasks.list({
+            'tasklist': taskListId,
+            'maxResults': 10,
+          });
+        } catch (err) {
+          document.getElementById('tasks-content').innerText = err.message;
+          return;
+        }
         // Flatten to string to display
         const output = taskLists.reduce(
             (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
             'Task lists:\n');
         document.getElementById('tasks-content').innerText = output;
         // Print the first task list
-        await fetchTasks(taskLists[0].id);
+        await fetchTaskLists(taskLists[0].id);
         // Print the first task
-        await fetchTask(taskLists[0].id, taskLists[0].id);
+        await fetchTasks(taskLists[0].id, taskLists[0].id);
         // Print the second task
-        await fetchTask(taskLists[1].id, taskLists[1].id);
+        await fetchTasks(taskLists[1].id, taskLists[1].id);
       }
     </script>
     </div>
