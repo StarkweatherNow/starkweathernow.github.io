@@ -29,8 +29,6 @@ function getWeather(lat, lon) {
         var weatherDate = moment.unix(response.dt).format("HH:MM");
         //Convert military time to standard time
         var weatherTime = moment(weatherDate, "HH:mm").format("h:mm A");
-        //Assign rain to variable
-        //var rain = response.rain;
         //Print response to HTML
         //$("#weather-status").html(success);
         $("#weather-location").html(response.name);
@@ -39,8 +37,8 @@ function getWeather(lat, lon) {
         $("#weather-temp").html("Temp: " + tempF + "&deg;F");
         $("#weather-humidity").html("Humidity: " + response.main.humidity + "%");
         $("#weather-wind").html("Wind Speed: " + response.wind.speed + " mph");
-        //$("#weather-rain").html("Rain: " + response.rain + "%");
-        $("#weather-time").html("Time: " + weatherTime);      
+        $("#weather-time").html("Time: " + weatherTime);
+        $("#weather-pressure").html("Pressure: " + response.main.pressure + " hPa");      
 
         //Switch to assign color to current time based on sunrise and sunset
         switch (true) {
@@ -138,33 +136,29 @@ function getWeather(lat, lon) {
                 var windColor = grey;
                 $("#class-wind").addClass(windColor);
         }
-        /**Switch to assign color to rain
+        //Switch to assign color to pressure
         switch (true) {
-            case (rain <= 40):
-                var rainColor = blue;
-                $("#class-rain").addClass(rainColor);
+            case (response.main.pressure <= 1000):
+                $("#class-pressure").addClass(red);
                 break;
-            case (rain <= 60):
-                var rainColor = green;
-                $("#class-rain").addClass(rainColor);
+            case (response.main.pressure <= 1010):
+                $("#class-pressure").addClass(orange);
                 break;
-            case (rain <= 80):
-                var rainColor = yellow;
-                $("#class-rain").addClass(rainColor);
+            case (response.main.pressure <= 1020):
+                $("#class-pressure").addClass(yellow);
                 break;
-            case (rain <= 90):
-                var rainColor = orange;
-                $("#class-rain").addClass(rainColor);
+            case (response.main.pressure <= 1030):
+                $("#class-pressure").addClass(green);
                 break;
-            case (rain >= 91):
-                var rainColor = red;
-                $("#class-rain").addClass(rainColor);
+            case (response.main.pressure >= 1031):
+                $("#class-pressure").addClass(blue);
                 break;
             default:
-                var rainColor = grey;
-                $("#class-rain").addClass(rainColor);
-        }**/
- 
+                var pressureColor = grey;
+                $("#class-pressure").addClass(pressureColor);
+        }
+
+         
     });
 
 }
