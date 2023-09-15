@@ -240,6 +240,7 @@
         const output = taskLists.reduce(
             (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
             'Task lists:\n');
+        document.getElementById('tasks-content').innerText = output;
       }
       /**
        * Print tasks.
@@ -254,15 +255,13 @@
         } catch (err) {
           document.getElementById('tasks-content').innerText = err.message;
           return;
-        }
-        
-        document.getElementById('tasks-content').innerText = output;
-        // Print the first task list
-        await fetchTaskLists(taskLists[0].id);
-        // Print the first task
-        await fetchTasks(taskLists[0].id, taskLists[0].id);
-        // Print the second task
-        await fetchTasks(taskLists[1].id, taskLists[1].id);
+        }       
+        const tasks = response.result.items;
+        // Flatten to string to display
+        const output = tasks.reduce(
+            (str, task) => `${str}${task.title} (${task.id})\n`,
+            'Tasks:\n');
+        document.getElementById('tasks-content').append(output);
       }
 
     </script>
