@@ -23,9 +23,14 @@ function ajax_get(url, callback) {
 }
 
 ajax_get(queryURL, function(data) {
-  document.getElementById("id").innerHTML = data[0]["id"];
-  document.getElementById("url").innerHTML = data[0]["url"];
-
-  var html = '<img src="' + data[0]["url"] + '">';
-  document.getElementById("cats_0").innerHTML = html;
+    //Loop through the data array of objects
+    for (var i = 0; i < data.length; i++) {
+        //Create a new image element
+        var img = new Image();
+        //Set the source of the image element to the url of the image
+        img.src = data[i]["url"];
+        var html = '<img src="' + img.src + '">';
+        //Append the image element to the div with the id of cats
+        document.getElementById("cats_" + i).innerHTML = html;
+    }
 });
