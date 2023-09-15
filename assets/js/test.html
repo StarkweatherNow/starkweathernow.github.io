@@ -234,12 +234,10 @@
           document.getElementById('tasks-content').innerText = 'No task lists found.';
           return;
         }
-        //Output to console log for debugging
-        console.log(taskLists);
-        // Flatten to string to display
-        const output = taskLists.reduce(
-            (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
-            'Task lists:\n');
+        //Output Tasklist to console log for debugging
+        //console.log(taskLists);
+        //Assign Tasklist to variable
+        var output = "Task Lists: " + taskLists[0].title;
         document.getElementById('tasks-content').innerText = output;
       }
       /**
@@ -257,12 +255,11 @@
           return;
         }       
         const tasks = response.result.items;
-        // Flatten to string to display
-        const output = tasks.reduce(
-            (str, task) => `${str}${task.title} (${task.id})\n`,
-            'Tasks:\n');
-        document.getElementById('tasks-content').append(output);
-      }
+        //Loop through tasks and output to html
+        for (var i = 0; i < tasks.length; i++) {
+            var output = tasks[i].title;
+            document.getElementById('tasks-content').append(output);
+        }
 
     </script>
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoadedTasks()"></script>
