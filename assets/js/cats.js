@@ -7,7 +7,7 @@ function ajax_get(url, callback) {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      console.log('responseText:' + xmlhttp.responseText);
+      //console.log('responseText:' + xmlhttp.responseText);
       try {
         var data = JSON.parse(xmlhttp.responseText);
       } catch (err) {
