@@ -109,8 +109,8 @@
         <h2>Google Tasks API Quickstart</h2>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+    <button id="tasks_authorize_button" onclick="handleAuthClick()">Authorize</button>
+    <button id="tasks_signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
     <pre id="tasks-content" style="white-space: pre-wrap;"></pre>
 
@@ -135,8 +135,8 @@
       let gapiInited = false;
       let gisInited = false;
 
-      document.getElementById('authorize_button').style.visibility = 'hidden';
-      document.getElementById('signout_button').style.visibility = 'hidden';
+      document.getElementById('tasks_authorize_button').style.visibility = 'hidden';
+      document.getElementById('tasks_signout_button').style.visibility = 'hidden';
 
       /**
        * Callback after api.js is loaded.
@@ -176,7 +176,7 @@
        */
       function maybeEnableButtons() {
         if (gapiInited && gisInited) {
-          document.getElementById('authorize_button').style.visibility = 'visible';
+          document.getElementById('tasks_authorize_button').style.visibility = 'visible';
         }
       }
 
@@ -188,8 +188,8 @@
           if (resp.error !== undefined) {
             throw (resp);
           }
-          document.getElementById('signout_button').style.visibility = 'visible';
-          document.getElementById('authorize_button').innerText = 'Refresh';
+          document.getElementById('tasks_signout_button').style.visibility = 'visible';
+          document.getElementById('tasks_authorize_button').innerText = 'Refresh';
           await fetchTaskLists();
         };
 
@@ -212,8 +212,8 @@
           google.accounts.oauth2.revoke(token.access_token);
           gapi.client.setToken('');
           document.getElementById('tasks-content').innerText = '';
-          document.getElementById('authorize_button').innerText = 'Authorize';
-          document.getElementById('signout_button').style.visibility = 'hidden';
+          document.getElementById('tasks_authorize_button').innerText = 'Authorize';
+          document.getElementById('tasks_signout_button').style.visibility = 'hidden';
         }
       }
 
@@ -247,8 +247,8 @@
         <h2>Google Calendar API Quickstart</h2>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+    <button id="cal_authorize_button" onclick="handleAuthClick()">Authorize</button>
+    <button id="cal_signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
     <pre id="cal-content" style="white-space: pre-wrap;"></pre>
 
@@ -269,8 +269,8 @@
       let gapiInited = false;
       let gisInited = false;
 
-      document.getElementById('authorize_button').style.visibility = 'hidden';
-      document.getElementById('signout_button').style.visibility = 'hidden';
+      document.getElementById('cal_authorize_button').style.visibility = 'hidden';
+      document.getElementById('cal_signout_button').style.visibility = 'hidden';
 
       /**
        * Callback after api.js is loaded.
@@ -310,7 +310,7 @@
        */
       function maybeEnableButtons() {
         if (gapiInited && gisInited) {
-          document.getElementById('authorize_button').style.visibility = 'visible';
+          document.getElementById('cal_authorize_button').style.visibility = 'visible';
         }
       }
 
@@ -322,8 +322,8 @@
           if (resp.error !== undefined) {
             throw (resp);
           }
-          document.getElementById('signout_button').style.visibility = 'visible';
-          document.getElementById('authorize_button').innerText = 'Refresh';
+          document.getElementById('cal_signout_button').style.visibility = 'visible';
+          document.getElementById('cal_authorize_button').innerText = 'Refresh';
           await listUpcomingEvents();
         };
 
@@ -346,8 +346,8 @@
           google.accounts.oauth2.revoke(token.access_token);
           gapi.client.setToken('');
           document.getElementById('cal-content').innerText = '';
-          document.getElementById('authorize_button').innerText = 'Authorize';
-          document.getElementById('signout_button').style.visibility = 'hidden';
+          document.getElementById('cal_authorize_button').innerText = 'Authorize';
+          document.getElementById('cal_signout_button').style.visibility = 'hidden';
         }
       }
 
