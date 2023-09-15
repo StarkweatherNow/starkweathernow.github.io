@@ -28,8 +28,7 @@ ajax_get(queryURL, function(data) {
         //console.log(data[i]);
         //Pull URL from data array into a variable
         var img = data[i].url;
-        var html = '<img src="' + img + '">';
-        //Append the image element to the div with the id of cats
-        document.getElementById("cats_" + i).innerHTML = html;
+        //Insert URL into DIV background image style
+        document.getElementById("cats_" + i).style.backgroundImage = "url(" + img + ")";
     }
 });
