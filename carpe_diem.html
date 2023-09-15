@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/swiper-icons.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
 <!--3rd Party JS Libraries-->
     <script type="text/javascript" src="assets/js/jquery-3.7.1.js"></script>
     <script src="https://accounts.google.com/gsi/client" async></script>
@@ -23,6 +26,7 @@
     <script type="text/javascript" src="assets/js/weather.js"></script>
     <script type="text/javascript" src="assets/js/maps.js"></script>
     <script type="text/javascript" src="assets/js/qotd.js"></script>
+    <script type="text/javascript" src="assets/js/cats.js"></script>
 </head>
 
 <body>
@@ -41,8 +45,8 @@
     </nav>
     <section class="py-4 py-xl-5">
         <div class="container">
-            <div class="text-white bg-dark border rounded border-0 p-4 p-md-5" data-bss-hover-animate="bounce" style="background: linear-gradient(1deg, black, var(--bs-body-color));">
-                <h1 class="display-1 fw-bold text-center text-muted mb-3" style="text-shadow: 3px 3px 5px var(--bs-primary-bg-subtle);">Carpe Diem</h1>
+            <div class="text-white bg-dark border rounded border-0 p-4 p-md-5" data-bss-hover-animate="bounce" style="background: linear-gradient(1deg, black, var(--bs-body-color));border-radius: 16px;border-width: 3px;border-color: var(--bs-warning);">
+                <h1 class="display-1 fw-bold text-center text-muted mb-3" style="text-shadow: 3px 3px 5px var(--bs-primary-bg-subtle), -1px -1px 3px var(--bs-warning);">Carpe Diem</h1>
             </div>
         </div>
     </section>
@@ -50,7 +54,7 @@
         <div class="card"><img class="card-img w-100 d-block" id="nasa-img">
             <div class="card-img-overlay" style="overflow: visible;">
                 <h3 class="text-warning" id="nasa-title" style="background: rgba(0,0,0,0.75);">NASA - Image of the Day</h3>
-                <p class="d-none d-print-inline d-sm-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline" id="nasa-desc" style="overflow: visible;background: rgba(0,0,0,0.75);"><span class="spinner-border text-danger-emphasis" role="status"></span></p>
+                <p class="d-none d-print-inline d-sm-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline" id="nasa-desc" style="overflow: visible;background: rgba(0,0,0,0.75);"><span class="spinner-border text-warning" role="status"></span></p>
             </div>
         </div>
     </div>
@@ -183,6 +187,19 @@
         </div>
     </div>
     <hr>
+    <div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <hr>
     <h2 class="text-center text-muted">Memento Mori</h2>
     <hr>
     <footer class="text-center py-4">
@@ -240,6 +257,8 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
 </body>
 
 </html>
