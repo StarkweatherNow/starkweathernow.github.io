@@ -5,8 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Brandon Starkweather's Portfolio</title>
-    <meta name="theme-color" content="#c9e0ef">
+    <meta name="theme-color" content="#85bfec">
     <meta name="description" content="Software Engineer and Web Developer">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="assets/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="310x310" href="assets/img/ms-icon-310x310.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
@@ -31,15 +37,13 @@
 
 <body>
     <nav class="navbar navbar-expand-md bg-primary-subtle py-3" id="back-to-top">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary-light d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-lightning">
-                        <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"></path>
-                    </svg></span><span class="text-primary-emphasis" data-bss-hover-animate="rubberBand">Brandon Starkweather</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary-light d-flex justify-content-center align-items-center me-2 bs-icon" style="background: url(&quot;assets/img/favicon-32x32.png&quot;);"></span><span class="text-primary-emphasis" data-bss-hover-animate="rubberBand">Brandon Starkweather</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="https://brandonstarkweather.com">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://brandonstarkweather.com">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                </ul>
+                </ul><button class="btn btn-primary active" type="button">Carpe Diem</button>
             </div>
         </div>
     </nav>
@@ -97,6 +101,7 @@
                             <li class="list-group-item text-center" id="class-time"><span id="weather-time">Time:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-temp"><span id="weather-temp">Temp:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-humidity"><span id="weather-humidity">Humidity:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-pressure"><span id="weather-pressure">Pressure:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-wind"><span id="weather-wind">Wind Speed:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-aq"><span id="weather-aq">Air Quality:&nbsp;</span></li>
                             <li class="list-group-item text-center" id="class-uv"><span id="weather-uv">UV Index:&nbsp;</span></li>
@@ -122,10 +127,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td id="forecast-time-0"></td>
-                                        <td class="text-center" id="forecast-temp-0"></td>
-                                        <td class="text-center" id="forecast-humidity-0"></td>
-                                        <td class="text-center" id="forecast-rain-0"></td>
+                                        <td id="forecast-time-0" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-temp-0" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-humidity-0" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-rain-0" style="background: rgb(74,73,72);"></td>
                                     </tr>
                                     <tr>
                                         <td id="forecast-time-1"></td>
@@ -134,10 +139,10 @@
                                         <td class="text-center" id="forecast-rain-1"></td>
                                     </tr>
                                     <tr>
-                                        <td id="forecast-time-2"></td>
-                                        <td class="text-center" id="forecast-temp-2"></td>
-                                        <td class="text-center" id="forecast-humidity-2"></td>
-                                        <td class="text-center" id="forecast-rain-2"></td>
+                                        <td id="forecast-time-2" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-temp-2" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-humidity-2" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-rain-2" style="background: rgb(74,73,72);"></td>
                                     </tr>
                                     <tr>
                                         <td id="forecast-time-3"></td>
@@ -180,7 +185,7 @@
             <div class="col-md-6" style="margin-bottom: 10px;">
                 <div class="d-inline-block" id="map" style="overflow: clip;width: 100%;position: relative;">
                     <div>
-                        <h3 class="text-center" style="position: absolute;color: var(--bs-warning);left: 50%;transform: translate(-50%);">Local Traffic</h3>
+                        <h3 class="text-center" style="position: absolute;color: var(--bs-warning);left: 50%;transform: translate(-50%);margin: 0px;margin-top: 16px;margin-bottom: 16px;text-shadow: 3px 3px 3px #000000;">Local Traffic</h3>
                     </div><img class="d-xl-flex" id="map-img" style="border-radius: 6px;margin-right: auto;margin-left: auto;max-width: 100%;display: block;border-width: 3px;border-color: var(--bs-warning);">
                 </div>
             </div>

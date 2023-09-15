@@ -1,1 +1,1 @@
-{"short_name":"Start","name":"Carpe Diem","icons":[],"start_url":"carpe_diem.html","background_color":"#c9e0ef","theme_color":"#c9e0ef","display":"fullscreen"}
+{"short_name":"Carpe Diem","name":"Carpe Diem","icons":[{"src":"/assets/img/android-icon-192x192.png","type":"image/png","sizes":"192x192","purpose":"any maskable"},{"src":"/assets/img/ms-icon-310x310.png","type":"image/png","sizes":"310x310","purpose":"any maskable"}],"start_url":"carpe_diem.html","background_color":"#3b6293","theme_color":"#85bfec","display":"fullscreen"}
