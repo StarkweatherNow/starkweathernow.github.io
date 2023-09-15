@@ -191,6 +191,7 @@
           document.getElementById('tasks_signout_button').style.visibility = 'visible';
           document.getElementById('tasks_authorize_button').innerText = 'Refresh';
           await fetchTaskLists();
+          await fetchTasks();
         };
 
         if (gapi.client.getToken() === null) {
