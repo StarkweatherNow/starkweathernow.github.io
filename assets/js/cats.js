@@ -26,8 +26,8 @@ ajax_get(queryURL, function(data) {
     //Loop through the data array of objects
     for (var i = 0; i < data.length; i++) {
         //console.log(data[i]);
-        //Store each object in a variable
-        var img = data.url[i];
+        //Pull URL from data array into a variable
+        var img = data[i].url;
         var html = '<img src=/"' + img + '/">';
         //Append the image element to the div with the id of cats
         document.getElementById("cats_" + i).innerHTML = html;
