@@ -234,6 +234,8 @@
           document.getElementById('tasks-content').innerText = 'No task lists found.';
           return;
         }
+        //Output to console log for debugging
+        console.log(taskLists);
         // Flatten to string to display
         const output = taskLists.reduce(
             (str, taskList) => `${str}${taskList.title} (${taskList.id})\n`,
