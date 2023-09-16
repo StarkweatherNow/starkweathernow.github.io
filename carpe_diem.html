@@ -163,10 +163,12 @@
         <div class="row" style="margin-bottom: 10px;">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center mb-0">Google Calendar</h3>
+                    </div>
                     <div class="card-body">
-                        <h4 class="text-center card-title">Google Auth</h4>
-                        <h6 class="text-center text-muted card-subtitle mb-2">Login to Google to access Tasks and Calendar</h6>
-                        <p class="text-center card-text">Loading...</p><button class="btn btn-dark me-2" id="authorize_button" type="button">Authorize</button><button class="btn btn-dark" id="signout_button" type="button">Sign Out</button>
+                        <div id="cal-content"></div>
+                        <div class="btn-group btn-group-sm float-end" role="group"><button class="btn btn-primary" id="cal_authorize_button" type="button">Authorize</button><button class="btn btn-primary" id="cal_signout_button" type="button">Sign Out</button></div>
                     </div>
                 </div>
             </div>
@@ -178,7 +180,8 @@
                         <h3 class="text-center mb-0">ToDo List</h3>
                     </div>
                     <div class="card-body">
-                        <p class="card-text" id="google_tasks_content">Loading...</p>
+                        <div id="cal-content"></div>
+                        <div class="btn-group btn-group-sm float-end" role="group"><button class="btn btn-primary" id="tasks_authorize_button" type="button">Authorize</button><button class="btn btn-primary" id="tasks_signout_button" type="button">Sign Out</button></div>
                     </div>
                 </div>
             </div>
