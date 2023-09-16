@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (!('requestAnimationFrame' in window)) return;
 
 	var backgrounds = [];
-	var parallaxBackgrounds = document.querySelectorAll('[data-bss-parallax-bg]');
+	var backgroundToSpeed = new WeakMap;
+	var parallaxBackgrounds = document.querySelectorAll('[data-bss-scroll-zoom]');
 
 	for (var el of parallaxBackgrounds) {
 		var bg = document.createElement('div');
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		bg.style.backgroundSize = 'cover';
 		bg.style.backgroundPosition = 'center';
 		bg.style.position = 'absolute';
-		bg.style.height = '200%';
+		bg.style.height = '100%';
 		bg.style.width = '100%';
 		bg.style.top = 0;
 		bg.style.left = 0;
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		el.appendChild(bg);
 		backgrounds.push(bg);
+		backgroundToSpeed.set(bg, el.getAttribute('data-bss-scroll-zoom-speed') || 1);
 
 		el.style.position = 'relative';
 		el.style.background = 'transparent';
@@ -59,13 +61,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		visible.length = 0;
 
-		for(var i = 0; i < backgrounds.length; i++){
+		for (var i = 0; i < backgrounds.length; i++) {
 			var rect = backgrounds[i].parentNode.getBoundingClientRect();
 
 			if (rect.bottom > 0 && rect.top < window.innerHeight) {
 				visible.push({
 					rect: rect,
-					node: backgrounds[i]
+					node: backgrounds[i],
+					speed: backgroundToSpeed.get(backgrounds[i])
 				});
 			}
 
@@ -84,10 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		for(var i = 0; i < visible.length; i++){
 			var rect = visible[i].rect;
 			var node = visible[i].node;
+			var speed = visible[i].speed;
 
-			var quot = Math.max(rect.bottom, 0) / (window.innerHeight + rect.height);
+			var quot = rect.top < 0 ? Math.abs(rect.top) / rect.height : 0;
 
-			node.style.transform = 'translate3d(0, '+(-50*quot)+'%, 0)';
+			node.style.transform = 'scale3d('+ (1 + quot * speed) + ', ' + (1 + quot * speed) + ', 1)';
 		}
 
 	}
