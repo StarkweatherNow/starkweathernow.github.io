@@ -266,9 +266,299 @@
                 <div class="modal-footer"><a href="https://github.com/StarkweatherNow/starkweathernow.github.io/blob/main/carpe_diem.html"><button class="btn btn-light" type="button">Code on GitHub</button></a><button class="btn btn-primary" type="button">Contact Me</button></div>
             </div>
         </div>
-    </div><script type="text/javascript" src="assets/js/google.js"></script>
-<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+    </div><script type="text/javascript">
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
+
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const TASKS_CLIENT_ID = '821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com';
+      const TASKS_API_KEY = 'AIzaSyCMsEWCT7HVaedHBid5YJ6ehFWJQZ4xf3U';
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC_TASKS = 'https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest';
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES_TASKS = 'https://www.googleapis.com/auth/tasks.readonly';
+
+      let tokenClientTasks;
+      let gapiInitedTasks = false;
+      let gisInitedTasks = false;
+
+      document.getElementById('tasks_authorize_button').style.visibility = 'hidden';
+      document.getElementById('tasks_signout_button').style.visibility = 'hidden';
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoadedTasks() {
+        gapi.load('client', initializeGapiClientTasks);
+      }
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function initializeGapiClientTasks() {
+        await gapi.client.init({
+          apiKey: TASKS_API_KEY,
+          discoveryDocs: [DISCOVERY_DOC_TASKS],
+        });
+        gapiInitedTasks = true;
+        maybeEnableButtonsTasks();
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoadedTasks() {
+        tokenClientTasks = google.accounts.oauth2.initTokenClient({
+          client_id: TASKS_CLIENT_ID,
+          scope: SCOPES_TASKS,
+          callback: '', // defined later
+        });
+        gisInitedTasks = true;
+        maybeEnableButtonsTasks();
+      }
+
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtonsTasks() {
+        if (gapiInitedTasks && gisInitedTasks) {
+          document.getElementById('tasks_authorize_button').style.visibility = 'visible';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClickTasks() {
+        tokenClientTasks.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          document.getElementById('tasks_signout_button').style.visibility = 'visible';
+          document.getElementById('tasks_authorize_button').innerText = 'Refresh';
+          await fetchTaskLists();
+          await fetchTasks();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClientTasks.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClientTasks.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClickTasks() {
+        const token = gapi.client.getToken();
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token);
+          gapi.client.setToken('');
+          document.getElementById('tasks-content').innerText = '';
+          document.getElementById('tasks_authorize_button').innerText = 'Authorize';
+          document.getElementById('tasks_signout_button').style.visibility = 'hidden';
+        }
+      }
+
+      /**
+       * Print task lists.
+       */
+      async function fetchTaskLists() {
+        let response;
+        try {
+          response = await gapi.client.tasks.tasklists.list({
+            'maxResults': 10,
+          });
+        } catch (err) {
+          document.getElementById('tasks-content').innerText = err.message;
+          return;
+        }
+        const taskLists = response.result.items;
+        if (!taskLists || taskLists.length == 0) {
+          document.getElementById('tasks-content').innerText = 'No task lists found.';
+          return;
+        }
+        //Output Tasklist to console log for debugging
+        //console.log(taskLists);
+        //Assign Tasklist to variable
+        var output = "Task Lists: " + taskLists[0].title;
+        document.getElementById('tasks-content').innerText = output;
+      }
+      /**
+       * Print tasks.
+       */
+      async function fetchTasks(taskListId) {
+        let response;
+        try {
+          response = await gapi.client.tasks.tasks.list({
+            'tasklist': taskListId,
+            'maxResults': 10,
+          });
+        } catch (err) {
+          document.getElementById('tasks-content').innerText = err.message;
+          return;
+        }       
+        const tasks = response.result.items;
+        //Loop through tasks and output to html
+        for (var i = 0; i < tasks.length; i++) {
+            var output = tasks[i].title;
+            document.getElementById('tasks-content').append(output);
+        }
+      }
+
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoadedTasks()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoadedTasks()"></script>
+    
+<script type="text/javascript">
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
+
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const CAL_CLIENT_ID = '821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com';
+      const CAL_API_KEY = 'AIzaSyCMsEWCT7HVaedHBid5YJ6ehFWJQZ4xf3U';
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC_CALENDAR = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES_CALENDAR = 'https://www.googleapis.com/auth/calendar.readonly';
+
+      //let tokenClient;
+      let gapiInitedCal = false;
+      let gisInitedCal = false;
+
+      document.getElementById('cal_authorize_button').style.visibility = 'hidden';
+      document.getElementById('cal_signout_button').style.visibility = 'hidden';
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoadedCal() {
+        gapi.load('client', initializeGapiClientCal);
+      }
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function initializeGapiClientCal() {
+        await gapi.client.init({
+          apiKey: CAL_API_KEY,
+          discoveryDocs: [DISCOVERY_DOC_CALENDAR],
+        });
+        gapiInitedCal = true;
+        maybeEnableButtonsCal();
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoadedCal() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CAL_CLIENT_ID,
+          scope: SCOPES_CALENDAR,
+          callback: '', // defined later
+        });
+        gisInitedCal = true;
+        maybeEnableButtonsCal();
+      }
+
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtonsCal() {
+        if (gapiInitedCal && gisInitedCal) {
+          document.getElementById('cal_authorize_button').style.visibility = 'visible';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClickCal() {
+        tokenClient.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          document.getElementById('cal_signout_button').style.visibility = 'visible';
+          document.getElementById('cal_authorize_button').innerText = 'Refresh';
+          await listUpcomingEvents();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClient.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClickCal() {
+        const token = gapi.client.getToken();
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token);
+          gapi.client.setToken('');
+          document.getElementById('cal-content').innerText = '';
+          document.getElementById('cal_authorize_button').innerText = 'Authorize';
+          document.getElementById('cal_signout_button').style.visibility = 'hidden';
+        }
+      }
+
+      /**
+       * Print the summary and start datetime/date of the next ten events in
+       * the authorized user's calendar. If no events are found an
+       * appropriate message is printed.
+       */
+      async function listUpcomingEvents() {
+        let response;
+        try {
+          const request = {
+            'calendarId': 'primary',
+            'timeMin': (new Date()).toISOString(),
+            'showDeleted': false,
+            'singleEvents': true,
+            'maxResults': 5,
+            'orderBy': 'startTime',
+          };
+          response = await gapi.client.calendar.events.list(request);
+        } catch (err) {
+          document.getElementById('cal-content').innerText = err.message;
+          return;
+        }
+
+        const events = response.result.items;
+        if (!events || events.length == 0) {
+          document.getElementById('cal-content').innerText = 'No events found.';
+          return;
+        }
+        // Flatten to string to display
+        const output = events.reduce(
+            (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
+            'Events:\n');
+        document.getElementById('cal-content').innerText = output;
+      }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoadedCal()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoadedCal()"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
