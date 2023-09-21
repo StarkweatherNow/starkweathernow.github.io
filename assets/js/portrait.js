@@ -89,7 +89,7 @@ image = {
   //Data Array goes here
 
   data = {
-    const image = await FileAttachment("obama.png").image();
+    const image = await FileAttachment("hs.jpg").image();
     const height = Math.round(width * image.height / image.width);
     const context = DOM.context2d(width, height, 1);
     context.drawImage(image, 0, 0, image.width, image.height, 0, 0, width, height);
