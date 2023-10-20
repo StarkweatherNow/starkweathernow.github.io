@@ -7,7 +7,7 @@ var nasdaqAPI = "iQT4cj9qm1Dsp9x29dk_";
 function getGDP(country, startDate, endDate) {
     //Set URL for API Call - World Bank Data via NASDAQ API
     //Example URL: https://data.nasdaq.com/api/v3/datatables/WB/DATA?series_id=VC.PKP.TOTL.UN&country_code=XKX&api_key=iQT4cj9qm1Dsp9x29dk_
-    var nasdaqURL = "https://data.nasdaq.com/api/v3/datatables/WB/DATA?country_code=" + country + "&start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + nasdaqAPI;
+    var nasdaqURL = "https://data.nasdaq.com/api/v3/datatables/WB/DATA?series_id=RM.PL.STL.SKN&country_code=" + country + "&start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + nasdaqAPI;
     
     //Headers
     var nasdaqHeaders = {
