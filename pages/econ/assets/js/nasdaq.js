@@ -7,22 +7,36 @@ var nasdaqAPI = "iQT4cj9qm1Dsp9x29dk_";
 function getGDP(country, startDate, endDate) {
     //Set URL for API Call - World Bank Data via NASDAQ API
     //Example URL: https://data.nasdaq.com/api/v3/datatables/WB/DATA?series_id=VC.PKP.TOTL.UN&country_code=XKX&api_key=iQT4cj9qm1Dsp9x29dk_
-    var nasdaqURL = "https://data.nasdaq.com/api/v3/datatables/WB/DATA?series_id=VC.PKP.TOTL.UN&country_code=" + country + "&start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + nasdaqAPI;
+    var nasdaqURL = "https://data.nasdaq.com/api/v3/datatables/WB/DATA?country_code=" + country + "&start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + nasdaqAPI;
     
+    //Headers
+    var nasdaqHeaders = {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json"
+    }
+
     //Console Log URL
     console.log(nasdaqURL);
 
-    //Make API Call
-    fetch(nasdaqURL)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            //Log API Data
-            console.log(data);
-            //Call Function to display GDP Data
-            displayGDP(data);
-        });
+    //Make API Call with headers and URL
+    fetch(nasdaqURL, {
+        headers: nasdaqHeaders
+    })
+    .then(function(response) {
+        //Return response as JSON
+        return response.json();
+    })
+    .then(function(data) {
+        //Console Log Data
+        console.log(data);
+        //Display Data
+        displayGDP(data);
+    })
+    .catch(function(error) {
+        //Console Log Error
+        console.log(error);
+    });
+
 }
 
 //Function to display GDP Data 
