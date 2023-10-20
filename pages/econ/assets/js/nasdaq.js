@@ -10,7 +10,7 @@ function getGDP(country, startDate, endDate) {
     var nasdaqURL = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + nasdaqAPI;
     //Headers
     var nasdaqHeaders = {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://data.nasdaq.com/",  
         "Content-Type": "application/json"
     }
 
