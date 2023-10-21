@@ -6,12 +6,18 @@ function getValues() {
     //Get end date from user input
     var endYear = document.getElementById("endYear").value;
 
+    //Pass values to BLS API Call
+    getUnemployment(startYear,endYear);
+
     //Convert Start Date to YYYY-MM-DD Format
     var startYear = startYear + "-01-01";
 
     //Convert End Date to YYYY-MM-DD Format
     var endYear = endYear + "-12-31";
 
-    //Pass values to API Call
+    //Pass values to NASDAQ API Call
     getGDP(startYear,endYear);
 }
+
+//Attach Submit Button to getValues Function
+document.getElementById("dateSubmit").addEventListener("click", getValues);

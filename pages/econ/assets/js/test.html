@@ -14,9 +14,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>GDP</h1>
+                <h1>Submit Date Range</h1>
                 <!--Form to request Date Range-->
-                <form id="gdpForm">
+                <form id="dateForm">
                     <!--Get Date by Year Only-->
                     <label for="startYear">Start Year:</label>
                     <input title="startYear" type="number" id="startYear" name="start" value="2020" min="1929" max="2021">
@@ -24,9 +24,15 @@
                     <label for="endYear">End Year:</label>
                     <input type="number" id="endYear" name="end" value="2021" min="1929" max="2021">
 
-                    <input type="button" id="nasdaqSubmit" value="Submit">            
+                    <input type="button" id="dateSubmit" value="Submit">            
                 </form>
-
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>GDP</h1>
                 <!--Display GDP Data-->
                 <p id="nasdaqGDP"></p>
             </div>
@@ -36,6 +42,8 @@
         <div class="row">
             <div class="col-12">
                 <h1>Employment Figures</h1>
+                <!--Display Employment Data-->
+                <p id="blsEmployment"></p>
             </div>
         </div>
     </div>
@@ -100,6 +108,7 @@
     <!--Calling My JS Functions-->
     <script src="form.js"></script>
     <script src="nasdaq.js"></script>
+    <script src="bls.js"></script>    
     <script src="infla.js"></script>
 
     <!--D3 Charts-->

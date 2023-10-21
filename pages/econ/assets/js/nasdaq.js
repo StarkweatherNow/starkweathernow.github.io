@@ -41,6 +41,3 @@ function displayGDP(data) {
     //Display GDP Value in HTML
     document.getElementById("nasdaqGDP").innerHTML = nasdaqValue;
 }
-
-//Attach Submit Button to getValues Function
-document.getElementById("nasdaqSubmit").addEventListener("click", getValues);
