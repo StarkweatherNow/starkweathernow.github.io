@@ -4,23 +4,17 @@
 var nasdaqAPI = "iQT4cj9qm1Dsp9x29dk_";
 
 //API Call to get GDP from NASDAQ
-function getGDP(country, startDate, endDate) {
+function getGDP(startYear, endYear) {
     //Set URL for API Call - World Bank Data via NASDAQ API
     //Example URL: https://data.nasdaq.com/api/v3/datasets/FRED/GDP?start_date=2031-04-01&end_date=2031-10-01&api_key=iQT4cj9qm1Dsp9x29dk_
-    var nasdaqURL = "https://data.nasdaq.com/api/v3/datasets/FRED/GDP?start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + nasdaqAPI;
-    //Headers
-    var nasdaqHeaders = {
-        "Access-Control-Allow-Origin": "https://data.nasdaq.com/",  
-        "Content-Type": "application/json"
-    }
+    var nasdaqURL = "https://data.nasdaq.com/api/v3/datasets/FRED/GDP?start_date=" + startYear + "&end_date=" + endYear + "&api_key=" + nasdaqAPI;
 
     //Console Log URL
     console.log(nasdaqURL);
 
-    //Make API Call with headers and URL
-    fetch(nasdaqURL, {
-        headers: nasdaqHeaders
-    })
+    //Make API Call with URL
+    fetch(nasdaqURL)
+
     .then(function(response) {
         //Return response as JSON
         return response.json();

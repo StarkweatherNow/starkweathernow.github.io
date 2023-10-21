@@ -1,12 +1,17 @@
 //Get Values from Form
 function getValues() {
-    //Get country from user input
-    var country = document.getElementById("country").value;
+    
     //Get start date from user input
-    var startDate = document.getElementById("startDate").value;
+    var startYear = document.getElementById("startYear").value;
     //Get end date from user input
-    var endDate = document.getElementById("endDate").value;
+    var endYear = document.getElementById("endYear").value;
+
+    //Convert Start Date to YYYY-MM-DD Format
+    var startYear = startYear + "-01-01";
+
+    //Convert End Date to YYYY-MM-DD Format
+    var endYear = endYear + "-12-31";
 
     //Pass values to API Call
-    getGDP(country,startDate,endDate);
+    getGDP(startYear,endYear);
 }
