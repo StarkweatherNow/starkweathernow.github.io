@@ -35,7 +35,7 @@ function getEmployment(startYear, endYear) {
     .then(function(data) {
         //Console Log Data
         console.log(data);
-        displayEmployment(data);
+        blsValue(data);
     })
     .catch(function(error) {
         //Console Log Error
@@ -44,14 +44,61 @@ function getEmployment(startYear, endYear) {
 
 }
 
+//Function to Increment through Data array and return Value, Period and Year in new array
+function blsValue(data) {
+    //Create new array
+    var blsData = [];
+
+    //Console Log Data Array
+    //console.log(data["Results"]["series"][0]["data"]);
+
+    //Loop through data array
+    for (var i = 0; i < data["Results"]["series"][0]["data"].length; i++) {
+        //Create new object
+        var blsObject = {};
+
+        //Console Log Data Array
+        //console.log(data);
+
+        //Set Value, Period and Year
+        blsObject.value = data["Results"]["series"][0]["data"][i]["value"];
+        blsObject.period = data["Results"]["series"][0]["data"][i]["period"];
+        blsObject.year = data["Results"]["series"][0]["data"][i]["year"];
+
+        //Push object to array
+        blsData.push(blsObject);
+    }
+    //Console Log Array
+    //console.log(blsData);
+
+    //Call displayEmployment function
+    displayEmployment(blsData);   
+}
+
+
 //Function to display Employment Data
 function displayEmployment(data) {
-    //Get Employment Data from API
-    var blsData = data.Results.series[0].data;
-    //Get Employment Value from API
-    var blsValue = blsData[0].value;
-    //Display Employment Value in HTML
-    document.getElementById("blsEmployment").innerHTML = blsValue;
+    //Console Log Data
+    //console.log(data);
+
+    //Format Data for HTML Table
+    //Create HTML Table
+    var table = "<table class='table table-striped table-hover table-bordered'><thead><tr><th>Year</th><th>Month</th><th>Value</th></tr></thead><tbody>";
+
+    //Loop through data array
+    for (var i = 0; i < data.length; i++) {
+        //Add table row
+        table += "<tr><td>" + data[i].year + "</td><td>" + data[i].period + "</td><td>" + data[i].value + "</td></tr>";
+    }
+
+    //Close table
+    table += "</tbody></table>";
+
+    //Console Log Table
+    //console.log(table);
+
+    //Display table in HTML
+    document.getElementById("blsEmployment").innerHTML = table;
 }
 
 //On page load, call getEmployment function

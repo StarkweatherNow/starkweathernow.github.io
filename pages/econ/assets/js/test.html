@@ -8,12 +8,13 @@
     <!--External File Dependencies-->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <script src="jquery-3.7.1.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <!--Section for User Interaction-->
                 <h1>Interact</h1>
                 <p>
@@ -38,9 +39,21 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Employment Figures</h1>
-                <!--Display Employment Data-->
-                <p id="blsEmployment"></p>
+                <h1>Employment</h1>
+                <div class="accordion" id="accordionEmployement">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            BLS Figures
+                        </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p id="blsEmployment"></p>
+                        </div>
+                        </div>
+                    </div>                    
+                </div>
             </div>
         </div>
     </div>
