@@ -1,23 +1,20 @@
-//Get Values from Form
-function getValues() {
-    
-    //Get start date from user input
-    var startYear = document.getElementById("startYear").value;
-    //Get end date from user input
-    var endYear = document.getElementById("endYear").value;
+//Set Year Slider Range based on current year
+//Determine current year
+var d = new Date();
+var currentYear = d.getFullYear();
+//Set yearRange max to current year
+document.getElementById("yearRange").max = currentYear;
+//Set yearRange min to current year - 10
+document.getElementById("yearRange").min = currentYear - 10;
+//Set yearRange default value to current year
+document.getElementById("yearRange").value = currentYear;
 
-    //Pass values to BLS API Call
-    getUnemployment(startYear,endYear);
+//Output Slider value
+var slider = document.getElementById("yearRange");
+var output = document.getElementById("yearLabel");
+output.innerHTML = slider.value; // Display the default slider value
 
-    //Convert Start Date to YYYY-MM-DD Format
-    var startYear = startYear + "-01-01";
-
-    //Convert End Date to YYYY-MM-DD Format
-    var endYear = endYear + "-12-31";
-
-    //Pass values to NASDAQ API Call
-    getGDP(startYear,endYear);
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
 }
-
-//Attach Submit Button to getValues Function
-document.getElementById("dateSubmit").addEventListener("click", getValues);

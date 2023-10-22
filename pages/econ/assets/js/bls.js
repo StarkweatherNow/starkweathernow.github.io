@@ -1,4 +1,5 @@
 //Bureau of Labor Statistics API - Employment Figures for the United States
+//Grabs last 10 years of data on page load
 
 //BLS API Key
 var blsKey = "7d2fa3e98ca54810b0012b6a30958307";
@@ -9,8 +10,14 @@ var blsURL = "https://api.bls.gov/publicAPI/v2/timeseries/data/";
 //BLS API Series ID
 var blsSeriesID = "LNS12000000";
 
+//BLS API End Year - Current Year
+var endYear = new Date().getFullYear();
+
+//BLS API Start Year - 10 Years Ago
+var startYear = endYear - 10;
+
 //Function to call API
-function getUnemployment(startYear, endYear) {
+function getEmployment(startYear, endYear) {
     //Set URL for API Call - BLS API
     //Example URL: https://api.bls.gov/publicAPI/v2/timeseries/data/LNS14000000?startyear=2010&endyear=2014&registrationkey=b2b3b4b5b6b7b8b9b0
     var blsURL = "https://api.bls.gov/publicAPI/v2/timeseries/data/" + blsSeriesID + "?startyear=" + startYear + "&endyear=" + endYear + "&registrationkey=" + blsKey;
@@ -46,3 +53,6 @@ function displayEmployment(data) {
     //Display Employment Value in HTML
     document.getElementById("blsEmployment").innerHTML = blsValue;
 }
+
+//On page load, call getEmployment function
+getEmployment(startYear, endYear);

@@ -3,6 +3,18 @@
 //Variables
 var nasdaqAPI = "iQT4cj9qm1Dsp9x29dk_";
 
+//End Year - Current Year and Month in yyyy-mm-dd format
+var endYear = new Date().getFullYear();
+var endMonth = new Date().getMonth() + 1;
+var endDay = new Date().getDate();
+var endDate = endYear + "-" + endMonth + "-" + endDay;
+
+//Start Year - 10 Years Ago and Month in yyyy-mm-dd format
+var startYear = endYear - 10;
+var startMonth = endMonth;
+var startDay = endDay;
+var startDate = startYear + "-" + startMonth + "-" + startDay;
+
 //API Call to get GDP from NASDAQ
 function getGDP(startYear, endYear) {
     //Set URL for API Call - World Bank Data via NASDAQ API
@@ -41,3 +53,6 @@ function displayGDP(data) {
     //Display GDP Value in HTML
     document.getElementById("nasdaqGDP").innerHTML = nasdaqValue;
 }
+
+//On page load, call getGDP function
+getGDP(startDate, endDate);
