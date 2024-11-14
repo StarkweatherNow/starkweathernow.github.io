@@ -185,6 +185,7 @@ calculateButton.addEventListener('click', calculateFinalPunchOut);
 // Style the button using JavaScript
 calculateButton.style.display = 'block';
 calculateButton.style.margin = '0 auto';
+calculateButton.classList.add("btn", "btn-primary");
 document.body.appendChild(calculateButton);
 
 // Load timecard data when the page loads
