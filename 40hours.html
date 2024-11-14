@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>40 Hours</title>
+    <meta name="theme-color" content="#85bfec">
+    <meta name="description" content="Software Engineer and Web Developer">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="assets/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="310x310" href="assets/img/ms-icon-310x310.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/swiper-icons.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+<!--3rd Party JS Libraries-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script type="text/javascript" src="assets/js/moment.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>40 Hours per Week - Calculator</h1>
+            <p>Calculates "Final Punch" based on input from the rest of the week's punches.</p>
+        </div>
+    </header>
+
+    <hr>
+
+    <main>
+
+        <div class="container">
+            <h2>Timecard</h2>
+            <p>Enter all your timecard punches below to see if it all adds up to 40 hours.</p>
+            
+                <table id="timecard">
+                    <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>In 1</th>
+                        <th>Out 1</th>
+                        <th>In 2</th>
+                        <th>Out 2</th>
+                        <th>Adjustment</th>
+                        <th>Total Hours</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Friday</td>
+                        <td><input type="time" id="fri-in1"></td>
+                        <td><input type="time" id="fri-out1"></td>
+                        <td><input type="time" id="fri-in2"></td>
+                        <td><input type="time" id="fri-out2"></td>
+                        <td><input type="number" id="fri-adj" value="0" step="0.01"></td>
+                        <td id="fri-total"></td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td><input type="time" id="mon-in1"></td>
+                        <td><input type="time" id="mon-out1"></td>
+                        <td><input type="time" id="mon-in2"></td>
+                        <td><input type="time" id="mon-out2"></td>
+                        <td><input type="number" id="mon-adj" value="0" step="0.01"></td>
+                        <td id="mon-total"></td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td><input type="time" id="tue-in1"></td>
+                        <td><input type="time" id="tue-out1"></td>
+                        <td><input type="time" id="tue-in2"></td>
+                        <td><input type="time" id="tue-out2"></td>
+                        <td><input type="number" id="tue-adj" value="0" step="0.01"></td>
+                        <td id="tue-total"></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td><input type="time" id="wed-in1"></td>
+                        <td><input type="time" id="wed-out1"></td>
+                        <td><input type="time" id="wed-in2"></td>
+                        <td><input type="time" id="wed-out2"></td>
+                        <td><input type="number" id="wed-adj" value="0" step="0.01"></td>
+                        <td id="wed-total"></td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td><input type="time" id="thu-in1"></td>
+                        <td><input type="time" id="thu-out1"></td>
+                        <td><input type="time" id="thu-in2"></td>
+                        <td><input type="time" id="thu-out2"></td>
+                        <td><input type="number" id="thu-adj" value="0" step="0.01"></td>
+                        <td id="thu-total"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">Weekly Total:</td>
+                        <td id="weekly-total"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            
+        </div>
+
+    </main>
+
+    <hr>
+    
+    <script src="assets/js/40hours.js"></script>
+
+</body>
