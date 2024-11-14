@@ -125,13 +125,42 @@ function calculateWeeklyTotal() {
   document.getElementById('weekly-total').textContent = formattedWeeklyTotal;
 }
 
+// Function to save timecard data to local storage
+function saveTimecardData() {
+  const timecardData = {};
+  for (const day of ['fri', 'mon', 'tue', 'wed', 'thu']) {
+    timecardData[`${day}-in1`] = document.getElementById(`${day}-in1`).value;
+    timecardData[`${day}-out1`] = document.getElementById(`${day}-out1`).value;
+    timecardData[`${day}-in2`] = document.getElementById(`${day}-in2`).value;
+    timecardData[`${day}-out2`] = document.getElementById(`${day}-out2`).value;
+    timecardData[`${day}-adj`] = document.getElementById(`${day}-adj`).value;
+  }
+  localStorage.setItem('timecardData', JSON.stringify(timecardData));
+}
+
+// Function to load timecard data from local storage
+function loadTimecardData() {
+  const timecardData = JSON.parse(localStorage.getItem('timecardData'));
+  if (timecardData) {
+    for (const day of ['fri', 'mon', 'tue', 'wed', 'thu']) {
+      document.getElementById(`${day}-in1`).value = timecardData[`${day}-in1`] || '';
+      document.getElementById(`${day}-out1`).value = timecardData[`${day}-out1`] || '';
+      document.getElementById(`${day}-in2`).value = timecardData[`${day}-in2`] || '';
+      document.getElementById(`${day}-out2`).value = timecardData[`${day}-out2`] || '';
+      document.getElementById(`${day}-adj`).value = timecardData[`${day}-adj`] || '0';
+      calculateTotalHours(day); // Recalculate total hours after loading data
+    }
+  }
+}
+
 // Add event listeners to inputs
 const timeInputs = document.querySelectorAll('input[type="time"]');
 timeInputs.forEach(input => {
   input.addEventListener('change', () => {
     const day = input.id.split('-')[0];
     calculateTotalHours(day);
-    calculateWeeklyTotal(); // Update weekly total on time input change
+    calculateWeeklyTotal();
+    saveTimecardData(); // Save data on time input change
   });
 });
 
@@ -141,7 +170,8 @@ adjustmentInputs.forEach(input => {
   input.addEventListener('change', () => {
     const day = input.id.split('-')[0];
     calculateTotalHours(day);
-    calculateWeeklyTotal(); // Update weekly total on adjustment change
+    calculateWeeklyTotal();
+    saveTimecardData(); // Save data on adjustment change
   });
 });
 
@@ -156,3 +186,6 @@ calculateButton.addEventListener('click', calculateFinalPunchOut);
 calculateButton.style.display = 'block';
 calculateButton.style.margin = '0 auto';
 document.body.appendChild(calculateButton);
+
+// Load timecard data when the page loads
+loadTimecardData();
