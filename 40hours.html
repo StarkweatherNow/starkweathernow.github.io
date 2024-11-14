@@ -29,12 +29,24 @@
 
 <body>
 
-    <header>
-        <div class="container">
+    <nav class="navbar navbar-expand-md bg-dark py-3" id="back-to-top">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary-light d-flex justify-content-center align-items-center me-2 bs-icon" style="background: url(&quot;assets/img/favicon-32x32.png&quot;);"></span><span class="text-primary-emphasis" data-bss-hover-animate="rubberBand">Brandon Starkweather</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul><a href="carpe_diem.html"><button class="btn btn-primary" type="button">Carpe Diem</button></a>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container text-center p-4">
             <h1>40 Hours per Week - Calculator</h1>
             <p>Calculates "Final Punch" based on input from the rest of the week's punches.</p>
         </div>
-    </header>
+    </section>
 
     <hr>
 
@@ -44,15 +56,15 @@
             <h2>Timecard</h2>
             <p>Enter all your timecard punches below to see if it all adds up to 40 hours.</p>
             
-                <table id="timecard">
+                <table  class="table table-hover" id="timecard">
                     <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th>Day</th>
                         <th>In 1</th>
                         <th>Out 1</th>
                         <th>In 2</th>
                         <th>Out 2</th>
-                        <th>Adjustment</th>
+                        <th>Adjustment Percentage</th>
                         <th>Total Hours</th>
                     </tr>
                     </thead>
@@ -102,7 +114,7 @@
                         <td><input type="number" id="thu-adj" value="0" step="0.01"></td>
                         <td id="thu-total"></td>
                     </tr>
-                    <tr>
+                    <tr class="table-info">
                         <td colspan="6">Weekly Total:</td>
                         <td id="weekly-total"></td>
                     </tr>
