@@ -155,6 +155,19 @@ function loadTimecardData() {
   }
 }
 
+// Function to clear all input fields
+function clearInputFields() {
+  for (const day of ['fri', 'mon', 'tue', 'wed', 'thu']) {
+    document.getElementById(`${day}-in1`).value = '';
+    document.getElementById(`${day}-out1`).value = '';
+    document.getElementById(`${day}-in2`).value = '';
+    document.getElementById(`${day}-out2`).value = '';
+    document.getElementById(`${day}-adj`).value = '0'; 
+    document.getElementById(`${day}-total`).textContent = '00:00'; 
+  }
+  document.getElementById('weekly-total').textContent = '00:00'; 
+}
+
 // Add event listeners to inputs
 const timeInputs = document.querySelectorAll('input[type="time"]');
 timeInputs.forEach(input => {
@@ -180,6 +193,13 @@ adjustmentInputs.forEach(input => {
 // Initial calculation of weekly total on page load
 calculateWeeklyTotal();
 
+// Select the div
+const buttonContainer = document.getElementById('buttonContainer'); 
+
+// Apply flexbox properties to the container
+buttonContainer.style.display = 'flex';
+buttonContainer.style.justifyContent = 'flex-end';
+
 // Add event listener to a button or trigger for calculating final punch-out
 const calculateButton = document.createElement('button');
 calculateButton.textContent = 'Calculate Final Punch-Out';
@@ -189,9 +209,25 @@ calculateButton.addEventListener('click', () => {
 });
 // Style the button using JavaScript
 calculateButton.style.display = 'block';
-calculateButton.style.margin = '0 auto';
+calculateButton.style.margin = '15px';
 calculateButton.classList.add("btn", "btn-primary");
-document.body.appendChild(calculateButton);
+// Append the "Calculate" button to the div
+buttonContainer.appendChild(calculateButton);
+
+// Create and style the "Clear" button
+const clearButton = document.createElement('button');
+clearButton.textContent = 'Clear';
+clearButton.style.display = 'block';
+clearButton.style.margin = '15px';
+clearButton.classList.add("btn", "btn-danger"); // Using a different Bootstrap class for visual distinction
+// Append the "Clear" button to the div
+buttonContainer.appendChild(clearButton);
+
+// Add event listener to the "Clear" button
+clearButton.addEventListener('click', () => {
+  clearInputFields();
+  saveTimecardData(); // Clear data from local storage as well
+});
 
 // Load timecard data when the page loads
 loadTimecardData();
