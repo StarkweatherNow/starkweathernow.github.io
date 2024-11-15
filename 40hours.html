@@ -48,13 +48,22 @@
         </div>
     </section>
 
+    <div class="col-lg-4 mx-auto">
+        <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <h4 class="alert-heading">Warning!</h4>
+            <p class="mb-0">Calculations for overnight shifts are not accurate.</p>
+        </div>
+    </div>
+
     <hr>
 
     <main>
 
         <div class="container">
-            <h2>Timecard</h2>
-            <p>Enter all your timecard punches below to see if it all adds up to 40 hours.</p>
+            <h2>Desktop Version</h2>
+            <p>Enter all your timecard punches below (except the last one) and click on <a class="text-info">Calculate Final Punch-Out</a> to get final punch.</p>
+            <p class="text-warning">Adjustments are made based on percentage, i.e. 1.5 equals 90 minutes.</p>
             
                 <table  class="table table-hover" id="timecard">
                     <thead>

@@ -32,35 +32,37 @@ function calculateTotalHours(day) {
 function calculateFinalPunchOut() {
     let totalMinutesWorked = 0;
   
-    // Calculate total minutes worked from Friday to Wednesday
-    for (const day of ['fri', 'mon', 'tue', 'wed']) {
-        const in1 = document.getElementById(`${day}-in1`).value;
-        const out1 = document.getElementById(`${day}-out1`).value;
-        const in2 = document.getElementById(`${day}-in2`).value;
-        const out2 = document.getElementById(`${day}-out2`).value;
-        const adjustment = parseFloat(document.getElementById(`${day}-adj`).value);
+   // Calculate total minutes worked from Friday to Wednesday
+   for (const day of ['fri', 'mon', 'tue', 'wed']) {
+    const in1 = document.getElementById(`${day}-in1`).value;
+    const out1 = document.getElementById(`${day}-out1`).value;
+    const in2 = document.getElementById(`${day}-in2`).value;
+    const out2 = document.getElementById(`${day}-out2`).value;
+    const adjustment = parseFloat(document.getElementById(`${day}-adj`).value);
 
-        if (in1 && out1 && in2 && out2) {
-        const [in1Hours, in1Minutes] = in1.split(':').map(Number);
-        const [out1Hours, out1Minutes] = out1.split(':').map(Number);
-        const [in2Hours, in2Minutes] = in2.split(':').map(Number);
-        const [out2Hours, out2Minutes] = out2.split(':').map(Number);
+    if (in1 && out1 && in2 && out2) {
+      let [in1Hours, in1Minutes] = in1.split(':').map(Number);
+      let [out1Hours, out1Minutes] = out1.split(':').map(Number);
+      let [in2Hours, in2Minutes] = in2.split(':').map(Number);
+      let [out2Hours, out2Minutes] = out2.split(':').map(Number);
+  
+      // Adjust for AM/PM 
+      if (in1.includes('PM') && in1Hours !== 12) in1Hours += 12;
+      if (out1.includes('AM') && out1Hours === 12) out1Hours = 0; // Midnight case
+      if (in2.includes('AM') && in2Hours === 12) in2Hours = 0; // Midnight case 
+      if (out2.includes('AM') && out2Hours === 12) out2Hours = 0; // Midnight case
+  
+      let totalMinutes1 = (out1Hours * 60 + out1Minutes) - (in1Hours * 60 + in1Minutes);
+      let totalMinutes2 = (out2Hours * 60 + out2Minutes) - (in2Hours * 60 + in2Minutes);
+  
+      // Adjust for cases where out time is earlier than in time (e.g., crossing midnight)
+      if (totalMinutes1 < 0) totalMinutes1 += 24 * 60;
+      if (totalMinutes2 < 0) totalMinutes2 += 24 * 60;
 
-        let totalMinutes1 = (out1Hours * 60 + out1Minutes) - (in1Hours * 60 + in1Minutes);
-        let totalMinutes2 = (out2Hours * 60 + out2Minutes) - (in2Hours * 60 + in2Minutes);
-
-        // Adjust for cases where out time is earlier than in time (e.g., crossing midnight)
-        if (totalMinutes1 < 0) totalMinutes1 += 24 * 60;
-        if (totalMinutes2 < 0) totalMinutes2 += 24 * 60;
-
-        // Adjust minutes based on adjustment value
         const adjustmentMinutes = adjustment * 60;
-        totalMinutes1 += adjustmentMinutes;
-        totalMinutes2 += adjustmentMinutes;
-
-        totalMinutesWorked += totalMinutes1 + totalMinutes2;
-        }
+        totalMinutesWorked += totalMinutes1 + totalMinutes2 + adjustmentMinutes;
     }
+}
   
     // Calculate remaining minutes needed to reach 40 hours
     const minutesNeeded = (40 * 60) - totalMinutesWorked;
@@ -77,22 +79,22 @@ function calculateFinalPunchOut() {
       const [thuIn2Hours, thuIn2Minutes] = thuIn2.split(':').map(Number);
   
       let thuTotalMinutes1 = (thuOut1Hours * 60 + thuOut1Minutes) - (thuIn1Hours * 60 + thuIn1Minutes);
-      if (thuTotalMinutes1 < 0) thuTotalMinutes1 += 24 * 60; // Adjust for crossing midnight
+      //if (thuTotalMinutes1 < 0) thuTotalMinutes1 += 24 * 60; // Adjust for crossing midnight
   
       // Adjust Thursday's minutes based on adjustment value
       const thuAdjustmentMinutes = thuAdjustment * 60;
       thuTotalMinutes1 += thuAdjustmentMinutes;
   
-      // Calculate total minutes worked on Thursday so far
-      let thuMinutesWorked = thuTotalMinutes1 + (thuIn2Hours * 60 + thuIn2Minutes);
-  
-      // Calculate final punch-out time in minutes
-      let finalPunchOutMinutes = thuMinutesWorked + minutesNeeded;
-  
+      // Calculate total minutes needed on Thursday
+      let totalMinutesNeededThursday = minutesNeeded - thuTotalMinutes1;
+
+      // Calculate final punch-out time in minutes from Thursday's 2nd punch-in
+      let finalPunchOutMinutes = (thuIn2Hours * 60 + thuIn2Minutes) + totalMinutesNeededThursday;
+
       // Ensure finalPunchOutMinutes is not negative
-      if (finalPunchOutMinutes < 0) {
-        finalPunchOutMinutes = 0; // Set to 0 if negative to avoid issues
-      }
+      //if (finalPunchOutMinutes < 0) {
+      //  finalPunchOutMinutes = 0; // Set to 0 if negative to avoid issues
+      //}
   
       // Convert final punch-out time to HH:MM format, ensuring it's within 24 hours
       let finalPunchOutHours = Math.floor(finalPunchOutMinutes / 60) % 24;
@@ -181,7 +183,10 @@ calculateWeeklyTotal();
 // Add event listener to a button or trigger for calculating final punch-out
 const calculateButton = document.createElement('button');
 calculateButton.textContent = 'Calculate Final Punch-Out';
-calculateButton.addEventListener('click', calculateFinalPunchOut);
+calculateButton.addEventListener('click', () => {
+  calculateFinalPunchOut();
+  calculateWeeklyTotal(); // Add this line to update weekly total
+});
 // Style the button using JavaScript
 calculateButton.style.display = 'block';
 calculateButton.style.margin = '0 auto';
