@@ -48,7 +48,7 @@
         </div>
     </section>
 
-    <div class="col-lg-4 mx-auto">
+    <div class="col-4 mx-auto">
         <div class="alert alert-dismissible alert-warning">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <h4 class="alert-heading">Warning!</h4>
@@ -61,7 +61,7 @@
     <main>
 
         <div class="container">
-            <h2>Desktop Version</h2>
+            <h2>Entire Week</h2>
             <p>Enter all your timecard punches below (except the last one) and click on <a class="text-info">Calculate Final Punch-Out</a> to get final punch.</p>
             <p class="text-warning">Adjustments are made based on percentage, i.e. 1.5 equals 90 minutes.</p>
             
@@ -132,11 +132,77 @@
             
         </div>
 
+        <div id="buttonContainer" class="container">             
+        </div>
+
+        <hr>
+
+        <div class="container">
+            <h2>Last Day Only</h2>
+            <p>Enter in the number of total hours for the first 4 days and 3 punches on the last day to get the Final Punch.</p>
+            <p class="text-warning">Adjustments are made based on percentage, i.e. 1.5 equals 90 minutes.</p>
+            
+            <div id="last-day-container">
+                <table  class="table table-hover">
+                  <thead>
+                    <tr class="table-info">
+                      <th>First 4 Days</th>
+                      <th>Hours</th>
+                      <th>Minutes</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Fri-Wed</td> 
+                      <td><input type="number" id="first-four-days-total-hours" min="0" max="96" placeholder="Hours"> </td>
+                      <td><input type="number" id="first-four-days-total-minutes" min="0" max="59" placeholder="Minutes"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>  
+                    </tr>
+                    <tr class="table-primary">
+                        <th>Last Day</th>
+                        <th>Punch-in 1</th>
+                        <th>Punch-out 1</th>
+                        <th>Punch-in 2</th>
+                        <th>Punch-out 2</th>
+                        <th>Adjustment</th>
+                        <th></th>
+                      </tr>
+                    <tr>
+                      <td>Thursday</td>
+                      <td><input type="time" id="thu-last-in1"></td>
+                      <td><input type="time" id="thu-last-out1"></td>
+                      <td><input type="time" id="thu-last-in2"></td>
+                      <td><input type="time" id="thu-last-out2"></td>
+                      <td><input type="number" id="thu-last-adj" value="0" step="0.1"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="table-info">
+                        <td colspan="6">Weekly Total:</td>
+                        <td id="weekly-total-last-day"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>            
+          
+        </div>
+
+        <div id="lastDayContainer" class="container">
+        </div>
+
+        <hr>
+
     </main>
 
-    <div id="buttonContainer" class="container">
-        <script src="assets/js/40hours.js"></script>
-    </div>
+    
+    <script src="assets/js/40hours.js"></script>
+
     
     <footer class="text-center py-4 bg-dark">
         <div class="container">
