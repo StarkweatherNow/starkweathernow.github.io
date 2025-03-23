@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Audit - Fast Barcode Scanner</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .hero {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .hero img {
+            max-width: 300px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+        .features {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+        .feature-item h3 {
+            margin-bottom: 1rem;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <img src="/api/placeholder/300/300" alt="Inventory Audit App Logo">
+            <h1>Inventory Audit</h1>
+            <p>A fast, efficient barcode scanner that streamlines your inventory management process</p>
+            <a href="https://play.google.com/store/apps/details?id=com.inventoryaudit.app" class="cta-button">Download on Google Play</a>
+        </div>
+    </header>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-barcode"></i></div>
+                <h3>Lightning-Fast Scanning</h3>
+                <p>Scan barcodes quickly and accurately using your device camera powered by ML Kit technology</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-database"></i></div>
+                <h3>Built-in Database</h3>
+                <p>Store and organize your inventory items efficiently with our powerful local database</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-search"></i></div>
+                <h3>Quick Search</h3>
+                <p>Find items instantly by scanning barcodes, name, or category</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>Custom Reports</h3>
+                <p>Generate detailed inventory reports and easily share them with colleagues</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-file-export"></i></div>
+                <h3>Export Options</h3>
+                <p>Export your data for further analysis in your preferred spreadsheet application</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                <h3>Privacy-Focused</h3>
+                <p>Your data stays on your device - we don't collect any personal information</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Inventory Audit App. All rights reserved.</p>
+        <p><a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
