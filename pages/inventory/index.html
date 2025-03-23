@@ -10,11 +10,11 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f9f9f9;
+            color: #212121; /* grey_900 */
+            background-color: #FAFAFA; /* grey_50 */
         }
         header {
-            background-color: #2c3e50;
+            background-color: #C62828; /* red_800 - darker red */
             color: white;
             padding: 2rem 0;
             text-align: center;
@@ -43,7 +43,7 @@
         }
         .cta-button {
             display: inline-block;
-            background-color: #3498db;
+            background-color: #757575; /* grey_600 - replacing blue */
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 5px;
@@ -53,7 +53,7 @@
             transition: background-color 0.3s;
         }
         .cta-button:hover {
-            background-color: #2980b9;
+            background-color: #616161; /* grey_700 - replacing blue hover */
         }
         .features {
             padding: 4rem 1rem;
@@ -64,6 +64,7 @@
             text-align: center;
             font-size: 2rem;
             margin-bottom: 3rem;
+            color: #C62828; /* red_800 - darker red */
         }
         .feature-grid {
             display: grid;
@@ -80,20 +81,21 @@
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #3498db;
+            color: #E57373; /* red_300 - much softer red */
         }
         .feature-item h3 {
             margin-bottom: 1rem;
+            color: #616161; /* grey_700 - replacing blue */
         }
         footer {
-            background-color: #2c3e50;
+            background-color: #424242; /* grey_800 */
             color: white;
             text-align: center;
             padding: 2rem 0;
             margin-top: 4rem;
         }
         footer a {
-            color: #3498db;
+            color: #E0E0E0; /* grey_300 - replacing blue */
             text-decoration: none;
         }
         footer a:hover {
@@ -113,7 +115,7 @@
 <body>
     <header>
         <div class="hero">
-            <img src="/api/placeholder/300/300" alt="Inventory Audit App Logo">
+            <img src="assets/img/InventoryAuditIcon.jpg" alt="Inventory Audit App Logo">
             <h1>Inventory Audit</h1>
             <p>A fast, efficient barcode scanner that streamlines your inventory management process</p>
             <a href="https://play.google.com/store/apps/details?id=com.inventoryaudit.app" class="cta-button">Download on Google Play</a>
