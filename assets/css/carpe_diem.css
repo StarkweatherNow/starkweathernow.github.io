@@ -432,7 +432,7 @@ header {
     border-radius: var(--border-radius);
 }
 
-/* NEW FEATURE: Pomodoro Timer */
+/* Pomodoro Timer */
 .pomodoro-card {
     text-align: center;
 }

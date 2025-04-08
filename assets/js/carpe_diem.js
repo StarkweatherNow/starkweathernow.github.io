@@ -57,7 +57,7 @@ function initNASA() {
     const nasaModalDesc = document.getElementById('nasa-modal-desc');
     const nasaModalClose = document.getElementById('nasa-modal-close');
     
-    // NASA API - using DEMO_KEY as default
+    // Using NASA DEMO_KEY which is sufficient for personal projects
     const NASA_API_KEY = 'DEMO_KEY';
     
     async function fetchNASAImage() {
@@ -104,12 +104,20 @@ function initQuote() {
     
     async function fetchQuote() {
         try {
-            // Using a free quotes API
-            const response = await fetch('https://api.quotable.io/random');
+            // Using your Ninja API key
+            const response = await fetch('https://api.api-ninjas.com/v1/quotes?category=success', {
+                headers: {
+                    'X-Api-Key': 'an+kgydHi9VdD9LGx8Sn3A==qbBdKbl60g3UbqmD'
+                }
+            });
             const data = await response.json();
             
-            quoteContent.textContent = data.content;
-            quoteAuthor.textContent = data.author;
+            if (data && data.length > 0) {
+                quoteContent.textContent = data[0].quote;
+                quoteAuthor.textContent = data[0].author;
+            } else {
+                throw new Error('No quote returned');
+            }
             
             return true;
         } catch (error) {
@@ -137,7 +145,7 @@ function initWeather() {
     const weatherContent = document.getElementById('weather-content');
     const forecastContainer = document.getElementById('forecast-container');
     
-    // OpenWeather API key - replace with your own
+    // Using OpenWeather API - ensure this is a valid key
     const WEATHER_API_KEY = '9c1a13f35ad13294b0c4ed22bc9d7fb6';
     
     async function getLocation() {
@@ -230,7 +238,6 @@ function initWeather() {
 
 // Traffic Map
 function initMap() {
-    const MAPQUEST_API_KEY = 'Gmjtd|lu612du7n9,7w=o5-l7t0h';
     const mapImg = document.getElementById('map-img');
     const mapLoading = document.getElementById('map-loading');
     
@@ -262,8 +269,8 @@ function initMap() {
         try {
             const location = await getLocation();
             
-            // MapQuest API Key - replace with your own
-            const MAPQUEST_API_KEY = 'Gmjtd|lu612du7n9';
+            // Using MapQuest API key from your original code
+            const MAPQUEST_API_KEY = 'Gmjtd|lu612du7n9,7w=o5-l7t0h';
             
             // Using MapQuest's static map API
             mapImg.src = `https://www.mapquestapi.com/staticmap/v5/map?key=${MAPQUEST_API_KEY}&center=${location.lat},${location.lon}&size=600,300&type=map&zoom=13&traffic=flow&scalebar=true`;
@@ -301,7 +308,7 @@ function initCats() {
             catsContainer.innerHTML = '';
             galleryNav.innerHTML = '';
             
-            // Using free cat API
+            // Using free cat API (no key required)
             for (let i = 0; i < NUM_CATS; i++) {
                 const response = await fetch('https://api.thecatapi.com/v1/images/search');
                 const data = await response.json();
@@ -554,7 +561,7 @@ function showToast(message, type = 'info') {
 }
 
 // Google Calendar & Tasks Integration
-// Google Calendar API Configuration
+// Google Calendar API Configuration - using your original API keys
 const CAL_CLIENT_ID = '821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com';
 const CAL_API_KEY = 'AIzaSyCMsEWCT7HVaedHBid5YJ6ehFWJQZ4xf3U';
 const DISCOVERY_DOC_CALENDAR = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
@@ -564,7 +571,7 @@ let tokenClient;
 let gapiInitedCal = false;
 let gisInitedCal = false;
 
-// Google Tasks API Configuration
+// Google Tasks API Configuration - using your original API keys
 const TASKS_CLIENT_ID = '821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com';
 const TASKS_API_KEY = 'AIzaSyCMsEWCT7HVaedHBid5YJ6ehFWJQZ4xf3U';
 const DISCOVERY_DOC_TASKS = 'https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest';
