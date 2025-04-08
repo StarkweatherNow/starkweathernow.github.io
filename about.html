@@ -20,10 +20,155 @@
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider.css">
-<!--3rd Party JS Libraries-->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .about-section {
+            padding: 80px 0;
+        }
+        
+        .profile-img {
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .about-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-badge {
+            background-color: #3a506b;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin: 4px;
+            display: inline-block;
+            font-size: 0.85rem;
+            transition: background-color 0.2s ease;
+        }
+        
+        .skill-badge:hover {
+            background-color: #5bc0de;
+        }
+        
+        .resume-btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .resume-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(91, 192, 222, 0.4);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40%;
+            height: 3px;
+            background-color: #5bc0de;
+            border-radius: 2px;
+        }
+        
+        .journey-item {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .journey-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: #5bc0de;
+            border-radius: 50%;
+        }
+        
+        .journey-item:after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 24px;
+            width: 2px;
+            height: calc(100% - 6px);
+            background-color: #5bc0de;
+        }
+        
+        .journey-item:last-child:after {
+            display: none;
+        }
+        
+        .animation-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .animation-slide-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 1s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animation-delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .animation-delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .animation-delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+    <!-- 3rd Party JS Libraries -->
     <script type="text/javascript" src="assets/js/jquery-3.7.1.js"></script>
-    <script src="https://accounts.google.com/gsi/client" async></script>
-    <script type="text/javascript" src="assets/js/moment.js"></script>
 </head>
 
 <body>
@@ -38,6 +183,80 @@
             </div>
         </div>
     </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-4 animation-fade-in">
+                    <img src="assets/img/profile.jpg" alt="Brandon Starkweather" class="profile-img img-fluid">
+                    <div class="text-center mt-4">
+                        <a href="assets/files/brandon-starkweather-resume.pdf" download class="btn btn-info resume-btn">
+                            <i class="fas fa-file-download"></i> Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card about-card animation-slide-up">
+                        <div class="card-body">
+                            <h2 class="section-title text-info">About Me</h2>
+                            <p class="lead mb-4">I'm a Software Engineer with a background in IT Tech Support, enthusiastic about creating technology solutions that make a real difference.</p>
+                            <p>Originally from Houston, Texas, I've spent the last decade honing my technical troubleshooting and customer service skills in IT support roles. During this time, I developed a deep passion for software development, which led me to pursue my Bachelor's degree in Software Engineering at Western Governors University.</p>
+                            <p>In my free time, I take care of my brother and we enjoy playing video games together. This caring responsibility has shaped my approach to both life and work, emphasizing empathy, patience, and finding innovative solutions to challenges.</p>
+                            <p>I'm excited to leverage my unique blend of technical support experience and software engineering knowledge to create intuitive, user-centered applications.</p>
+                        </div>
+                    </div>
+
+                    <div class="card about-card mt-4 animation-slide-up animation-delay-1">
+                        <div class="card-body">
+                            <h3 class="section-title text-info">My Journey</h3>
+                            <div class="journey-item">
+                                <h5>IT Tech Support Specialist</h5>
+                                <p>10 years of experience solving complex technical problems and delivering excellent customer service.</p>
+                            </div>
+                            <div class="journey-item">
+                                <h5>Education at WGU</h5>
+                                <p>Recently graduated with a Bachelor's degree in Software Engineering, focusing on modern development practices.</p>
+                            </div>
+                            <div class="journey-item">
+                                <h5>Career Transition</h5>
+                                <p>Currently embarking on an exciting career change into software development, bringing a wealth of technical experience and a fresh perspective.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card about-card mt-4 animation-slide-up animation-delay-2">
+                        <div class="card-body">
+                            <h3 class="section-title text-info">Technical Skills</h3>
+                            <div class="mb-3">
+                                <span class="skill-badge">Java</span>
+                                <span class="skill-badge">Spring Framework</span>
+                                <span class="skill-badge">RESTful Architecture</span>
+                                <span class="skill-badge">HTML5</span>
+                                <span class="skill-badge">CSS3</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">AWS</span>
+                                <span class="skill-badge">Active Directory</span>
+                                <span class="skill-badge">Technical Troubleshooting</span>
+                                <span class="skill-badge">User Support</span>
+                                <span class="skill-badge">System Administration</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card about-card mt-4 animation-slide-up animation-delay-3">
+                        <div class="card-body">
+                            <h3 class="section-title text-info">What I'm Looking For</h3>
+                            <p>I'm seeking opportunities to apply my technical skills and problem-solving abilities in a software development role. I'm particularly interested in positions that allow me to build practical, user-focused applications while continuing to learn and grow as a developer.</p>
+                            <p>My background in IT support gives me a unique perspective on user needs and technical implementation, making me well-suited for roles that bridge the gap between technical teams and end users.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="text-center py-4">
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-3">
