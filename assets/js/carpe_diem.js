@@ -230,6 +230,7 @@ function initWeather() {
 
 // Traffic Map
 function initMap() {
+    const MAPQUEST_API_KEY = 'Gmjtd|lu612du7n9,7w=o5-l7t0h';
     const mapImg = document.getElementById('map-img');
     const mapLoading = document.getElementById('map-loading');
     

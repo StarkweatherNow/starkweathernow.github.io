@@ -1,339 +1,588 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html data-bs-theme="dark" lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brandon Starkweather's Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Brandon Starkweather's Portfolio</title>
     <meta name="theme-color" content="#85bfec">
     <meta name="description" content="Software Engineer and Web Developer">
     <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="assets/img/apple-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="310x310" href="assets/img/ms-icon-310x310.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="carpe_manifest.json">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
-    <!-- Weather icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <link rel="stylesheet" href="/assets/css/carpe_diem.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/swiper-icons.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+<!--3rd Party JS Libraries-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script type="text/javascript" src="assets/js/moment.js"></script>
 </head>
 
-<body>
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="navbar-brand">
-                    <img src="assets/img/favicon-32x32.png" alt="Logo">
-                    <span class="animate__animated animate__rubberBand">Brandon Starkweather</span>
-                </a>
-                <div class="navbar-links">
-                    <a href="https://brandonstarkweather.com">Portfolio</a>
-                    <a href="#">About</a>
-                    <a href="#">Contact</a>
-                </div>
-                <button class="theme-toggle" aria-label="Toggle dark/light mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </nav>
+<body><div></div>
+    <!--My JS Functions-->
+    <script type="text/javascript" src="assets/js/NASA.js"></script>
+    <script type="text/javascript" src="assets/js/geo.js"></script>
+    <script type="text/javascript" src="assets/js/weather.js"></script>
+    <script type="text/javascript" src="assets/js/maps.js"></script>
+    <script type="text/javascript" src="assets/js/qotd.js"></script>
+    <script type="text/javascript" src="assets/js/cats.js"></script>
+    <nav class="navbar navbar-expand-md bg-primary-subtle py-3" id="back-to-top">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary-light d-flex justify-content-center align-items-center me-2 bs-icon" style="background: url(&quot;assets/img/favicon-32x32.png&quot;);"></span><span class="text-primary-emphasis" data-bss-hover-animate="rubberBand">Brandon Starkweather</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://brandonstarkweather.com">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul><button class="btn btn-info active" type="button">Carpe Diem</button>
+            </div>
         </div>
-    </header>
-
-    <main>
-        <section class="hero animate__animated animate__fadeIn">
-            <div class="container">
-                <h1>Carpe Diem</h1>
-                <p>Your personal dashboard for seizing the day</p>
-            </div>
-        </section>
-
+    </nav>
+    <section class="py-4 py-xl-5">
         <div class="container">
-            <!-- NASA Image Card -->
-            <div class="card nasa-card animate__animated animate__fadeIn">
-                <div class="loading" id="nasa-loading">
-                    <div class="spinner"></div>
-                </div>
-                <img src="" alt="NASA Image of the Day" class="nasa-img" id="nasa-img">
-                <div class="nasa-overlay">
-                    <h2 class="nasa-title" id="nasa-title">NASA - Image of the Day</h2>
-                    <p class="nasa-desc" id="nasa-desc"></p>
-                    <button class="expand-btn" id="nasa-expand">Read More</button>
-                </div>
+            <div class="text-white bg-dark border rounded border-0 p-4 p-md-5" data-bss-hover-animate="bounce" style="background: linear-gradient(1deg, black, var(--bs-body-color));border-radius: 16px;border-width: 3px;border-color: var(--bs-warning);">
+                <h1 class="display-1 fw-bold text-center text-muted mb-3" style="text-shadow: 3px 3px 5px var(--bs-primary-bg-subtle), -1px -1px 3px var(--bs-warning);">Carpe Diem</h1>
             </div>
-
-            <!-- Quote Card -->
-            <div class="card quote-card animate__animated animate__fadeIn">
-                <i class="fas fa-quote-left quote-icon"></i>
-                <p class="quote-content" id="quote-content">Loading daily inspiration...</p>
-                <p class="quote-author" id="quote-author">...</p>
+        </div>
+    </section>
+    <div class="container">
+        <div class="card"><img class="card-img w-100 d-block" id="nasa-img">
+            <div class="card-img-overlay" style="overflow: visible;">
+                <h3 class="text-warning" id="nasa-title" style="background: rgba(0,0,0,0.75);">NASA - Image of the Day</h3>
+                <p class="d-none d-print-inline d-sm-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline" id="nasa-desc" style="overflow: visible;background: rgba(0,0,0,0.75);"><span class="spinner-border text-warning" role="status"></span></p>
             </div>
-
-            <!-- Current Weather & Forecast -->
-            <div class="card weather-card animate__animated animate__fadeIn">
-                <div class="card-header">
-                    <h2 class="card-title">Current Conditions</h2>
-                    <h3 class="card-subtitle" id="weather-location">Loading location...</h3>
-                </div>
-                
-                <div class="loading" id="weather-loading">
-                    <div class="spinner"></div>
-                </div>
-                
-                <div id="weather-content" style="display: none;">
-                    <div class="weather-header">
-                        <div class="weather-icon" id="weather-icon"></div>
-                        <div class="weather-info">
-                            <div class="weather-temp" id="weather-temp">--°</div>
-                            <div class="weather-desc" id="weather-desc">--</div>
-                            <div class="weather-location" id="weather-location-display">--</div>
-                        </div>
-                    </div>
-                    
-                    <div class="weather-details">
-                        <div class="weather-detail">
-                            <div class="detail-value" id="weather-humidity">--%</div>
-                            <div class="detail-label">Humidity</div>
-                        </div>
-                        <div class="weather-detail">
-                            <div class="detail-value" id="weather-pressure">-- hPa</div>
-                            <div class="detail-label">Pressure</div>
-                        </div>
-                        <div class="weather-detail">
-                            <div class="detail-value" id="weather-wind">-- mph</div>
-                            <div class="detail-label">Wind</div>
-                        </div>
-                        <div class="weather-detail">
-                            <div class="detail-value" id="weather-uv">--</div>
-                            <div class="detail-label">UV Index</div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <figure>
+                    <blockquote class="blockquote">
+                        <p class="text-center mb-0" id="quote-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer text-end text-warning-emphasis" id="quote-author">Someone famous</figcaption>
+                </figure>
             </div>
-            
-            <!-- Forecast Card -->
-            <div class="card forecast-card animate__animated animate__fadeIn">
-                <div class="card-header">
-                    <h2 class="card-title">12 Hour Forecast</h2>
-                </div>
-                <div class="forecast-grid" id="forecast-container">
-                    <!-- Forecast items will be populated by JavaScript -->
-                </div>
-            </div>
-            
-            <!-- Two column layout for Calendar and Tasks -->
-            <div class="row">
-                <!-- Google Calendar Card -->
-                <div class="card calendar-card animate__animated animate__fadeIn">
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col">
+                <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">Google Calendar</h2>
+                        <h4 class="text-center mb-0">Current Conditions</h4>
                     </div>
-                    <div id="cal-content" class="event-list">
-                        <div class="google-auth">
-                            <button class="google-btn" id="cal_authorize_button" onclick="handleAuthClickCal()">
-                                <i class="fab fa-google google-icon"></i>
-                                Authorize Calendar
-                            </button>
-                            <button class="google-btn" id="cal_signout_button" style="display: none;" onclick="handleSignoutClickCal()">
-                                Sign Out
-                            </button>
-                        </div>
+                    <div class="card-body">
+                        <h6 class="text-center text-warning card-subtitle mb-2" id="weather-location">Loading Location</h6>
+                        <div id="weather-icon" class="text-center" style="padding: 10px;"></div>
+                        <p class="text-center" id="weather-description">Paragraph</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Two column layout for Tasks and Map -->
-            <div class="row">
-                <!-- Google Tasks Card -->
-                <div class="card tasks-card animate__animated animate__fadeIn">
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-bottom: 10px;">
+                <div class="card" style="border-width: 0px;border-radius: 0px;">
+                    <div class="card-body" style="padding: 0;">
+                        <ul class="list-group">
+                            <li class="list-group-item text-center" id="class-time"><span id="weather-time">Time:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-temp"><span id="weather-temp">Temp:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-humidity"><span id="weather-humidity">Humidity:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-pressure"><span id="weather-pressure">Pressure:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-wind"><span id="weather-wind">Wind Speed:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-aq"><span id="weather-aq">Air Quality:&nbsp;</span></li>
+                            <li class="list-group-item text-center" id="class-uv"><span id="weather-uv">UV Index:&nbsp;</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="margin-bottom: 10px;">
+                <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">ToDo List</h2>
+                        <h4 class="text-center mb-0">12 Hour Forecast</h4>
                     </div>
-                    <div id="tasks-content" class="task-list">
-                        <div class="google-auth">
-                            <button class="google-btn" id="tasks_authorize_button" onclick="handleAuthClickTasks()">
-                                <i class="fab fa-google google-icon"></i>
-                                Authorize Tasks
-                            </button>
-                            <button class="google-btn" id="tasks_signout_button" style="display: none;" onclick="handleSignoutClickTasks()">
-                                Sign Out
-                            </button>
+                    <div class="card-body" style="padding-bottom: 0px;">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th class="text-center">Temp</th>
+                                        <th class="text-center">Humidity</th>
+                                        <th class="text-center">Rain</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="forecast-time-0" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-temp-0" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-humidity-0" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-rain-0" style="background: rgb(74,73,72);"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="forecast-time-1"></td>
+                                        <td class="text-center" id="forecast-temp-1"></td>
+                                        <td class="text-center" id="forecast-humidity-1"></td>
+                                        <td class="text-center" id="forecast-rain-1"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="forecast-time-2" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-temp-2" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-humidity-2" style="background: rgb(74,73,72);"></td>
+                                        <td class="text-center" id="forecast-rain-2" style="background: rgb(74,73,72);"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="forecast-time-3"></td>
+                                        <td class="text-center" id="forecast-temp-3"></td>
+                                        <td class="text-center" id="forecast-humidity-3"></td>
+                                        <td class="text-center" id="forecast-rain-3"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Map Card -->
-                <div class="card map-card animate__animated animate__fadeIn">
-                    <h3 class="map-title">Local Traffic</h3>
-                    <div class="loading" id="map-loading">
-                        <div class="spinner"></div>
-                    </div>
-                    <img src="" alt="Traffic Map" class="map-img" id="map-img">
-                </div>
             </div>
-            
-            <!-- Pomodoro Timer (NEW FEATURE) -->
-            <div class="card pomodoro-card animate__animated animate__fadeIn">
-                <div class="card-header">
-                    <h2 class="card-title">Pomodoro Timer</h2>
-                </div>
-                <div class="timer-display" id="timer-display">25:00</div>
-                <div class="timer-controls">
-                    <button class="timer-btn" id="timer-start">Start</button>
-                    <button class="timer-btn" id="timer-pause" disabled>Pause</button>
-                    <button class="timer-btn reset" id="timer-reset">Reset</button>
-                </div>
-                <div class="timer-mode">
-                    <button class="mode-btn active" data-mode="pomodoro" data-time="25">Pomodoro</button>
-                    <button class="mode-btn" data-mode="short-break" data-time="5">Short Break</button>
-                    <button class="mode-btn" data-mode="long-break" data-time="15">Long Break</button>
-                </div>
-                <div class="timer-sessions">
-                    <span id="sessions-count">0</span> sessions completed
-                </div>
-            </div>
-            
-            <!-- Cat Gallery -->
-            <div class="card animate__animated animate__fadeIn">
-                <div class="card-header">
-                    <h2 class="card-title">Cat Gallery</h2>
-                </div>
-                <div class="cat-gallery">
-                    <div class="loading" id="cats-loading">
-                        <div class="spinner"></div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center mb-0">Google Calendar</h3>
                     </div>
-                    <div class="gallery-container" id="cats-container">
-                        <!-- Cat images will be populated by JavaScript -->
-                    </div>
-                    <button class="gallery-prev" id="gallery-prev" aria-label="Previous">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="gallery-next" id="gallery-next" aria-label="Next">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <div class="gallery-nav" id="gallery-nav">
-                        <!-- Dots will be populated by JavaScript -->
+                    <div class="card-body">
+                        <div id="cal-content"></div>
+                        <div class="btn-group btn-group-sm float-end" role="group"><button class="btn btn-success" id="cal_authorize_button" type="button" onclick="handleAuthClickCal()">Authorize</button><button class="btn btn-danger" id="cal_signout_button" type="button" onclick="handleSignoutClickCal()">Sign Out</button></div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="memento">
-            <h2>Memento Mori</h2>
+        <div class="row">
+            <div class="col-md-6" style="margin-bottom: 10px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center mb-0">ToDo List</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="cal-content"></div>
+                        <div class="btn-group btn-group-sm float-end" role="group"><button class="btn btn-success" id="tasks_authorize_button" type="button" onclick="handleAuthClickTasks()">Authorize</button><button class="btn btn-danger" id="tasks_signout_button" type="button" onclick="handleSignoutClickTasks()">Sign Out</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="margin-bottom: 10px;">
+                <div class="d-inline-block" id="map" style="overflow: clip;width: 100%;position: relative;">
+                    <div>
+                        <h3 class="text-center" style="position: absolute;color: var(--bs-warning);left: 50%;transform: translate(-50%);margin: 0px;margin-top: 16px;margin-bottom: 16px;text-shadow: 2px 2px 2px #000000;">Local Traffic</h3>
+                    </div><img class="d-xl-flex" id="map-img" style="border-radius: 6px;margin-right: auto;margin-left: auto;max-width: 100%;display: block;border-width: 3px;border-color: var(--bs-warning);">
+                </div>
+            </div>
         </div>
-    </main>
-    
-    <footer class="footer">
+    </div>
+    <hr>
+    <div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div id="cats_0" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_1" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_2" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_3" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_4" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_5" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_6" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_7" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_8" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+                <div id="cats_9" class="swiper-slide" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;) center center / cover no-repeat;"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <hr>
+    <h2 class="text-center text-muted">Memento Mori</h2>
+    <hr>
+    <footer class="text-center py-4">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h3>Brandon Starkweather</h3>
-                    <p>Software Engineer and Web Developer</p>
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col">
+                    <p class="text-muted my-2">Copyright&nbsp;© 2023<a href="https://brandonstarkweather.com"><br><span style="color: rgba(223, 215, 202, 0.75);">Brandon Starkweather</span></a></p>
                 </div>
-                <div>
-                    <h3>Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://brandonstarkweather.com">Portfolio</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item me-4"><a href="https://www.linkedin.com/in/starkweathernow/">
+                                <div class="bs-icon-circle bs-icon-primary bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-linkedin">
+                                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+                                    </svg></div>
+                            </a></li>
+                        <li class="list-inline-item me-4"><a href="https://github.com/StarkweatherNow">
+                                <div class="bs-icon-circle bs-icon-primary bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-github">
+                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                                    </svg></div>
+                            </a></li>
+                        <li class="list-inline-item"><a href="https://steamcommunity.com/id/pureispoor/">
+                                <div class="bs-icon-circle bs-icon-primary bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-steam">
+                                        <path d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.198 2.198 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.217 2.217 0 0 1-1.312-1.568L.33 10.333Z"></path>
+                                        <path d="M4.868 12.683a1.715 1.715 0 0 0 1.318-3.165 1.705 1.705 0 0 0-1.263-.02l1.023.424a1.261 1.261 0 1 1-.97 2.33l-.99-.41a1.7 1.7 0 0 0 .882.84Zm3.726-6.687a2.03 2.03 0 0 0 2.027 2.029 2.03 2.03 0 0 0 2.027-2.029 2.03 2.03 0 0 0-2.027-2.027 2.03 2.03 0 0 0-2.027 2.027Zm2.03-1.527a1.524 1.524 0 1 1-.002 3.048 1.524 1.524 0 0 1 .002-3.048Z"></path>
+                                    </svg></div>
+                            </a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/starkweathernow/" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/StarkweatherNow" class="social-link" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://steamcommunity.com/id/pureispoor/" class="social-link" aria-label="Steam">
-                            <i class="fab fa-steam"></i>
-                        </a>
-                    </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a class="link-secondary" href="#back-to-top"><button class="btn btn-outline-warning me-2" type="button" data-bs-target="#modal-1" data-bs-toggle="modal">How It's Made</button></a></li>
+                        <li class="list-inline-item"><a class="link-secondary" href="#back-to-top">Back to Top&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-up-short fs-4">
+                                    <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"></path>
+                                </svg></a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="copyright">
-                <p>Copyright © 2025 Brandon Starkweather</p>
             </div>
         </div>
     </footer>
-    
-    <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-    
-    <!-- Modal for NASA description -->
-    <div class="modal" id="nasa-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="nasa-modal-title"></h3>
-                <button class="modal-close" id="nasa-modal-close" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="nasa-modal-desc"></p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal for "How It's Made" -->
-    <div class="modal" id="info-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">How It's Made <i class="fas fa-cogs"></i></h3>
-                <button class="modal-close" id="info-modal-close" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Carpe Diem was made with the following technologies:</p>
-                <ul>
-                    <li>Modern JavaScript ES6+</li>
-                    <li>Modern CSS with custom properties and flexbox/grid layouts</li>
-                    <li>API Calls:
-                        <ul>
-                            <li>NASA - Image of the Day</li>
-                            <li>Quotable API - Quote of the Day</li>
-                            <li>OpenWeather - All Weather Info</li>
-                            <li>Google - Calendar & Tasks API</li>
-                            <li>MapQuest - Local Traffic</li>
-                            <li>Cats API - Need I say more?</li>
-                        </ul>
-                    </li>
-                    <li>Features:
-                        <ul>
-                            <li>Responsive design that works on all devices</li>
-                            <li>Dark/light mode toggle</li>
-                            <li>Pomodoro timer for productivity</li>
-                            <li>Smooth animations and transitions</li>
-                            <li>Modern UI with cards and clean typography</li>
-                            <li>Accessibility improvements</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="modal-footer">
-                <a href="https://github.com/StarkweatherNow/starkweathernow.github.io">
-                    <button class="modal-btn secondary">Code on GitHub</button>
-                </a>
-                <a href="contact.html">
-                    <button class="modal-btn primary">Contact Me</button>
-                </a>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color: var(--bs-warning);">How It's Made&nbsp;<i class="fa fa-gears"></i></h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Carpe Diem was made with the following technologies:</p>
+                    <ul>
+                        <li>JavaScript Libraries:<ul>
+                                <li>jQuery</li>
+                                <li>BootStrap</li>
+                                <li>Moment</li>
+                            </ul>
+                        </li>
+                        <li>API Calls:<ul>
+                                <li>NASA - Image of the Day</li>
+                                <li>Ninja API - Quote of the Day</li>
+                                <li>OpenWeather - All Weather Info</li>
+                                <li>Google - Calendar &amp; Tasks API</li>
+                                <li>MapQuest - Local Traffic</li>
+                                <li>Cats API - Need I say more?</li>
+                            </ul>
+                        </li>
+                        <li>Designed with BootStrap Studio and Developed with VS Code</li>
+                        <li>Hosted on GitHub Pages</li>
+                    </ul>
+                </div>
+                <div class="modal-footer"><a href="https://github.com/StarkweatherNow/starkweathernow.github.io/blob/main/carpe_diem.html"><button class="btn btn-light" type="button">Code on GitHub</button></a><a href="contact.html"><button class="btn btn-primary" type="button">Contact Me</button></a></div>
             </div>
         </div>
-    </div>
-    
-    <!-- Toast container -->
-    <div class="toast-container" id="toast-container">
-        <!-- Toasts will be added dynamically -->
-    </div>
+    </div><script type="text/javascript">
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
 
-    <!-- Load Google API Client -->
-    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-    <script src="/assets/css/carpe_diem.css"></script>
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const TASKS_CLIENT_ID = '821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com';
+      const TASKS_API_KEY = 'AIzaSyCMsEWCT7HVaedHBid5YJ6ehFWJQZ4xf3U';
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC_TASKS = 'https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest';
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES_TASKS = 'https://www.googleapis.com/auth/tasks.readonly';
+
+      let tokenClientTasks;
+      let gapiInitedTasks = false;
+      let gisInitedTasks = false;
+
+      document.getElementById('tasks_authorize_button').style.visibility = 'hidden';
+      document.getElementById('tasks_signout_button').style.visibility = 'hidden';
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoadedTasks() {
+        gapi.load('client', initializeGapiClientTasks);
+      }
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function initializeGapiClientTasks() {
+        await gapi.client.init({
+          apiKey: TASKS_API_KEY,
+          discoveryDocs: [DISCOVERY_DOC_TASKS],
+        });
+        gapiInitedTasks = true;
+        maybeEnableButtonsTasks();
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoadedTasks() {
+        tokenClientTasks = google.accounts.oauth2.initTokenClient({
+          client_id: TASKS_CLIENT_ID,
+          scope: SCOPES_TASKS,
+          callback: '', // defined later
+        });
+        gisInitedTasks = true;
+        maybeEnableButtonsTasks();
+      }
+
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtonsTasks() {
+        if (gapiInitedTasks && gisInitedTasks) {
+          document.getElementById('tasks_authorize_button').style.visibility = 'visible';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClickTasks() {
+        tokenClientTasks.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          document.getElementById('tasks_signout_button').style.visibility = 'visible';
+          document.getElementById('tasks_authorize_button').innerText = 'Refresh';
+          await fetchTaskLists();
+          await fetchTasks();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClientTasks.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClientTasks.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClickTasks() {
+        const token = gapi.client.getToken();
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token);
+          gapi.client.setToken('');
+          document.getElementById('tasks-content').innerText = '';
+          document.getElementById('tasks_authorize_button').innerText = 'Authorize';
+          document.getElementById('tasks_signout_button').style.visibility = 'hidden';
+        }
+      }
+
+      /**
+       * Print task lists.
+       */
+      async function fetchTaskLists() {
+        let response;
+        try {
+          response = await gapi.client.tasks.tasklists.list({
+            'maxResults': 10,
+          });
+        } catch (err) {
+          document.getElementById('tasks-content').innerText = err.message;
+          return;
+        }
+        const taskLists = response.result.items;
+        if (!taskLists || taskLists.length == 0) {
+          document.getElementById('tasks-content').innerText = 'No task lists found.';
+          return;
+        }
+        //Output Tasklist to console log for debugging
+        //console.log(taskLists);
+        //Assign Tasklist to variable
+        var output = "Task Lists: " + taskLists[0].title;
+        document.getElementById('tasks-content').innerText = output;
+      }
+      /**
+       * Print tasks.
+       */
+      async function fetchTasks(taskListId) {
+        let response;
+        try {
+          response = await gapi.client.tasks.tasks.list({
+            'tasklist': taskListId,
+            'maxResults': 10,
+          });
+        } catch (err) {
+          document.getElementById('tasks-content').innerText = err.message;
+          return;
+        }       
+        const tasks = response.result.items;
+        //Loop through tasks and output to html
+        for (var i = 0; i < tasks.length; i++) {
+            var output = tasks[i].title;
+            document.getElementById('tasks-content').append(output);
+        }
+      }
+
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoadedTasks()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoadedTasks()"></script>
+    
+<script type="text/javascript">
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
+
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const CAL_CLIENT_ID = '821121065712-pn98t9b5p5dsobjl5lbg73l9auaabm33.apps.googleusercontent.com';
+      const CAL_API_KEY = 'AIzaSyCMsEWCT7HVaedHBid5YJ6ehFWJQZ4xf3U';
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC_CALENDAR = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES_CALENDAR = 'https://www.googleapis.com/auth/calendar.readonly';
+
+      //let tokenClient;
+      let gapiInitedCal = false;
+      let gisInitedCal = false;
+
+      document.getElementById('cal_authorize_button').style.visibility = 'hidden';
+      document.getElementById('cal_signout_button').style.visibility = 'hidden';
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoadedCal() {
+        gapi.load('client', initializeGapiClientCal);
+      }
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function initializeGapiClientCal() {
+        await gapi.client.init({
+          apiKey: CAL_API_KEY,
+          discoveryDocs: [DISCOVERY_DOC_CALENDAR],
+        });
+        gapiInitedCal = true;
+        maybeEnableButtonsCal();
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoadedCal() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CAL_CLIENT_ID,
+          scope: SCOPES_CALENDAR,
+          callback: '', // defined later
+        });
+        gisInitedCal = true;
+        maybeEnableButtonsCal();
+      }
+
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtonsCal() {
+        if (gapiInitedCal && gisInitedCal) {
+          document.getElementById('cal_authorize_button').style.visibility = 'visible';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClickCal() {
+        tokenClient.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          document.getElementById('cal_signout_button').style.visibility = 'visible';
+          document.getElementById('cal_authorize_button').innerText = 'Refresh';
+          await listUpcomingEvents();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClient.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClickCal() {
+        const token = gapi.client.getToken();
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token);
+          gapi.client.setToken('');
+          document.getElementById('cal-content').innerText = '';
+          document.getElementById('cal_authorize_button').innerText = 'Authorize';
+          document.getElementById('cal_signout_button').style.visibility = 'hidden';
+        }
+      }
+
+      /**
+       * Print the summary and start datetime/date of the next ten events in
+       * the authorized user's calendar. If no events are found an
+       * appropriate message is printed.
+       */
+      async function listUpcomingEvents() {
+        let response;
+        try {
+          const request = {
+            'calendarId': 'primary',
+            'timeMin': (new Date()).toISOString(),
+            'showDeleted': false,
+            'singleEvents': true,
+            'maxResults': 5,
+            'orderBy': 'startTime',
+          };
+          response = await gapi.client.calendar.events.list(request);
+        } catch (err) {
+          document.getElementById('cal-content').innerText = err.message;
+          return;
+        }
+
+        const events = response.result.items;
+        if (!events || events.length == 0) {
+          document.getElementById('cal-content').innerText = 'No events found.';
+          return;
+        }
+        // Flatten to string to display
+        const output = events.reduce(
+            (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
+            'Events:\n');
+        document.getElementById('cal-content').innerText = output;
+      }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoadedCal()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoadedCal()"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
 </body>
+
 </html>
