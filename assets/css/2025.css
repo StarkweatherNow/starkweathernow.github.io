@@ -1,0 +1,386 @@
+/* === GLOBAL STYLES & VARIABLES === */
+:root {
+    --primary-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --heading-font: 'Montserrat', sans-serif; /* Example, ensure you load it or use a fallback */
+    
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --header-bg: #2c3e50;
+    --header-text: #ecf0f1;
+    --timeline-line-color: #bdc3c7;
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    --accent-color: #3498db; /* Main accent for links, buttons */
+
+    /* Stat Colors */
+    --color-projects: #20C997; /* Teal */
+    --color-leetcode: #FFC107; /* Amber */
+    --color-commits: #28A745;  /* Green */
+    --color-miles: #6610F2;   /* Indigo */
+    --color-weight: #FD6A6A;  /* Coral */
+}
+
+body {
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    margin-top: 0;
+    font-weight: 600;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* === HEADER === */
+header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 2em 1em;
+    text-align: center;
+    border-bottom: 5px solid var(--accent-color);
+}
+
+header h1 {
+    margin-bottom: 0.25em;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* === TIMELINE CONTAINER & AXIS === */
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.timeline-container::before { /* The central timeline axis */
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background-color: var(--timeline-line-color);
+    transform: translateX(-50%);
+}
+
+/* === TIMELINE EVENT CARDS === */
+.timeline-event {
+    position: relative;
+    margin-bottom: 40px;
+    width: 50%;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+/* Alternating sides */
+.timeline-event:nth-child(odd) {
+    left: 0;
+    padding-right: 50px; /* Space for icon */
+}
+
+.timeline-event:nth-child(even) {
+    left: 50%;
+    padding-left: 50px; /* Space for icon */
+}
+
+/* Timeline Icon */
+.timeline-icon {
+    position: absolute;
+    top: 15px; /* Adjust for vertical alignment with card content */
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    border: 3px solid var(--bg-color); /* Creates a nice separation from the line */
+}
+
+.timeline-event:nth-child(odd) .timeline-icon {
+    right: -20px; /* Half of icon width to sit on the line */
+    transform: translateX(50%);
+}
+
+.timeline-event:nth-child(even) .timeline-icon {
+    left: -20px;  /* Half of icon width to sit on the line */
+    transform: translateX(-50%);
+}
+
+.timeline-content {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+
+.timeline-content time {
+    font-size: 0.85em;
+    color: #777;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.timeline-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--header-bg);
+}
+
+.timeline-content p {
+    font-size: 0.95em;
+    margin-bottom: 15px;
+}
+
+.details-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.details-btn:hover {
+    background-color: #2980b9; /* Darker accent */
+    text-decoration: none;
+}
+
+/* Monthly Stats Graph on Timeline */
+.monthly-stats-graph {
+    display: flex;
+    align-items: flex-end;
+    height: 40px; /* Max height for the graph area */
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.stat-bar {
+    background-color: var(--bar-color); /* Set via inline style or specific class */
+    width: 7px; /* Thin bars */
+    margin-right: 5px;
+    border-radius: 2px 2px 0 0;
+    transition: height 0.4s ease-out, opacity 0.3s ease;
+    opacity: 0.85;
+}
+.stat-bar:hover {
+    opacity: 1;
+}
+.stat-bar:last-child {
+    margin-right: 0;
+}
+
+/* === FLOATING STATS SNAPSHOT === */
+.stats-snapshot-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.97);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: auto;
+    max-width: 260px;
+}
+
+.stat-item-floating {
+    display: flex;
+    align-items: center;
+    font-size: 0.85em;
+    color: #333;
+}
+
+.stat-item-floating .stat-icon {
+    color: var(--stat-color); /* Uses color from inline style variable */
+    font-size: 1.1em;
+    width: 20px; /* Fixed width for alignment */
+    text-align: center;
+    margin-right: 10px;
+}
+
+.stat-item-floating .stat-value {
+    color: var(--stat-color); /* Uses color from inline style variable */
+    font-weight: bold;
+    font-size: 1em;
+    min-width: 40px;
+    margin-right: 8px;
+}
+
+.stat-item-floating .stat-label-floating {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.3;
+}
+
+/* === MODAL STYLES === */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    padding-top: 60px; /* Location of the box */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--header-bg);
+}
+.external-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 12px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+.external-link:hover {
+    background-color: #2980b9;
+    text-decoration: none;
+}
+
+
+/* === FOOTER === */
+footer {
+    text-align: center;
+    padding: 2em 1em;
+    background: #e9ecef;
+    color: #555;
+    font-size: 0.9em;
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+}
+footer p {
+    margin: 0.5em 0;
+}
+footer a {
+    color: #333;
+    font-weight: 500;
+}
+footer a:hover {
+    color: var(--accent-color);
+}
+footer .fab { /* For GitHub/LinkedIn icons in footer */
+    margin-right: 5px;
+}
+
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+    .timeline-container::before {
+        left: 20px; /* Move timeline axis to the left */
+    }
+    .timeline-event,
+    .timeline-event:nth-child(even) {
+        width: 100%;
+        left: 0;
+        padding-left: 60px; /* Space for icon on the left */
+        padding-right: 15px;
+    }
+    .timeline-icon,
+    .timeline-event:nth-child(even) .timeline-icon {
+        left: 0; /* Align icon to the left of the card */
+        transform: translateX(0);
+    }
+    .timeline-event:nth-child(odd) .timeline-icon {
+       left: 0; /* Align icon to the left of the card */
+       transform: translateX(0);
+    }
+
+    .stats-snapshot-floating {
+        max-width: 200px;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        gap: 8px;
+    }
+    .stat-item-floating { font-size: 0.75em; }
+    .stat-item-floating .stat-icon { font-size: 1em; margin-right: 6px;}
+
+    header h1 { font-size: 2em; }
+    .modal-content { width: 90%; margin: 10% auto; }
+}
+
+@media (max-width: 480px) {
+    .stats-snapshot-floating {
+        /* Example: For very small screens, maybe hide it or simplify drastically */
+        /* display: none; */
+        font-size: 0.7em; /* Further shrink */
+        padding: 8px;
+        gap: 5px;
+        max-width: 160px;
+    }
+    .stat-item-floating .stat-label-floating {
+        display: none; /* Hide labels, show only icon and value */
+    }
+     .stat-item-floating .stat-value {
+        min-width: 25px; /* Adjust if labels are hidden */
+    }
+    .timeline-content h2 { font-size: 1.3em; }
+    .monthly-stats-graph { height: 30px; }
+    .stat-bar { width: 5px; margin-right: 3px;}
+}
