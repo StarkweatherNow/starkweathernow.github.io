@@ -3,113 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pager Rat | Unofficial Manager for WiFi Pineapple</title>
+    <title>PAGER_RAT // SYSTEM_OVERRIDE</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">PAGER_RAT <span class="blink">_</span></div>
+    <div class="scanlines"></div>
+
+    <nav class="navbar glass-panel">
+        <div class="logo">
+            <span class="prefix">./</span>PAGER_RAT<span class="cursor">_</span>
+        </div>
         <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#security">Security</a>
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="#support" class="btn-secondary">Support</a>
+            <a href="#features" data-text="Capabilities">Capabilities</a>
+            <a href="#roadmap" data-text="Net_Map">Net_Map</a>
+            <a href="#beta-join" class="btn-glitch">JOIN_DAEMON</a>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="container">
-            <span class="badge">v1.0 Release</span>
-            <h1>Command & Control Your<br>WiFi Pineapple.</h1>
-            <p class="subtitle">The secure, lightweight Android client for on-the-go administration. Offline payload injection, WearOS support, and encrypted tunneling.</p>
+        <div class="grid-bg"></div>
+        <div class="container hero-content">
             
-            <div class="cta-group">
-                <a href="#" class="btn-primary">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" height="40">
-                </a>
-                <a href="#features" class="btn-text">View Features &darr;</a>
+            <div class="icon-wrapper">
+                <img src="Pager_Rat_Icon.png" alt="Pager Rat Icon" class="cyber-icon">
+                <div class="icon-reflection"></div>
             </div>
-            
-            <p class="disclaimer-hero">*Requires Hak5 WiFi Pineapple Hardware.</p>
+
+            <div class="text-wrapper">
+                <div class="status-badge">
+                    <span class="indicator"></span> SYSTEM_STATUS: <span class="warning-text">OPEN_BETA v0.8</span>
+                </div>
+                
+                <h1 class="glitch-title" data-text="HI-TECH CONTROL">HI-TECH CONTROL</h1>
+                <h1 class="sub-glitch">LOW-LIFE OPS.</h1>
+                
+                <p class="terminal-text">
+                    > Initializing secure tunnel... <span class="green">[OK]</span><br>
+                    > Bypass desktop requirement... <span class="green">[OK]</span><br>
+                    > Field Ops for WiFi Pineapple engaged.
+                </p>
+                
+                <div class="cta-group">
+                    <a href="https://groups.google.com/g/your-google-group-link" class="cyber-btn primary">
+                        <span class="btn-content">INITIALIZE_BETA</span>
+                        <span class="btn-glitch-effect"></span>
+                    </a>
+                    <a href="#roadmap" class="cyber-btn secondary">
+                        <span class="btn-content">VIEW_ROADMAP</span>
+                    </a>
+                </div>
+                <p class="legal-tiny">Unofficial Tool. Requires Hak5 Hardware. Not affiliated with Hak5 LLC[cite: 167].</p>
+            </div>
         </div>
     </header>
 
     <section id="features" class="section">
         <div class="container">
-            <h2>System Capabilities</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>⚡ Rapid Payload Injection</h3>
-                    <p>No hotspot needed. Download scripts to your phone via 5G and push them to the Pager over a local encrypted link.</p>
+            <h2 class="section-title">SYSTEM_MODULES</h2>
+            <div class="cyber-grid">
+                <div class="cyber-card">
+                    <div class="card-header">
+                        <span class="icon">⚡</span>
+                        <h3>RAPID_INJECT</h3>
+                    </div>
+                    <p>Offline payload deployment via local encrypted link. No hotspot signature required[cite: 20].</p>
                 </div>
-                <div class="card">
-                    <h3>⌚ WearOS Commander</h3>
-                    <p>Trigger scans and check battery life from your wrist. Includes a "Live Green Dot" status tile for instant verification.</p>
+                <div class="cyber-card">
+                    <div class="card-header">
+                        <span class="icon">⌚</span>
+                        <h3>WRIST_UPLINK</h3>
+                    </div>
+                    <p>WearOS integration. Trigger scans and monitor "Live Green Dot" status from your wrist[cite: 21].</p>
                 </div>
-                <div class="card">
-                    <h3>⌨️ Mobile Terminal</h3>
-                    <p>A true admin terminal with a custom "Quick Action" bar (Tab, Ctrl, Esc) for on-the-fly script editing.</p>
+                <div class="cyber-card">
+                    <div class="card-header">
+                        <span class="icon">🛡️</span>
+                        <h3>GHOST_TUNNEL</h3>
+                    </div>
+                    <p>SSH encapsulated traffic. Ed25519 keys + Host Key Pinning. Invisible to the naked eye[cite: 36, 37].</p>
                 </div>
-                <div class="card">
-                    <h3>📂 Encrypted Loot Vault</h3>
-                    <p>All captured logs and handshakes are stored in an isolated, AES-256 encrypted database within the app sandbox.</p>
+                <div class="cyber-card">
+                    <div class="card-header">
+                        <span class="icon">💾</span>
+                        <h3>LOOT_VAULT</h3>
+                    </div>
+                    <p>AES-256 encrypted local storage for captured handshakes and logs. Hardware-backed security[cite: 42].</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="security" class="section dark-bg">
+    <section id="roadmap" class="section dark-sector">
         <div class="container">
-            <div class="split-layout">
-                <div class="text-content">
-                    <h2>The Invisible Wire</h2>
-                    <p>Security isn't a feature; it's the foundation. Pager Rat uses a custom SSH tunneling architecture to ensure your administration traffic never leaks.</p>
-                    <ul class="feature-list">
-                        <li><strong>Host Key Pinning:</strong> Prevents Man-in-the-Middle attacks by memorizing your device's fingerprint.</li>
-                        <li><strong>Ed25519 Keys:</strong> Modern elliptic curve cryptography for instant, secure authentication.</li>
-                        <li><strong>Hardware-Backed Storage:</strong> Keys are locked in the Android Keystore (TEE).</li>
-                    </ul>
+            <h2 class="section-title">COMPLETION_LOG</h2>
+            <div class="cyber-timeline">
+                
+                <div class="timeline-node complete">
+                    <div class="date">PHASE_01</div>
+                    <div class="node-content">
+                        <h3>CORE_ARCH</h3>
+                        <p>Foundation & Keystore Integration[cite: 50].</p>
+                    </div>
                 </div>
-                <div class="visual-content">
-                    <div class="code-block">
-                        <p class="comment"># Establishing Secure Tunnel...</p>
-                        <p>> Auth: Ed25519_Signature <span class="green">VERIFIED</span></p>
-                        <p>> Cipher: ChaCha20-Poly1305</p>
-                        <p>> Handshake: <span class="green">COMPLETED</span></p>
-                        <p>> Tunnel Status: <span class="green">ACTIVE</span></p>
+
+                <div class="timeline-node complete">
+                    <div class="date">PHASE_02</div>
+                    <div class="node-content">
+                        <h3>DAEMON_UPLINK</h3>
+                        <p>SSH Wrapper & Python Service[cite: 53].</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node active">
+                    <div class="scanner-line"></div>
+                    <div class="date pulse">CURRENT_OP</div>
+                    <div class="node-content neon-border">
+                        <h3>PHASE_03e: EXECUTION</h3>
+                        <p>> Remote Payload Run Logic<br>> Interactive Prompts<br>> Output Capture [cite: 57]</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node future">
+                    <div class="date">PENDING...</div>
+                    <div class="node-content">
+                        <h3>PHASE_04: TELEMETRY</h3>
+                        <p>React Dashboard & Visual Graphs[cite: 60].</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-node future">
+                    <div class="date">PENDING...</div>
+                    <div class="node-content">
+                        <h3>PHASE_05: WEAR_OS</h3>
+                        <p>Wrist Widgets & Panic Button[cite: 63].</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="support" class="section">
-        <div class="container center-text">
-            <h2>Support & Community</h2>
-            <p>Need help connecting? Found a bug? Reach out via our official channels.</p>
-            <div class="buttons">
-                <a href="mailto:support@yourdomain.com" class="btn-secondary">Email Support</a>
-                <a href="https://github.com/yourusername/pagerrat-issues" class="btn-secondary">GitHub Issues</a>
+    <section id="beta-join" class="section">
+        <div class="container">
+            <div class="terminal-box">
+                <div class="terminal-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="title">usr/bin/join_beta.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="comment"># Initiating recruitment protocol...</p>
+                    <p>> Target: Early Adopters</p>
+                    <p>> Action: Grant Google Play Access</p>
+                    <br>
+                    <a href="https://groups.google.com/g/your-google-group-link" class="cyber-btn primary full-width">
+                        EXECUTE_JOIN_PROTOCOL()
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="legal-block">
-                <h4>Legal Disclaimer</h4>
-                <p><strong>Pager Rat is an unofficial community project.</strong> It is not affiliated with, endorsed by, sponsored by, or connected to Hak5 LLC in any way.</p>
-                <p>"Hak5" and "WiFi Pineapple" are registered trademarks of Hak5 LLC. All trademarks are the property of their respective owners and are used here for descriptive purposes only (nominative fair use) to indicate compatibility.</p>
-                <p>This application is provided "as is" for educational and legitimate network administration purposes only. The developer assumes no liability for misuse.</p>
+            <p class="copyright">PAGER_RAT // SYSTEM V.1.0 // EST. 2026</p>
+            <div class="legal">
+                "Hak5" and "WiFi Pineapple" are trademarks of Hak5 LLC. This is a community project[cite: 168].
             </div>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <span class="separator">|</span>
-                <a href="#">Terms of Service</a>
+            <div class="links">
+                <a href="privacy.html">PRIVACY_PROTOCOL</a>
+                <a href="mailto:support@pagerrat.com">SUBMIT_TICKET</a>
             </div>
-            <p class="copyright">&copy; 2026 Pager Rat Dev. All rights reserved.</p>
         </div>
     </footer>
 
