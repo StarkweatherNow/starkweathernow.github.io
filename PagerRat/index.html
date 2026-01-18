@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pager Rat | Unofficial Manager for WiFi Pineapple</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">PAGER_RAT <span class="blink">_</span></div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#security">Security</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="#support" class="btn-secondary">Support</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge">v1.0 Release</span>
+            <h1>Command & Control Your<br>WiFi Pineapple.</h1>
+            <p class="subtitle">The secure, lightweight Android client for on-the-go administration. Offline payload injection, WearOS support, and encrypted tunneling.</p>
+            
+            <div class="cta-group">
+                <a href="#" class="btn-primary">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" height="40">
+                </a>
+                <a href="#features" class="btn-text">View Features &darr;</a>
+            </div>
+            
+            <p class="disclaimer-hero">*Requires Hak5 WiFi Pineapple Hardware.</p>
+        </div>
+    </header>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2>System Capabilities</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>⚡ Rapid Payload Injection</h3>
+                    <p>No hotspot needed. Download scripts to your phone via 5G and push them to the Pager over a local encrypted link.</p>
+                </div>
+                <div class="card">
+                    <h3>⌚ WearOS Commander</h3>
+                    <p>Trigger scans and check battery life from your wrist. Includes a "Live Green Dot" status tile for instant verification.</p>
+                </div>
+                <div class="card">
+                    <h3>⌨️ Mobile Terminal</h3>
+                    <p>A true admin terminal with a custom "Quick Action" bar (Tab, Ctrl, Esc) for on-the-fly script editing.</p>
+                </div>
+                <div class="card">
+                    <h3>📂 Encrypted Loot Vault</h3>
+                    <p>All captured logs and handshakes are stored in an isolated, AES-256 encrypted database within the app sandbox.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="security" class="section dark-bg">
+        <div class="container">
+            <div class="split-layout">
+                <div class="text-content">
+                    <h2>The Invisible Wire</h2>
+                    <p>Security isn't a feature; it's the foundation. Pager Rat uses a custom SSH tunneling architecture to ensure your administration traffic never leaks.</p>
+                    <ul class="feature-list">
+                        <li><strong>Host Key Pinning:</strong> Prevents Man-in-the-Middle attacks by memorizing your device's fingerprint.</li>
+                        <li><strong>Ed25519 Keys:</strong> Modern elliptic curve cryptography for instant, secure authentication.</li>
+                        <li><strong>Hardware-Backed Storage:</strong> Keys are locked in the Android Keystore (TEE).</li>
+                    </ul>
+                </div>
+                <div class="visual-content">
+                    <div class="code-block">
+                        <p class="comment"># Establishing Secure Tunnel...</p>
+                        <p>> Auth: Ed25519_Signature <span class="green">VERIFIED</span></p>
+                        <p>> Cipher: ChaCha20-Poly1305</p>
+                        <p>> Handshake: <span class="green">COMPLETED</span></p>
+                        <p>> Tunnel Status: <span class="green">ACTIVE</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="section">
+        <div class="container center-text">
+            <h2>Support & Community</h2>
+            <p>Need help connecting? Found a bug? Reach out via our official channels.</p>
+            <div class="buttons">
+                <a href="mailto:support@yourdomain.com" class="btn-secondary">Email Support</a>
+                <a href="https://github.com/yourusername/pagerrat-issues" class="btn-secondary">GitHub Issues</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="legal-block">
+                <h4>Legal Disclaimer</h4>
+                <p><strong>Pager Rat is an unofficial community project.</strong> It is not affiliated with, endorsed by, sponsored by, or connected to Hak5 LLC in any way.</p>
+                <p>"Hak5" and "WiFi Pineapple" are registered trademarks of Hak5 LLC. All trademarks are the property of their respective owners and are used here for descriptive purposes only (nominative fair use) to indicate compatibility.</p>
+                <p>This application is provided "as is" for educational and legitimate network administration purposes only. The developer assumes no liability for misuse.</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p class="copyright">&copy; 2026 Pager Rat Dev. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

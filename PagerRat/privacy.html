@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Policy | Pager Rat</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .policy-container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        h1 { border-bottom: 1px solid #333; padding-bottom: 20px; }
+        h3 { margin-top: 30px; color: #fff; }
+        ul { margin-left: 20px; color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="policy-container">
+        <h1>Privacy Policy</h1>
+        <p><strong>Last Updated: January 2026</strong></p>
+        
+        <p>This Privacy Policy explains how Pager Rat ("we", "our", or "the App") handles your information. Pager Rat is designed with a "Privacy First" architecture. We do not collect, store, or transmit your personal data to any external servers.</p>
+
+        <h3>1. Data We Do Not Collect</h3>
+        <ul>
+            <li>We do not track your location using GPS/Network providers for analytics.</li>
+            <li>We do not collect usage statistics or crash reports automatically.</li>
+            <li>We do not upload your files, scripts, or "loot" to any cloud server.</li>
+        </ul>
+
+        <h3>2. Data Stored Locally on Your Device</h3>
+        <p>The App stores the following data strictly on your local device (in the Android App Sandbox):</p>
+        <ul>
+            <li><strong>SSH Keys & Credentials:</strong> Used to authenticate with your WiFi Pineapple. These are encrypted using the Android Keystore system.</li>
+            <li><strong>Connection Logs:</strong> Saved locally for debugging purposes. You can clear these at any time in settings.</li>
+            <li><strong>Downloaded Payloads:</strong> Scripts you explicitly download are stored in the app's private storage until you deploy them.</li>
+        </ul>
+
+        <h3>3. Permissions</h3>
+        <p>The App requests the following permissions for specific functionality:</p>
+        <ul>
+            <li><strong>INTERNET:</strong> Required to establish the SSH tunnel to your device.</li>
+            <li><strong>ACCESS_NETWORK_STATE:</strong> Required to determine if you are connected to the correct WiFi network before attempting connection.</li>
+            <li><strong>READ_EXTERNAL_STORAGE:</strong> (Optional) Required only if you wish to import payload files from your phone's Downloads folder.</li>
+        </ul>
+
+        <h3>4. Third-Party Services</h3>
+        <p>The App does not use any third-party advertising SDKs or tracking frameworks.</p>
+
+        <h3>5. Contact Us</h3>
+        <p>If you have questions about this Privacy Policy, please contact us at: <a href="mailto:support@yourdomain.com" style="color:var(--accent)">support@yourdomain.com</a></p>
+        
+        <br><br>
+        <a href="index.html" class="btn-secondary">&larr; Back to Home</a>
+    </div>
+</body>
+</html>
