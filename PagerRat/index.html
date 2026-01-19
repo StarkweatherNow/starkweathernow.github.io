@@ -6,18 +6,15 @@
     <title>PAGER_RAT // SYSTEM_OVERRIDE</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <meta property="og:title" content="Pager Rat | Android Open Beta">
-    
     <meta property="og:description" content="Join the Open Beta. The unofficial Android companion for WiFi Pineapple. Features SSH tunneling, GitHub repo access over cellular, and Secure Loot Vault.">
-    
     <meta property="og:image" content="https://brandonstarkweather.com/PagerRat/Pager_Rat_Icon.png">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    
     <meta property="og:url" content="https://brandonstarkweather.com/PagerRat/index.html">
     <meta property="og:type" content="website">
-    
     <meta name="theme-color" content="#d300c5">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -68,8 +65,9 @@
                         <span class="btn-content">INITIALIZE_BETA</span>
                         <span class="btn-glitch-effect"></span>
                     </a>
-                    <a href="#roadmap" class="cyber-btn secondary">
-                        <span class="btn-content">VIEW_ROADMAP</span>
+                    
+                    <a href="https://play.google.com/store/apps/details?id=com.pagermanager.app" target="_blank" class="cyber-btn secondary">
+                        <span class="btn-content">GET_BINARY (PLAY STORE)</span>
                     </a>
                 </div>
                 <p class="legal-tiny">Unofficial Tool. Requires Hak5 Hardware. Not affiliated with Hak5 LLC.</p>
@@ -95,13 +93,6 @@
                     </div>
                     <p>Use the app to connect to any Github repo and install payloads directly over SSH. No need to connect the pager to a hotspot.</p>
                 </div>
-                <!-- <div class="cyber-card">
-                    <div class="card-header">
-                        <span class="icon">⌚</span>
-                        <h3>WRIST_UPLINK</h3>
-                    </div>
-                    <p>WearOS integration. Trigger scans and monitor "Live Green Dot" status from your wrist.</p>
-                </div> -->               
                 <div class="cyber-card">
                     <div class="card-header">
                         <span class="icon">💾</span>
@@ -193,12 +184,16 @@
                     <span class="title">usr/bin/join_beta.sh</span>
                 </div>
                 <div class="terminal-body">
-                    <p class="comment"># Initiating recruitment protocol...</p>
-                    <p>> Target: Early Adopters</p>
-                    <p>> Action: Grant Google Play Access</p>
-                    <br>
-                    <a href="https://groups.google.com/g/pager-rat---beta-testing" class="cyber-btn primary full-width">
+                    <p class="comment"># PROTOCOL 1: Authorization</p>
+                    <p>> Join the Google Group to whitelist your account.</p>
+                    <a href="https://groups.google.com/g/pager-rat---beta-testing" class="cyber-btn primary full-width" style="margin-bottom: 20px;">
                         EXECUTE_JOIN_PROTOCOL()
+                    </a>
+
+                    <p class="comment"># PROTOCOL 2: Deployment</p>
+                    <p>> Download the secure binary from the Store.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.pagermanager.app" target="_blank" class="cyber-btn secondary full-width">
+                        INITIATE_DOWNLOAD_STORE()
                     </a>
                 </div>
             </div>
