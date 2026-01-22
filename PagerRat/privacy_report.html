@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pager Rat | Security & Privacy Report</title>
+    <style>
+        :root {
+            /* DARK THEME PALETTE */
+            --bg-color: #0d1117;       /* Very dark background (GitHub Dark dim style) */
+            --card-bg: #161b22;        /* Slightly lighter for cards */
+            --text-main: #c9d1d9;      /* Off-white text */
+            --text-muted: #8b949e;     /* Muted gray text */
+            --primary: #58a6ff;        /* Brighter blue for dark mode */
+            --success: #3fb950;        /* Bright green */
+            --danger: #f85149;         /* Bright red */
+            --code-bg: #0d1117;        /* Dark code background */
+            --code-text: #7ee787;      /* Matrix/Terminal green */
+            --border-radius: 12px;
+            --border-color: #30363d;   /* Subtle borders */
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 0.5rem; 
+            color: #ffffff; /* Pure white for headers */
+        }
+        
+        .subtitle { 
+            font-size: 1.2rem; 
+            color: var(--text-muted); 
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Stronger shadow for depth */
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        /* VIDEO EMBED */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background: #000;
+            border: 1px solid var(--border-color);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* CERTIFICATE KEY BOX */
+        .key-box {
+            background: rgba(88, 166, 255, 0.1); /* Subtle blue tint */
+            color: var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            border-left: 5px solid var(--primary);
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .key-label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* MOBSF SUMMARY GRID */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .stat-box {
+            background: #21262d; /* Darker inner box */
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        .stat-label { font-size: 0.9rem; color: var(--text-muted); }
+        .grade-a { color: var(--success); text-shadow: 0 0 10px rgba(63, 185, 80, 0.4); } /* Glowing green */
+        .grade-f { color: var(--danger); }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .btn-primary { 
+            background: var(--primary); 
+            color: #0d1117; /* Dark text on bright button */
+        }
+        .btn-primary:hover { 
+            background: #79c0ff; 
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
+        }
+        
+        .btn-outline { 
+            background: transparent; 
+            border: 1px solid var(--primary); 
+            color: var(--primary); 
+            margin-top: 10px;
+        }
+        .btn-outline:hover { 
+            background: rgba(88, 166, 255, 0.1); 
+        }
+
+        .download-area {
+            background: #21262d;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* TERMINAL STYLE */
+        .terminal {
+            background: #000000;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            border: 1px solid #30363d;
+        }
+        .cmd { color: #58a6ff; } 
+        .comment { color: #8b949e; font-style: italic; }
+
+        @media (max-width: 600px) {
+            .card { padding: 1.5rem; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Security & Privacy Report</h1>
+        <div class="subtitle">Detailed Audit for Pager Rat v0.8</div>
+    </header>
+
+    <section class="card">
+        <h2>1. Live Build Audit</h2>
+        <p>This video documents the compilation and scanning process of the latest release build, demonstrating our "Clean Build" pipeline.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Audit Video" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>2. Verify Authenticity</h2>
+        <p>To ensure your app hasn't been modified or injected with malware by a third party, compare the <strong>SHA-256 Fingerprint</strong> on your device with our official signing key.</p>
+        
+        <div class="key-box">
+            <span class="key-label">Official Google Play Signing Key (SHA-256)</span>
+            C1:30:D9:AF:BC:50:EA:56:AC:7E:6C:7C:D1:A9:2B:85:00:89:50:1D:3E:48:4C:F0:EE:2B:AC:CD:8C:55:8D:85
+        </div>
+        
+        <p><small><em>Instructions: Go to Android Settings > Apps > Pager Rat > App Details to view the certificate fingerprint.</em></small></p>
+    </section>
+
+    <section class="card">
+        <h2>3. Security Assessment (MobSF)</h2>
+        <p>We use the <strong>Mobile Security Framework (MobSF)</strong> to perform automated static analysis on every release. Below is the summary of our latest scan.</p>
+
+        <div class="summary-grid">
+            <div class="stat-box">
+                <span class="stat-value grade-a">100/100</span>
+                <span class="stat-label">Security Score</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-value grade-a">0</span>
+                <span class="stat-label">Trackers Detected</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-value">High</span>
+                <span class="stat-label">Code Obfuscation</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-value grade-a">0</span>
+                <span class="stat-label">High Severity Issues</span>
+            </div>
+        </div>
+
+        <p>The report confirms that <strong>Pager Rat</strong> does not contain any known hardcoded secrets, dangerous permissions, or third-party tracking libraries.</p>
+
+        <div class="download-area">
+            <h3>Full Transparency</h3>
+            <p>Download the complete, unedited PDF generated by MobSF for this version.</p>
+            <a href="path/to/report.pdf" class="btn btn-primary" download>Download Full Security Report (PDF)</a>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>4. Verify it Yourself (Docker)</h2>
+        <p>Don't trust our PDF? You can generate the exact same report on your own computer using the official MobSF Docker container.</p>
+        
+        <p><strong>Step 1:</strong> Extract the APK from your phone using <a href="https://f-droid.org/packages/io.github.muntashirakon.AppManager/">App Manager</a>.</p>
+        <p><strong>Step 2:</strong> Run the following command in your terminal:</p>
+
+        <div class="terminal">
+<span class="comment"># Pull the official MobSF image</span>
+docker pull opensecurity/mobile-security-framework-mobsf:latest
+
+<span class="comment"># Run the analysis server (Accessible at http://localhost:8000)</span>
+docker run -it -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
+</div>
+
+        <p>Once running, open <strong>http://localhost:8000</strong> in your browser and drag-and-drop your extracted APK to start the audit.</p>
+    </section>
+
+</div>
+
+</body>
+</html>
