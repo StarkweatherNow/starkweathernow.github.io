@@ -21,6 +21,39 @@ body {
     overflow-x: hidden;
 }
 
+/* --- LINKS & BUTTONS (CYBERPUNK STYLE) --- */
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+            /* Subtle neon glow on hover */
+            text-shadow: 0 0 8px rgba(88, 166, 255, 0.75); 
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #0d1117; /* Dark text on bright button for contrast */
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            border: 1px solid var(--primary);
+        }
+        .btn:hover { 
+            background: var(--primary-hover); 
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4); /* Button Glow */
+            color: #000;
+            text-shadow: none;
+        }
+
 /* CRT Scanline Overlay */
 .scanlines {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
