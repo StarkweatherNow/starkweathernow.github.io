@@ -236,7 +236,7 @@
 <div class="container">
     <header>
         <h1>Security Assessment Report</h1>
-        <div class="subtitle">Pager Rat v0.8.7 | Audit Date: Jan 22, 2026</div>
+        <div class="subtitle">Pager Rat v0.8.7 | Audit Date: Jan 23, 2026</div>
     </header>
 
     <section class="card">
@@ -244,7 +244,7 @@
         <div class="dashboard-grid">
             
             <div class="score-card">
-                <div class="score-huge">63</div>
+                <div class="score-huge">65</div>
                 <span class="score-label">Security Score (100)</span>
                 <span class="risk-badge">LOW RISK</span>
 
@@ -263,7 +263,7 @@
                     </div>
                     <div class="finding-box">
                         <span class="f-label medium">MEDIUM WARNINGS</span>
-                        <span class="f-count medium">12</span>
+                        <span class="f-count medium">11</span>
                     </div>
                     <div class="finding-box">
                         <span class="f-label info">INFO / LOW</span>
@@ -288,87 +288,140 @@
     </section>
 
     <section class="card">
-        <h2>2. False Positives & Warnings Report</h2>
-        <p>Static analysis tools often flag standard system libraries and features as "Warnings." This table analyzes the 12 warnings found in the report and explains why they are safe.</p>
-        
-        <table class="audit-table">
-            <thead>
-                <tr>
-                    <th width="30%">Finding</th>
-                    <th width="35%">Reason Flagged</th>
-                    <th width="35%">Actual Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <strong>Permission: BIND_REMOTEVIEWS</strong><br>
-                        <span class="badge badge-system">Manifest</span>
-                    </td>
-                    <td>Service is exported to other apps.</td>
-                    <td>
-                        <span class="badge badge-safe">Required Feature</span><br>
-                        Necessary for the Home Screen Widget to function. Protected by system-level permissions.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Execute Raw SQL Query</strong><br>
-                        <span class="badge badge-system">Database</span>
-                    </td>
-                    <td>Scanner found SQL keywords in code.</td>
-                    <td>
-                        <span class="badge badge-safe">False Positive</span><br>
-                        We use <strong>Android Room</strong>. It generates secure SQL at compile-time, preventing injection attacks.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Services: androidx.work</strong><br>
-                        <span class="badge badge-system">Library</span>
-                    </td>
-                    <td>Background services have broad permissions.</td>
-                    <td>
-                        <span class="badge badge-safe">Google Library</span><br>
-                        This is <strong>WorkManager</strong>, Google's standard library for safe background tasks (e.g., SSH keep-alives).
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Receiver: ProfileInstaller</strong><br>
-                        <span class="badge badge-system">Library</span>
-                    </td>
-                    <td>Exported broadcast receiver found.</td>
-                    <td>
-                        <span class="badge badge-safe">Google Library</span><br>
-                        Standard Google library that optimizes app installation speed via the Play Store.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>App copies data to clipboard</strong><br>
-                        <span class="badge badge-system">Code</span>
-                    </td>
-                    <td>Code exists to write to clipboard.</td>
-                    <td>
-                        <span class="badge badge-safe">Intended Feature</span><br>
-                        The app includes the ability to copy text to the clipboard for user convenience.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Trusts System Certificates</strong><br>
-                        <span class="badge badge-system">Config</span>
-                    </td>
-                    <td>Config explicitly mentions system CAs.</td>
-                    <td>
-                        <span class="badge badge-safe">Standard Behavior</span><br>
-                        The app trusts standard Android System CAs (like Google/Verisign) but blocks user-installed proxy certs.
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <h2>2. False Positives & Warnings Report</h2>
+    <p>Static analysis tools often flag standard system libraries and features as "Warnings." This table analyzes the warnings found in the report and explains why they are safe.</p>
+    
+    <table class="audit-table">
+        <thead>
+            <tr>
+                <th width="30%">Finding</th>
+                <th width="35%">Reason Flagged</th>
+                <th width="35%">Actual Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>Permission: BIND_REMOTEVIEWS</strong><br>
+                    <span class="badge badge-system">Manifest</span>
+                </td>
+                <td>Service is exported to other apps.</td>
+                <td>
+                    <span class="badge badge-safe">Required Feature</span><br>
+                    Necessary for the Home Screen Widget to function. Protected by system-level permissions.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <strong>MD5 is a weak hash</strong><br>
+                    <span class="badge badge-system">Cryptography</span>
+                </td>
+                <td>Scanner found `MD5Digest` class in Bouncy Castle library.</td>
+                <td>
+                    <span class="badge badge-safe">False Positive</span><br>
+                    Artifact of the `bcprov` library. The app explicitly enforces <strong>AES-256-CTR</strong> and does not use MD5 for encryption.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>SHA-1 is a weak hash</strong><br>
+                    <span class="badge badge-system">Cryptography</span>
+                </td>
+                <td>Scanner found `SHA1Digest` class in Bouncy Castle library.</td>
+                <td>
+                    <span class="badge badge-safe">False Positive</span><br>
+                    Artifact of the `bcprov` library. The app config disables weak ciphers. The class exists in the binary but is never invoked.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>Services: androidx.work</strong><br>
+                    <span class="badge badge-system">Library</span>
+                </td>
+                <td>Background services have broad permissions.</td>
+                <td>
+                    <span class="badge badge-safe">Google Library</span><br>
+                    This is <strong>WorkManager</strong>, Google's standard library for safe background tasks (e.g., SSH keep-alives).
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>Receiver: ProfileInstaller</strong><br>
+                    <span class="badge badge-system">Library</span>
+                </td>
+                <td>Exported broadcast receiver found.</td>
+                <td>
+                    <span class="badge badge-safe">Google Library</span><br>
+                    Standard Google library that optimizes app installation speed via the Play Store.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>Execute Raw SQL Query</strong><br>
+                    <span class="badge badge-system">Database</span>
+                </td>
+                <td>Scanner found SQL keywords in code.</td>
+                <td>
+                    <span class="badge badge-safe">False Positive</span><br>
+                    We use <strong>Android Room</strong>. It generates secure SQL at compile-time and uses parameterized queries, preventing injection attacks.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>Insecure Random Number Generator</strong><br>
+                    <span class="badge badge-system">Code Quality</span>
+                </td>
+                <td>Usage of `java.util.UUID` detected.</td>
+                <td>
+                    <span class="badge badge-safe">Acceptable Risk</span><br>
+                    Used solely for generating database primary keys (UUIDs). Cryptographic keys are generated using Bouncy Castle's SecureRandom.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>IP Address / Hardcoded User</strong><br>
+                    <span class="badge badge-system">Security</span>
+                </td>
+                <td>Default string literals found in `AddDeviceViewModel`.</td>
+                <td>
+                    <span class="badge badge-safe">Test Data</span><br>
+                    These are UI placeholders (e.g., "172.16.52.1", "root") for the "Add Device" form, not active credentials.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>App copies data to clipboard</strong><br>
+                    <span class="badge badge-system">Code</span>
+                </td>
+                <td>Code exists to write to clipboard.</td>
+                <td>
+                    <span class="badge badge-safe">Intended Feature</span><br>
+                    The app includes the ability to copy terminal output or command snippets to the clipboard for user convenience.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>Trusts System Certificates</strong><br>
+                    <span class="badge badge-system">Config</span>
+                </td>
+                <td>Config explicitly mentions system CAs.</td>
+                <td>
+                    <span class="badge badge-safe">Standard Behavior</span><br>
+                    The app trusts standard Android System CAs (like Google/Verisign) but blocks user-installed proxy certs to prevent MITM.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
     <section class="card">
         <h2>3. Public Key Verification</h2>
@@ -434,7 +487,7 @@
         data: {
             labels: ['High', 'Medium', 'Info', 'Secure'],
             datasets: [{
-                data: [0, 12, 3, 5], // '5' is a visual placeholder for "Secure" to match donut ratio
+                data: [0, 11, 3, 3], // '5' is a visual placeholder for "Secure" to match donut ratio
                 backgroundColor: [
                     '#da3633', // High (Red)
                     '#d29922', // Medium (Orange)
@@ -460,14 +513,10 @@
     new Chart(ctxPrivacy, {
         type: 'doughnut',
         data: {
-            labels: ['Trackers', 'Permissions', 'Secure'],
+            labels: ['Secure'],
             datasets: [{
-                data: [0, 2, 10], // Visual representation of low privacy risk
-                backgroundColor: [
-                    '#da3633', // Trackers (Red)
-                    '#d29922', // Permissions (Orange)
-                    '#2ea043'  // Secure (Green)
-                ],
+                data: [100], // Set to 100 to show a complete green ring
+                backgroundColor: ['#2ea043'],
                 borderWidth: 0
             }]
         },
@@ -479,7 +528,19 @@
                 legend: { display: false },
                 title: { display: true, text: 'Privacy Risk', color: '#8b949e', font: {size: 11} }
             }
-        }
+        },
+        plugins: [{
+            id: 'centerText',
+            afterDraw: (chart) => {
+                const { ctx, chartArea: { left, top, width, height } } = chart;
+                ctx.save();
+                ctx.font = 'bold 30px Arial';
+                ctx.fillStyle = '#ffffff'; // Match your dashboard text color
+                ctx.textAlign = 'center';
+                ctx.fillText('0', left + width / 2, top + height / 2 + 10);
+                ctx.restore();
+            }
+        }]
     });
 </script>
 
