@@ -236,7 +236,7 @@
 <div class="container">
     <header>
         <h1>Security Assessment Report</h1>
-        <div class="subtitle">Pager Rat v0.8.8 | Audit Date: Jan 24, 2026</div>
+        <div class="subtitle">Pager Rat v0.8.9 | Audit Date: Jan 24, 2026</div>
     </header>
 
     <section class="card">
@@ -244,7 +244,7 @@
         <div class="dashboard-grid">
             
             <div class="score-card">
-                <div class="score-huge">65</div>
+                <div class="score-huge">60</div>
                 <span class="score-label">Security Score (100)</span>
                 <span class="risk-badge">LOW RISK</span>
 
@@ -259,7 +259,7 @@
                 <div class="findings-list" style="margin-bottom: 20px;">
                     <div class="finding-box">
                         <span class="f-label high">HIGH SEVERITY</span>
-                        <span class="f-count high">0</span>
+                        <span class="f-count high">1</span>
                     </div>
                     <div class="finding-box">
                         <span class="f-label medium">MEDIUM WARNINGS</span>
@@ -300,6 +300,18 @@
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>
+                    <strong>Cleartext Traffic Permitted</strong><br>
+                    <span class="badge badge-system">Network</span>
+                </td>
+                <td>Domain config is insecurely configured to permit clear text traffic to 172.16.52.1.</td>
+                <td>
+                    <span class="badge badge-safe">Native Feature</span><br>
+                    This configuration allows the application to mimic the native Remote Pager Access functionality built into the device's original firmware.
+                </td>
+            </tr>
+
             <tr>
                 <td>
                     <strong>Permission: BIND_REMOTEVIEWS</strong><br>
@@ -411,7 +423,7 @@
             <tr>
                 <td>
                     <strong>Trusts System Certificates</strong><br>
-                    <span class="badge badge-system">Config</span>
+                    <span class="badge badge-system">Network</span>
                 </td>
                 <td>Config explicitly mentions system CAs.</td>
                 <td>
@@ -429,8 +441,7 @@
 
         <h3>Step A: Get the App</h3>
         <p>If you don't have the APK yet, you can extract it from your device after downloading it from the Google Play Store (Currently in BETA, free Google Group join required for access).</p>
-        <p><a href="https://play.google.com/store/apps/details?id=com.pagermanager.app" class="btn">Download Latest APK (v0.8.8)</a></p>
-
+        <p><a href="https://play.google.com/store/apps/details?id=com.pagermanager.app" class="btn">Download Latest APK (v0.8.9)</a></p>
         <h3>Step B: Verify the Signature</h3>
         <div class="key-box">
             <span class="key-label">Official Signing Key (SHA-256 Fingerprint)</span>
@@ -487,7 +498,7 @@
         data: {
             labels: ['High', 'Medium', 'Info', 'Secure'],
             datasets: [{
-                data: [0, 11, 3, 3], // '5' is a visual placeholder for "Secure" to match donut ratio
+                data: [1, 11, 3, 3], // '5' is a visual placeholder for "Secure" to match donut ratio
                 backgroundColor: [
                     '#da3633', // High (Red)
                     '#d29922', // Medium (Orange)
