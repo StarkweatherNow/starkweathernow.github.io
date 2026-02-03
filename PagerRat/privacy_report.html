@@ -7,14 +7,14 @@
 
     <meta name="theme-color" content="#58a6ff"> <meta property="og:type" content="website">
     <meta property="og:url" content="https://brandonstarkweather.com/PagerRat/privacy_report.html">
-    <meta property="og:title" content="Pager Rat Security Report | Grade A">
-    <meta property="og:description" content="Verified Security Score: 65/100 (Low Risk). Zero High Severity vulnerabilities found in v0.8.8. Click to view the full audit.">
+    <meta property="og:title" content="Pager Rat Security Report | Grade B">
+    <meta property="og:description" content="Verified Security Score: 59/100 (Medium Risk). Click to view the full audit.">
     <meta property="og:image" content="https://brandonstarkweather.com/PagerRat/Report_Preview.png">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://brandonstarkweather.com/PagerRat/privacy_report.html">
-    <meta property="twitter:title" content="Pager Rat Security Report | Grade A">
-    <meta property="twitter:description" content="Verified Security Score: 65/100 (Low Risk). Zero High Severity vulnerabilities found in v0.8.8.">
+    <meta property="twitter:title" content="Pager Rat Security Report | Grade B">
+    <meta property="twitter:description" content="Verified Security Score: 59/100 (Medium Risk). Click to view the full audit.">
     <meta property="twitter:image" content="https://brandonstarkweather.com/PagerRat/Report_Preview.png">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -236,7 +236,7 @@
 <div class="container">
     <header>
         <h1>Security Assessment Report</h1>
-        <div class="subtitle">Pager Rat v0.8.9 | Audit Date: Jan 24, 2026</div>
+        <div class="subtitle">Pager Rat v0.9.1 | Audit Date: Jan 24, 2026</div>
     </header>
 
     <section class="card">
@@ -244,13 +244,13 @@
         <div class="dashboard-grid">
             
             <div class="score-card">
-                <div class="score-huge">60</div>
+                <div class="score-huge">59</div>
                 <span class="score-label">Security Score (100)</span>
-                <span class="risk-badge">LOW RISK</span>
+                <span class="risk-badge">MEDIUM RISK</span>
 
                 <div class="grade-box">
                     <span class="score-label">Grade</span>
-                    <div class="grade-letter">A</div>
+                    <div class="grade-letter">B</div>
                 </div>
                 <p><a href="Security_Report.pdf" class="btn">Download Latest Report</a></p>
             </div>
@@ -263,11 +263,11 @@
                     </div>
                     <div class="finding-box">
                         <span class="f-label medium">MEDIUM WARNINGS</span>
-                        <span class="f-count medium">11</span>
+                        <span class="f-count medium">13</span>
                     </div>
                     <div class="finding-box">
                         <span class="f-label info">INFO / LOW</span>
-                        <span class="f-count info">3</span>
+                        <span class="f-count info">4</span>
                     </div>
                     <div class="finding-box">
                         <span class="f-label secure">TRACKERS</span>
@@ -419,6 +419,18 @@
                     The app includes the ability to copy terminal output or command snippets to the clipboard for user convenience.
                 </td>
             </tr>
+<tr>
+                <td>
+                    <strong>App can read/write to External Storage</strong><br>
+                    <span class="badge badge-system">Code</span>
+                </td>
+                <td>Daemon scanner detects external storage devices.</td>
+                <td>
+                    <span class="badge badge-safe">False Positive</span><br>
+                    No Android Permission Request: The Android application does not request READ_EXTERNAL_STORAGE or WRITE_EXTERNAL_STORAGE permissions from the Android OS.
+                </td>
+            </tr>
+
 
             <tr>
                 <td>
@@ -441,7 +453,7 @@
 
         <h3>Step A: Get the App</h3>
         <p>If you don't have the APK yet, you can extract it from your device after downloading it from the Google Play Store (Currently in BETA, free Google Group join required for access).</p>
-        <p><a href="https://play.google.com/store/apps/details?id=com.pagermanager.app" class="btn">Download Latest APK (v0.8.9)</a></p>
+        <p><a href="https://play.google.com/store/apps/details?id=com.pagermanager.app" class="btn">Download Latest APK (v0.9.1)</a></p>
         <h3>Step B: Verify the Signature</h3>
         <div class="key-box">
             <span class="key-label">Official Signing Key (SHA-256 Fingerprint)</span>
@@ -498,7 +510,7 @@
         data: {
             labels: ['High', 'Medium', 'Info', 'Secure'],
             datasets: [{
-                data: [1, 11, 3, 3], // '5' is a visual placeholder for "Secure" to match donut ratio
+                data: [1, 113, 4, 3], // '5' is a visual placeholder for "Secure" to match donut ratio
                 backgroundColor: [
                     '#da3633', // High (Red)
                     '#d29922', // Medium (Orange)
@@ -557,7 +569,7 @@
 
     <footer>
         <div class="container">
-            <p class="copyright">PAGER_RAT // SYSTEM V.0.8 // EST. 2026</p>
+            <p class="copyright">PAGER_RAT // SYSTEM V.0.9 // EST. 2026</p>
             <div class="legal">
                 <p>"Hak5" and "WiFi Pineapple" are trademarks of Hak5 LLC. This is a community project.</p>
             </div>
