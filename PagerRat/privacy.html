@@ -14,7 +14,7 @@
 <body>
     <div class="policy-container">
         <h1>Privacy Policy</h1>
-        <p><strong>Last Updated: January 2026</strong></p>
+        <p><strong>Last Updated: February 2026</strong></p>
         
         <p>This Privacy Policy explains how Pager Rat ("we", "our", or "the App") handles your information. Pager Rat is designed with a "Privacy First" architecture. We do not collect, store, or transmit your personal data to any external servers.</p>
 
@@ -25,45 +25,39 @@
             <li>We do not upload your files, scripts, or "loot" to any cloud server.</li>
         </ul>
 
-        <h3>2. Data Stored Locally on Your Device</h3>
-        <p>The App stores the following data strictly on your local device (in the Android App Sandbox):</p>
+        <h3>2. Security Architecture & Local Storage</h3>
+        <p>Your data is stored strictly on your local device within the Android App Sandbox. We utilize industry-standard encryption verified by our latest <a href="privacy_report.html" style="color:var(--accent)">Security Audit</a>.</p>
         <ul>
-            <li><strong>SSH Keys & Credentials:</strong> Used to authenticate with your WiFi Pineapple. These are encrypted using the Android Keystore system.</li>
-            <li><strong>Connection Logs:</strong> Saved locally for debugging purposes. You can clear these at any time in settings.</li>
-            <li><strong>Downloaded Payloads:</strong> Scripts you explicitly download are stored in the app's private storage until you deploy them.</li>
+            <li><strong>Database Encryption:</strong> All sensitive records (logs, handshakes) are encrypted at rest using <strong>SQLCipher</strong> (256-bit AES).</li>
+            <li><strong>SSH Keys:</strong> Authentication credentials are secured using the Android Keystore system.</li>
+            <li><strong>Connection Security:</strong> The app utilizes <strong>SSL Certificate Pinning</strong> to detect and prevent Man-in-the-Middle (MITM) attacks on secure channels.</li>
         </ul>
 
-        <h3>3. Permissions</h3>
-        <p>The App requests the following permissions for specific functionality:</p>
+        <h3>3. Permissions & Usage</h3>
+        <p>The App requests specific permissions to function. Here is how we use them:</p>
         <ul>
-            <li><strong>INTERNET:</strong> Required to establish the SSH tunnel to your device.</li>
-            <li><strong>ACCESS_NETWORK_STATE:</strong> Required to determine if you are connected to the correct WiFi network before attempting connection.</li>
-            <li><strong>READ_EXTERNAL_STORAGE:</strong> (Optional) Required only if you wish to import payload files from your phone's Downloads folder.</li>
+            <li><strong>INTERNET:</strong> Required to establish the SSH tunnel to your device.
+                <br><em>Note: To support the Hak5 WiFi Pineapple hardware, the app explicitly permits cleartext traffic <strong>only</strong> to the device's local management IP (172.16.52.1). All other traffic is subject to strict HTTPS requirements.</em>
+            </li>
+            <li><strong>ACCESS_NETWORK_STATE:</strong> Required to verify connection to the management WiFi before attempting commands.</li>
+            <li><strong>READ_EXTERNAL_STORAGE:</strong> (Optional) Used only if you explicitly choose to import payload files from your device storage.</li>
+            <li><strong>CLIPBOARD ACCESS:</strong> Used only when you initiate a "Copy" command from the terminal output or logs.</li>
         </ul>
 
         <h3>4. Third-Party Services</h3>
         <p>The App does not use any third-party advertising SDKs or tracking frameworks.</p>
+        <p><strong>Audit Verification:</strong> Our February 2026 security assessment (MobSF) detected <strong>0 User/Device Trackers</strong> in the production build.</p>
 
-        <h3>5. Contact Us</h3>
+        <h3>5. Legal Disclaimers & Limitation of Liability</h3>
+        <p>By using this application, you acknowledge and agree to the following terms:</p>
+        <ul>
+            <li><strong>Trademark & Affiliation:</strong> Pager Rat is an independent community project. It is <strong>not</strong> affiliated with, endorsed by, or sponsored by Hak5 LLC. "Hak5" and "WiFi Pineapple" are registered trademarks of Hak5 LLC. All trademarks are the property of their respective owners.</li>
+            <li><strong>Educational Use Only:</strong> This application is provided strictly for educational purposes and legitimate network administration/auditing where you have explicit permission to operate. The developers of Pager Rat do not condone illegal activity and are not responsible for any misuse of this tool or violations of law committed by the user.</li>
+            <li><strong>Hardware Risk & Liability:</strong> This software is provided "as is" without warranty of any kind. While Pager Rat is designed to interact safely with the stock firmware, the nature of executing scripts, installing third-party payloads, and modifying device configurations carries inherent risks. The user assumes full responsibility for any loss of data, firmware corruption, or hardware issues that may arise during the operation of the device.</li>
+        </ul>
+
+        <h3>6. Contact Us</h3>
         <p>If you have questions about this Privacy Policy, please contact us at: <a href="mailto:pagerrat@gmail.com" style="color:var(--accent)">pagerrat@gmail.com</a></p>
         
         <br><br>
-        <a href="index.html" class="btn-secondary">&larr; Back to Home</a>
-    </div>
-
-    <footer>
-        <div class="container">
-            <p class="copyright">PAGER_RAT // SYSTEM V.0.9 // EST. 2026</p>
-            <div class="legal">
-                <p>"Hak5" and "WiFi Pineapple" are trademarks of Hak5 LLC. This is a community project.</p>
-            </div>
-            <div class="links">
-                <a href="index.html">PAGER_RAT</a> // 
-                <a href="privacy_report.html">SECURITY_REPORT</a> // 
-                <a href="mailto:pagerrat@gmail.com">SUBMIT_TICKET</a>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+        <a href="index
