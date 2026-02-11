@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    body {
+        /* FIXED: Dark background (85% opaque) for contrast */
+        background-color: rgba(0, 0, 0, 0.85); 
+        margin: 0;
+        overflow: hidden;
+        font-family: 'VT323', monospace;
+        font-size: 22px; /* Slightly smaller for more density */
+        text-shadow: 0 0 2px #003300;
+    }
+
+    #console {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        color: #00FF00; /* Base Hacker Green */
+    }
+
+    /* THE PINK RAT ACCENT */
+    .highlight {
+        color: #FF00CC; /* Hot Pink */
+        text-shadow: 0 0 5px #FF00CC;
+        font-weight: bold;
+    }
+
+    .ascii-art {
+        font-size: 16px;
+        line-height: 16px;
+        white-space: pre;
+        color: #FF00CC;
+        margin-bottom: 20px;
+    }
+
+    /* Scanlines */
+    .scanlines {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(0,0,0,0) 0px,
+            rgba(0,0,0,0) 2px,
+            rgba(0,0,0,0.3) 3px,
+            rgba(0,0,0,0.3) 4px
+        );
+        pointer-events: none;
+        z-index: 999;
+    }
+</style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+<div id="console"></div>
+
+<script>
+    const consoleDiv = document.getElementById('console');
+    
+    // ASCII Logo
+    const asciiLogo = `
+  ____    _    ____ _____ ____    ____      _  _____ 
+ |  _ \\  / \\  / ___| ____|  _ \\  |  _ \\    / \\|_   _|
+ | |_) |/ _ \\| |  _|  _| | |_) | | |_) |  / _ \\ | |  
+ |  __/ ___ \\ |_| | |___|  _ <  |  _ <  / ___ \\| |  
+ |_| /_/   \\_\\____|_____|_| \\_\\ |_| \\_\\/_/   \\_\\_|  
+                                                    
+             (" )
+            / _  \\     < SYSTEM_ID: PAGERRAT_V1 >
+           | | | |     < KERNEL: 6.12.9-RAT-SEC >
+           | | | |
+          (__| |__)    
+`;
+
+    // The Script: Split into logical blocks
+    const bootSequence = [
+        { text: asciiLogo, type: 'ascii' },
+        { text: "[    0.000000] RatOS Kernel v6.12.9-rat (root@bunker) #1 SMP PREEMPT_DYNAMIC", type: 'normal' },
+        { text: "[    0.000001] Command line: BOOT_IMAGE=/boot/vmlinuz-rat root=UUID=secure-bunker", type: 'normal' },
+        { text: "[    0.001000] MEMORY_CHECK: Initializing...", type: 'normal' },
+        // We will generate the memory check lines programmatically below
+        { text: "[    0.050000] Secure Boot: DISABLED (Bypassed)", type: 'highlight' },
+        { text: "[    0.100000] ACPI: Core revision 20260110", type: 'normal' },
+        { text: "[    0.120000] CPU0: AMD Ryzen Threadripper (Fake ID injected)", type: 'normal' },
+        { text: "[    0.130000] CPU1: AMD Ryzen Threadripper (Fake ID injected)", type: 'normal' },
+        { text: "[    0.200000] PCI: Probing PCI hardware", type: 'normal' },
+        { text: "[    0.210000] pci 0000:00:00.0: [1022:1482] type 00 class 0x060000", type: 'normal' },
+        { text: "[    0.220000] pci 0000:00:00.2: [1022:1483] type 00 class 0x080600", type: 'normal' },
+        { text: "[    0.300000] nvme nvme0: pci function 0000:01:00.0", type: 'normal' },
+        { text: "[    0.310000] nvme nvme0: 2048GB detected. Encrypted volume found.", type: 'highlight' },
+        { text: "[    0.320000] LUKS: Enter Passphrase.... ************ [ACCEPTED]", type: 'highlight' },
+        { text: "[    0.400000] EXT4-fs (nvme0n1p2): mounted filesystem with ordered data mode", type: 'normal' },
+        { text: "[    1.000000] systemd[1]: Detected architecture x86-64.", type: 'normal' },
+        { text: "[    1.200000] systemd[1]: Starting Encryption Services...", type: 'normal' },
+        { text: "[    1.300000] systemd[1]: Starting Network Manager...", type: 'normal' },
+        { text: "[    1.400000] systemd[1]: Starting PagerRat Hardware Interface...", type: 'highlight' },
+        { text: "[    2.000000] USB 1-1: New USB device found, idVendor=2341, idProduct=0043", type: 'normal' },
+        { text: "[    2.000001] USB 1-1: Product: WiFi Pineapple Mark VII", type: 'highlight' },
+        { text: "[    2.000002] USB 1-1: Manufacturer: Hak5", type: 'normal' },
+        { text: "[    2.100000] wlan0: promiscuous mode ENABLED", type: 'highlight' },
+        { text: "[    2.200000] wlan0: channel hopping initialized (delay=250ms)", type: 'normal' },
+        { text: "---------------------------------------------------", type: 'normal' },
+        { text: "INITIATING MODULE LOAD SEQUENCE...", type: 'normal' },
+        // We will insert 20 random modules here
+        { text: "---------------------------------------------------", type: 'normal' },
+        { text: "[    8.000000] Audio_Subsystem: Initializing ALSA...", type: 'normal' },
+        { text: "[    8.100000] Audio_Subsystem: Loading KMFDM_Codec.so... [OK]", type: 'highlight' },
+        { text: "[    8.200000] Audio_Subsystem: ULTRA_HEAVY_BEAT mode engaged.", type: 'highlight' },
+        { text: "[    9.000000] PagerRat: Searching for LoRa hardware...", type: 'normal' },
+        { text: "[    9.100000] ttyUSB0: USB-Serial Controller detected", type: 'normal' },
+        { text: "[    9.200000] ttyUSB0: Sending Handshake...", type: 'normal' },
+        { text: "[    9.300000] ttyUSB0: Received ACK from Pager.", type: 'highlight' },
+        { text: "[   10.000000] Security_Sweep: Scanning local area for drones...", type: 'normal' },
+        { text: "[   10.100000] Security_Sweep: Scanning 2.4GHz spectrum...", type: 'normal' },
+        { text: "[   10.200000] Security_Sweep: Scanning 5.8GHz spectrum...", type: 'normal' },
+        { text: "[   10.300000] Security_Sweep: No threats detected.", type: 'normal' },
+        { text: "[   11.000000] Checking Google Play Store API...", type: 'normal' },
+        { text: "[   11.100000] Connect: play.google.com... [200 OK]", type: 'normal' },
+        { text: "[   11.200000] App_Status: PagerRat v1.0 [READY]", type: 'highlight' },
+        { text: "[   12.000000] Initiating 'Pocket Sand' Protocol...", type: 'normal' },
+        { text: "[   12.100000] Pocket Sand: Sh-sha!", type: 'highlight' },
+        { text: "[   13.000000] SYSTEM READY.", type: 'highlight' },
+        { text: "Waiting for operator input...", type: 'normal' },
+        { text: ">_ ", type: 'normal' }
+    ];
+
+    // Helper to generate fake memory check lines
+    function generateMemoryChecks() {
+        let checks = [];
+        for (let i = 0; i <= 100; i+=4) {
+            checks.push({
+                text: `[    0.00${1000+i}] MEMORY_CHECK: Block 0x${(i*999).toString(16).toUpperCase()} ... [OK]`,
+                type: 'normal'
+            });
+        }
+        return checks;
+    }
+
+    // Helper to generate fake modules
+    function generateModules() {
+        const modules = ["iptables_nat", "nf_conntrack", "br_netfilter", "overlay", "kvm_amd", "ccp", "rng_core", "ghash_clmulni_intel", "aesni_intel", "crypto_simd", "cryptd", "glue_helper", "pcspkr", "joydev", "input_leds", "mac_hid", "sch_fq_codel", "parport_pc", "ppdev", "lp", "parport", "ip_tables", "x_tables", "autofs4", "btrfs", "blake2b_generic", "xor", "raid6_pq", "libcrc32c", "hid_generic", "usbhid", "hid", "crct10dif_pclmul", "crc32_pclmul", "ghash_clmulni_intel"];
+        let result = [];
+        modules.forEach(mod => {
+            result.push({
+                text: `[    ${(Math.random()*5+2).toFixed(6)}] Loading module: ${mod}... [OK]`,
+                type: 'normal'
+            });
+        });
+        return result;
+    }
+
+    // Combine all parts
+    const fullSequence = [
+        bootSequence[0], // Logo
+        bootSequence[1], // Kernel
+        bootSequence[2], // Command line
+        bootSequence[3], // Mem init
+        ...generateMemoryChecks(), // Insert 25 lines of RAM checks
+        ...bootSequence.slice(4, 25), // The middle stuff
+        ...generateModules(), // Insert 30 lines of modules
+        ...bootSequence.slice(25) // The end stuff
+    ];
+
+    let index = 0;
+
+    function addLine() {
+        if (index < fullSequence.length) {
+            const lineData = fullSequence[index];
+            const newLine = document.createElement('div');
+            
+            // Handle ASCII Art differently (preserve whitespace)
+            if (lineData.type === 'ascii') {
+                newLine.className = 'ascii-art';
+                newLine.textContent = lineData.text;
+            } else {
+                newLine.textContent = lineData.text;
+                if (lineData.type === 'highlight') {
+                    newLine.className = 'highlight';
+                }
+            }
+
+            consoleDiv.appendChild(newLine);
+            window.scrollTo(0, document.body.scrollHeight);
+            
+            index++;
+            
+            // Randomize speed to feel like a real CPU
+            // Fast scrolling for memory checks, slow for "Hardware detection"
+            let delay = 20; 
+            if (lineData.text.includes("Loading")) delay = 150;
+            if (lineData.text.includes("Connect")) delay = 800; // Lag on network
+            if (lineData.text.includes("Searching")) delay = 1200; // Big hang on hardware search
+            if (lineData.type === 'ascii') delay = 1000; // Pause after logo
+
+            // Slight randomness
+            setTimeout(addLine, delay + Math.random() * 50);
+
+        } else {
+            // End of sequence. Blink cursor?
+            // Optional: Restart after 30 seconds
+            // setTimeout(() => { consoleDiv.innerHTML = ''; index = 0; addLine(); }, 30000);
+        }
+    }
+
+    // Start
+    addLine();
+
+</script>
+</body>
+</html>
