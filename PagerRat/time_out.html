@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    body {
+        background-color: #050505;
+        margin: 0;
+        overflow: hidden;
+        font-family: 'VT323', monospace;
+        color: #00FF00;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* --- THE CRT TUBE CONTAINER --- */
+    .crt-frame {
+        position: relative;
+        width: 95vw;
+        height: 95vh;
+        max-width: 1200px; /* Maintains aspect ratio on huge screens */
+        aspect-ratio: 4/3; /* Retro TV Ratio */
+        background: #001100;
+        border-radius: 50% / 10%; /* Subtle curvature */
+        box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+        overflow: hidden;
+        border: 2px solid #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* --- THE TEST PATTERN GRAPHICS --- */
+    .pattern-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    /* Large Outer Circle */
+    .circle-outer {
+        position: absolute;
+        width: 80%;
+        aspect-ratio: 1/1;
+        border: 2px solid #333;
+        border-radius: 50%;
+        background: repeating-conic-gradient(
+            #000 0% 15%,
+            #001a00 15% 30%
+        );
+        box-shadow: 0 0 20px #00FF00;
+        animation: spin-slow 60s linear infinite;
+    }
+
+    /* Middle "Color Bar" Circle */
+    .circle-mid {
+        position: absolute;
+        width: 60%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: conic-gradient(
+            #00FF00 0deg 90deg,   /* Green */
+            #000000 90deg 180deg, /* Black */
+            #FF00CC 180deg 270deg, /* Pink */
+            #FFFFFF 270deg 360deg /* White */
+        );
+        opacity: 0.8;
+        mix-blend-mode: hard-light;
+    }
+
+    /* Inner Target Circle */
+    .circle-inner {
+        position: absolute;
+        width: 40%;
+        aspect-ratio: 1/1;
+        background: #000;
+        border: 4px solid #FF00CC;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+    }
+
+    /* Crosshairs */
+    .crosshair-v, .crosshair-h {
+        position: absolute;
+        background: rgba(0, 255, 0, 0.5);
+        z-index: 4;
+    }
+    .crosshair-v { width: 2px; height: 100%; }
+    .crosshair-h { width: 100%; height: 2px; }
+
+    /* The Rat ASCII Centerpiece */
+    .rat-logo {
+        color: #00FF00;
+        font-size: 14px; /* Adjust based on screen size */
+        line-height: 12px;
+        white-space: pre;
+        text-align: center;
+        font-weight: bold;
+        text-shadow: 0 0 5px #00FF00;
+        z-index: 10;
+        animation: glitch-text 2s infinite;
+    }
+
+    /* --- OVERLAYS & NOISE --- */
+    .scanlines {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(0,0,0,0) 0px,
+            rgba(0,0,0,0.2) 2px,
+            rgba(0,0,0,0.6) 4px
+        );
+        z-index: 20;
+        pointer-events: none;
+    }
+
+    .noise {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        opacity: 0.05;
+        z-index: 19;
+        background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        animation: noise-shift 0.2s infinite;
+    }
+
+    /* --- TEXT ELEMENTS --- */
+    .status-box {
+        position: absolute;
+        top: 10%;
+        background: #000;
+        border: 1px solid #FF00CC;
+        padding: 5px 20px;
+        color: #FF00CC;
+        font-size: 24px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        z-index: 30;
+        box-shadow: 4px 4px 0px #00FF00;
+    }
+
+    .marquee-container {
+        position: absolute;
+        bottom: 15%;
+        width: 70%;
+        height: 30px;
+        background: #000;
+        border-top: 2px solid #00FF00;
+        border-bottom: 2px solid #00FF00;
+        overflow: hidden;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+    }
+
+    .marquee-text {
+        white-space: nowrap;
+        color: #00FF00;
+        font-size: 20px;
+        animation: scroll-left 15s linear infinite;
+        padding-left: 100%;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+    
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+
+    @keyframes noise-shift {
+        0% { transform: translate(0,0); }
+        20% { transform: translate(-5px, 5px); }
+        40% { transform: translate(5px, -5px); }
+        100% { transform: translate(0,0); }
+    }
+
+    @keyframes glitch-text {
+        0% { opacity: 1; transform: scale(1); }
+        95% { opacity: 1; transform: scale(1); }
+        96% { opacity: 0.8; transform: scale(1.1) skewX(10deg); color: #FF00CC; }
+        97% { opacity: 1; transform: scale(1); color: #00FF00; }
+        98% { opacity: 0.5; transform: translate(2px, -2px); }
+        100% { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<div class="crt-frame">
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+
+    <div class="pattern-container">
+        <div class="circle-outer"></div>
+        <div class="circle-mid"></div>
+        <div class="crosshair-v"></div>
+        <div class="crosshair-h"></div>
+        
+        <div class="circle-inner">
+            <div class="rat-logo">
+      __             _,-"~^"-.
+    _// )      _,-"~'         '.
+  ." ( /'"-,-"'                 ;
+ / 6                             ;
+/           ,             ,-"     ;
+(,__.--.      \           /        ;
+ //'   /'-\   |          |        '.
+   _.-'_/  )  )--...,,,___\     \-'
+ ((("~' _.-'.-'           '~,~"
+       ((("
+            </div>
+        </div>
+    </div>
+
+    <div class="status-box">SIGNAL LOST // STAND BY</div>
+
+    <div class="marquee-container">
+        <div class="marquee-text" id="scrollMsg">
+            :: SYSTEM PURGE IN PROGRESS :: RECALIBRATING ENCRYPTION KEYS :: OPERATOR IS AFK :: DO NOT ADJUST YOUR RECEIVER :: KMFDM STREAMS FOREVER :: 
+        </div>
+    </div>
+</div>
+
+<script>
+    // Optional: Dynamic Text Glitch
+    // This script randomly corrupts the scrolling text characters
+    
+    const originalText = ":: SYSTEM PURGE IN PROGRESS :: RECALIBRATING ENCRYPTION KEYS :: OPERATOR IS AFK :: DO NOT ADJUST YOUR RECEIVER :: KMFDM STREAMS FOREVER :: ";
+    const marquee = document.getElementById('scrollMsg');
+    
+    setInterval(() => {
+        // 5% chance to glitch the text for a split second
+        if (Math.random() < 0.05) {
+            let glitched = originalText.split('').map(char => {
+                // Randomly replace characters with hex codes or symbols
+                if (Math.random() < 0.1) return String.fromCharCode(33 + Math.random() * 90);
+                return char;
+            }).join('');
+            marquee.textContent = glitched;
+            
+            // Fix it back quickly
+            setTimeout(() => { marquee.textContent = originalText; }, 200);
+        }
+    }, 500);
+</script>
+
+</body>
+</html>
