@@ -125,6 +125,28 @@ h1, h2, h3 { font-family: var(--font-header); text-transform: uppercase; letter-
 .terminal-text { color: var(--text-main); font-size: 1.1rem; line-height: 1.6; border-left: 3px solid var(--neon-purple); padding-left: 20px; margin-bottom: 30px; }
 
 /* Cyber Buttons */
+.cyber-btn.launch {
+    background-color: var(--neon-green);
+    color: #050505; /* Dark text for contrast against green */
+    border: 2px solid var(--neon-purple);
+    box-shadow: 0 0 20px var(--neon-green);
+    margin-right: 0; /* Center alignment adjustment */
+    width: auto;
+    text-align: center;
+}
+        
+.cyber-btn.launch:hover {
+    background-color: var(--neon-purple);
+    color: #fff;
+    border-color: var(--neon-green);
+    box-shadow: 0 0 30px var(--neon-purple);
+}
+
+/* Adjustment for the single button layout */
+.cta-group {
+display: flex;
+gap: 20px;
+}
 .cyber-btn {
     display: inline-block; padding: 15px 30px; text-decoration: none; font-weight: bold; font-family: var(--font-header);
     position: relative; overflow: hidden; transition: 0.3s; clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
