@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+    body {
+        margin: 0;
+        overflow: hidden;
+        font-family: 'JetBrains Mono', monospace;
+        background: transparent;
+    }
+
+    .watermark-container {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: rgba(5, 5, 5, 0.70);
+        border: 1px solid #222;
+        border-right: 4px solid #39ff14;
+        padding: 12px 20px;
+        box-shadow: 0 0 15px rgba(57, 255, 20, 0.1);
+        backdrop-filter: blur(5px);
+    }
+
+    .text-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Aligns all text blocks to the right */
+        gap: 6px; /* Space between the top label and bottom row */
+    }
+
+    /* The new wrapper to place Social and Timer side-by-side */
+    .timer-row {
+        display: flex;
+        align-items: baseline; /* Aligns the bottoms of the text naturally */
+        gap: 15px; /* Space between handle and timer */
+    }
+
+    #phase-label {
+        font-size: 16px; /* Increased size for readability */
+        font-weight: bold;
+        color: #d300c5;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        animation: pulse 2s infinite;
+    }
+
+    .social-handle {
+        font-size: 14px;
+        color: #e0e0e0;
+        letter-spacing: 1px;
+        opacity: 0.8;
+    }
+
+    #timer-display {
+        font-size: 26px;
+        font-weight: bold;
+        color: #39ff14;
+        text-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+        line-height: 1;
+    }
+
+    .logo-placeholder {
+        width: 48px;
+        height: 48px;
+        background-color: #0a0a0a;
+        border: 1px solid #d300c5;
+        border-radius: 6px;
+        background-image: url('Pager_Rat_Icon.png'); 
+        background-size: cover;
+        background-position: center;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+</style>
+</head>
+<body>
+
+<div class="watermark-container">
+    <div class="text-stack">
+        <div id="phase-label">SYSTEM_BOOT // STANDBY</div>
+        
+        <div class="timer-row">
+            <div class="social-handle">@PagerRat</div>
+            <div id="timer-display">00:00:00</div>
+        </div>
+    </div>
+    
+    <div class="logo-placeholder"></div>
+</div>
+
+<script>
+    // PagerRat Strict 120-Minute Run of Show (in seconds)
+    const runOfShow = [
+        { time: 0,    label: "SYSTEM_BOOT // INTRO BUFFER" },    
+        { time: 300,  label: "LIVE_UPLINK // SITREP" },          
+        { time: 600,  label: "HARDWARE_DEPLOYMENT" },            
+        { time: 1500, label: "SOFTWARE_INIT // MODULES" },       
+        { time: 3000, label: "SIGNAL_LOST // INTERMISSION" },    
+        { time: 3600, label: "EXECUTING_PAYLOAD // LIVE_OP" },   
+        { time: 5400, label: "OP_COMPLETE // DEBRIEF" },         
+        { time: 6900, label: "SYSTEM_PURGE // OUTRO" }           
+    ];
+
+    let startTime = Date.now();
+
+    setInterval(() => {
+        let elapsedTotalSeconds = Math.floor((Date.now() - startTime) / 1000);
+        
+        // Format Time HH:MM:SS
+        let h = Math.floor(elapsedTotalSeconds / 3600).toString().padStart(2, '0');
+        let m = Math.floor((elapsedTotalSeconds % 3600) / 60).toString().padStart(2, '0');
+        let s = (elapsedTotalSeconds % 60).toString().padStart(2, '0');
+        document.getElementById('timer-display').innerText = `${h}:${m}:${s}`;
+
+        // Update Phase Label
+        let currentPhase = runOfShow[0].label;
+        for (let i = 0; i < runOfShow.length; i++) {
+            if (elapsedTotalSeconds >= runOfShow[i].time) {
+                currentPhase = runOfShow[i].label;
+            }
+        }
+        document.getElementById('phase-label').innerText = currentPhase;
+
+    }, 1000);
+</script>
+
+</body>
+</html>
