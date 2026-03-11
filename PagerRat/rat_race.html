@@ -18,50 +18,63 @@
         display: flex;
         align-items: center;
         gap: 15px;
-        background: rgba(5, 5, 5, 0.70);
-        border: 1px solid #222;
-        border-right: 4px solid #39ff14;
+        /* Removed background and blur, relying on transparent wireframe */
+        background: transparent; 
+        border: none;
+        border-right: 4px solid #39ff14; /* Keep the cyberpunk accent line */
         padding: 12px 20px;
-        box-shadow: 0 0 15px rgba(57, 255, 20, 0.1);
-        backdrop-filter: blur(5px);
     }
 
     .text-stack {
         display: flex;
         flex-direction: column;
-        align-items: flex-end; /* Aligns all text blocks to the right */
-        gap: 6px; /* Space between the top label and bottom row */
+        align-items: flex-end; 
+        gap: 6px; 
     }
 
-    /* The new wrapper to place Social and Timer side-by-side */
     .timer-row {
         display: flex;
-        align-items: baseline; /* Aligns the bottoms of the text naturally */
-        gap: 15px; /* Space between handle and timer */
+        align-items: baseline; 
+        gap: 15px; 
     }
 
     #phase-label {
         font-size: 16px; 
         font-weight: bold;
-        color: #ff33cc; /* Shifted to a brighter, hotter magenta */
+        color: #ff33cc; 
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        animation: pulse 2s infinite;
+        /* Heavy black stroke ensures readability on light backgrounds */
+        -webkit-text-stroke: 1px #000000; 
+        animation: pulse-glow 2s infinite;
     }
 
     .social-handle {
         font-size: 14px;
         color: #e0e0e0;
         letter-spacing: 1px;
-        opacity: 0.8;
+        font-weight: bold;
+        -webkit-text-stroke: 1px #000000;
     }
 
     #timer-display {
         font-size: 26px;
         font-weight: bold;
         color: #39ff14;
-        text-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+        -webkit-text-stroke: 1px #000000;
+        /* Combine black stroke with the neon glow */
+        text-shadow: 0 0 8px rgba(57, 255, 20, 0.8); 
         line-height: 1;
+    }
+
+    /* Update the pulse to only affect the neon glow, leaving the black stroke intact */
+    @keyframes pulse-glow {
+        0%, 100% { 
+            text-shadow: 0 0 10px rgba(255, 51, 204, 1); 
+        }
+        50% { 
+            text-shadow: 0 0 2px rgba(255, 51, 204, 0.2); 
+        }
     }
 
     .logo-placeholder {
@@ -75,16 +88,6 @@
         background-position: center;
     }
 
-    @keyframes pulse {
-        0%, 100% { 
-            opacity: 1; 
-            text-shadow: 0 0 8px rgba(255, 51, 204, 0.8); 
-        }
-        50% { 
-            opacity: 0.90; /* Barely drops the opacity */
-            text-shadow: 0 0 2px rgba(255, 51, 204, 0.2); /* Kills the glow */
-        }
-    }
 </style>
 </head>
 <body>
