@@ -4,6 +4,7 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
+    /* OBS Base Transparency */
     body {
         margin: 0;
         overflow: hidden;
@@ -11,6 +12,7 @@
         background: transparent;
     }
 
+    /* THE GLASS CONTAINER */
     .watermark-container {
         position: absolute;
         bottom: 30px;
@@ -18,11 +20,65 @@
         display: flex;
         align-items: center;
         gap: 15px;
-        /* Removed background and blur, relying on transparent wireframe */
-        background: transparent; 
-        border: none;
-        border-right: 4px solid #39ff14; /* Keep the cyberpunk accent line */
+        
+        /* Glassmorphism Base */
+        background: rgba(10, 10, 10, 0.45); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px); 
+        
+        border: 1px solid rgba(255, 255, 255, 0.1); 
+        border-right: 4px solid #39ff14; 
+        border-radius: 6px; 
+        
         padding: 12px 20px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
+        
+        /* Crucial for keeping background effects inside the box */
+        overflow: hidden; 
+        z-index: 1;
+    }
+
+    /* BACKGROUND LAYER 1: Scrolling Terminal Data */
+    .watermark-container::before {
+        content: "0x8F9 PAGER_RAT_DAEMON \A 0x2A4 INITIALIZING... \A 0x9B1 BYPASS_SEC_PROTO \A 0x4C2 MEMORY_ALLOC_OK \A 0x1D3 OVERRIDE_ACCEPTED \A 0x8F9 PAGER_RAT_DAEMON \A 0x2A4 INITIALIZING... \A 0x9B1 BYPASS_SEC_PROTO \A 0x4C2 MEMORY_ALLOC_OK \A 0x1D3 OVERRIDE_ACCEPTED";
+        white-space: pre-wrap;
+        position: absolute;
+        top: 0;
+        left: 10px;
+        width: 100%;
+        height: 200%;
+        font-size: 10px;
+        line-height: 1.8;
+        color: #39ff14;
+        opacity: 0.06; /* Extremely faint so it doesn't fight the main text */
+        z-index: -2;
+        animation: scroll-data 10s linear infinite;
+        pointer-events: none;
+    }
+
+    /* BACKGROUND LAYER 2: CRT Scanlines */
+    .watermark-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    /* ELEVATE FOREGROUND TEXT: Ensures readability */
+    .text-stack, .logo-placeholder {
+        position: relative;
+        z-index: 2;
     }
 
     .text-stack {
@@ -44,43 +100,28 @@
         color: #ff33cc; 
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        /* Heavy black stroke ensures readability on light backgrounds */
-        -webkit-text-stroke: 1px #000000; 
-        animation: pulse-glow 2s infinite;
+        animation: pulse 2s infinite;
     }
 
     .social-handle {
         font-size: 14px;
         color: #e0e0e0;
         letter-spacing: 1px;
-        font-weight: bold;
-        -webkit-text-stroke: 1px #000000;
+        opacity: 0.9;
     }
 
     #timer-display {
         font-size: 26px;
         font-weight: bold;
         color: #39ff14;
-        -webkit-text-stroke: 1px #000000;
-        /* Combine black stroke with the neon glow */
-        text-shadow: 0 0 8px rgba(57, 255, 20, 0.8); 
+        text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
         line-height: 1;
-    }
-
-    /* Update the pulse to only affect the neon glow, leaving the black stroke intact */
-    @keyframes pulse-glow {
-        0%, 100% { 
-            text-shadow: 0 0 10px rgba(255, 51, 204, 1); 
-        }
-        50% { 
-            text-shadow: 0 0 2px rgba(255, 51, 204, 0.2); 
-        }
     }
 
     .logo-placeholder {
         width: 48px;
         height: 48px;
-        background-color: #0a0a0a;
+        background-color: rgba(0, 0, 0, 0.5);
         border: 1px solid #d300c5;
         border-radius: 6px;
         background-image: url('Pager_Rat_Icon.png'); 
@@ -88,6 +129,22 @@
         background-position: center;
     }
 
+    /* ANIMATIONS */
+    @keyframes pulse {
+        0%, 100% { 
+            opacity: 1; 
+            text-shadow: 0 0 8px rgba(255, 51, 204, 0.8); 
+        }
+        50% { 
+            opacity: 0.90; 
+            text-shadow: 0 0 2px rgba(255, 51, 204, 0.2); 
+        }
+    }
+
+    @keyframes scroll-data {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-50%); }
+    }
 </style>
 </head>
 <body>
@@ -106,7 +163,6 @@
 </div>
 
 <script>
-    // PagerRat Strict 120-Minute Run of Show (in seconds)
     const runOfShow = [
         { time: 0,    label: "SYSTEM_BOOT // INTRO BUFFER" },    
         { time: 300,  label: "LIVE_UPLINK // SITREP" },          
@@ -123,13 +179,11 @@
     setInterval(() => {
         let elapsedTotalSeconds = Math.floor((Date.now() - startTime) / 1000);
         
-        // Format Time HH:MM:SS
         let h = Math.floor(elapsedTotalSeconds / 3600).toString().padStart(2, '0');
         let m = Math.floor((elapsedTotalSeconds % 3600) / 60).toString().padStart(2, '0');
         let s = (elapsedTotalSeconds % 60).toString().padStart(2, '0');
         document.getElementById('timer-display').innerText = `${h}:${m}:${s}`;
 
-        // Update Phase Label
         let currentPhase = runOfShow[0].label;
         for (let i = 0; i < runOfShow.length; i++) {
             if (elapsedTotalSeconds >= runOfShow[i].time) {
