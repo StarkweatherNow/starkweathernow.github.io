@@ -1,0 +1,136 @@
+/* ===================================================================
+   Brandon Starkweather — shared site theme
+   Dark, tech-forward. Linked by every page AFTER any framework CSS
+   (Bootstrap/Tailwind) so its overrides win. Also opts every page into
+   cross-document View Transitions.
+   =================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---- cross-document View Transitions (the "morph between pages") ---- */
+@view-transition { navigation: auto; }
+
+:root{
+  --bg:#08080c; --bg-2:#0e0e16; --surface:#14141e; --surface-2:#1b1b28;
+  --border:rgba(255,255,255,.08); --border-2:rgba(255,255,255,.16);
+  --text:#f4f4f7; --muted:#a2a2b4; --muted-2:#6b6b7e;
+  --orange:#FF6B35; --orange-l:#FF8E63; --glow:rgba(255,107,53,.45);
+  --grad:linear-gradient(135deg,#FF8E63 0%,#FF6B35 60%,#E85A2A 100%);
+  --maxw:1180px;
+}
+
+/* Ambient page background (wins over framework body bg because linked last) */
+body{
+  font-family:'Inter',system-ui,sans-serif !important;
+  color:var(--text);
+  background:
+    radial-gradient(60% 50% at 78% 6%, rgba(255,107,53,.13), transparent 60%),
+    radial-gradient(50% 40% at 10% 24%, rgba(120,120,255,.05), transparent 60%),
+    radial-gradient(80% 60% at 50% 118%, rgba(255,107,53,.07), transparent 60%),
+    var(--bg) !important;
+  min-height:100vh;
+}
+h1,h2,h3,h4,.display,.font-display{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
+::selection{background:var(--orange);color:#08080c}
+
+/* smooth cross-page transition timing */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.4s}
+
+/* =================== shared themed nav (non-Bootstrap pages) =================== */
+.site-header{position:sticky;top:0;z-index:2000;view-transition-name:site-header}
+.site-header::before{content:"";position:absolute;inset:0;backdrop-filter:blur(14px);
+  background:rgba(8,8,12,.6);border-bottom:1px solid var(--border);z-index:-1}
+.site-nav{display:flex;align-items:center;justify-content:space-between;
+  width:90%;max-width:var(--maxw);margin:0 auto;padding:.9rem 0}
+.site-nav .brand{display:flex;align-items:center;gap:.6rem;font-family:'Space Grotesk';font-weight:600;
+  font-size:1.05rem;color:var(--text)}
+.site-nav .brand .bolt{width:34px;height:34px;border-radius:9px;background:var(--grad);
+  display:grid;place-items:center;color:#08080c;font-weight:700;box-shadow:0 4px 18px var(--glow)}
+.site-nav .links{display:flex;align-items:center;gap:1.8rem;list-style:none;margin:0;padding:0}
+.site-nav .links a{font-size:.95rem;color:var(--muted);font-weight:500;text-decoration:none;transition:color .25s;position:relative}
+.site-nav .links a:hover{color:var(--text)}
+.site-nav .links a:not(.btn-x)::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--orange);transition:width .3s}
+.site-nav .links a:not(.btn-x):hover::after{width:100%}
+.nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+.btn-x{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.35rem;border-radius:999px;
+  font-weight:600;font-size:.92rem;text-decoration:none;border:1px solid var(--border-2);
+  color:var(--text);background:rgba(255,255,255,.02);transition:.2s;cursor:pointer}
+.btn-x:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+.btn-x.primary{background:var(--grad);color:#08080c;border-color:transparent;box-shadow:0 8px 30px -8px var(--glow)}
+.btn-x.primary:hover{color:#08080c;transform:translateY(-2px);box-shadow:0 14px 40px -8px var(--glow)}
+
+/* =================== shared page hero =================== */
+.wrap{width:90%;max-width:var(--maxw);margin:0 auto}
+.page-hero{padding:clamp(3.5rem,8vw,6rem) 0 2rem;text-align:center}
+.page-hero .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--orange);display:inline-block;margin-bottom:1rem}
+.page-hero .eyebrow::before{content:"// "}
+.page-hero h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:700;line-height:1.05}
+.page-hero .lead{color:var(--muted);max-width:60ch;margin:1rem auto 0;font-size:1.08rem}
+.back-home{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.6rem;color:var(--muted);
+  font-family:'JetBrains Mono';font-size:.85rem;text-decoration:none;transition:.2s}
+.back-home:hover{color:var(--orange);gap:.6rem}
+
+/* =================== shared footer =================== */
+.site-footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:4rem}
+.site-footer .foot{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  width:90%;max-width:var(--maxw);margin:0 auto}
+.site-footer .copy{color:var(--muted-2);font-size:.88rem}
+.site-footer .socials{display:flex;gap:1.2rem;font-size:1.2rem}
+.site-footer .socials a{color:var(--muted);transition:.2s;text-decoration:none}
+.site-footer .socials a:hover{color:var(--orange);transform:translateY(-2px)}
+
+/* =================== reveal-on-scroll (JS-driven, always safe) =================== */
+.js .reveal{opacity:0;transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
+
+/* =================== Bootstrap dark re-skin (only affects Bootstrap pages) ===================
+   Carpe Diem + 40 Hours already run [data-bs-theme="dark"]. Remap Bootstrap's
+   design tokens to the portfolio palette — no markup changes, logic untouched. */
+[data-bs-theme="dark"]{
+  --bs-body-bg:#08080c; --bs-body-bg-rgb:8,8,12;
+  --bs-body-color:#e8e8ee; --bs-body-color-rgb:232,232,238;
+  --bs-emphasis-color:#f4f4f7;
+  --bs-primary:#FF6B35; --bs-primary-rgb:255,107,53;
+  --bs-primary-bg-subtle:#14141e; --bs-primary-border-subtle:#2a2a38;
+  --bs-primary-text-emphasis:#FF8E63;
+  --bs-info:#FF8E63; --bs-info-rgb:255,142,99; --bs-info-text-emphasis:#FF8E63;
+  --bs-warning:#FF8E63; --bs-warning-rgb:255,142,99;
+  --bs-link-color:#FF8E63; --bs-link-color-rgb:255,142,99;
+  --bs-link-hover-color:#FF6B35;
+  --bs-border-color:rgba(255,255,255,.1);
+  --bs-card-bg:#14141e; --bs-card-cap-bg:#14141e;
+  --bs-dark-rgb:20,20,30;
+}
+[data-bs-theme="dark"] .btn-primary{--bs-btn-bg:#FF6B35;--bs-btn-border-color:#FF6B35;--bs-btn-color:#08080c;
+  --bs-btn-hover-bg:#FF8E63;--bs-btn-hover-border-color:#FF8E63;--bs-btn-hover-color:#08080c;
+  --bs-btn-active-bg:#E85A2A;--bs-btn-active-border-color:#E85A2A}
+[data-bs-theme="dark"] .btn-info{--bs-btn-bg:#FF8E63;--bs-btn-border-color:#FF8E63;--bs-btn-color:#08080c;
+  --bs-btn-hover-bg:#FF6B35;--bs-btn-hover-border-color:#FF6B35}
+[data-bs-theme="dark"] .card{border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+[data-bs-theme="dark"] .table{--bs-table-bg:transparent;--bs-table-color:#e8e8ee;
+  --bs-table-border-color:rgba(255,255,255,.09);--bs-table-hover-bg:rgba(255,107,53,.06);--bs-table-hover-color:#fff}
+[data-bs-theme="dark"] .table-primary,[data-bs-theme="dark"] .table-info{--bs-table-bg:#14141e;--bs-table-color:#FF8E63}
+[data-bs-theme="dark"] input.form-control,[data-bs-theme="dark"] input[type=time],[data-bs-theme="dark"] input[type=number]{
+  background:#0e0e16;border:1px solid var(--border-2);color:#f4f4f7;border-radius:8px}
+
+/* Re-skin the Bootstrap navbar to match the portfolio, keep its collapse JS working */
+[data-bs-theme="dark"] .navbar{background:rgba(8,8,12,.62)!important;backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1030;view-transition-name:site-header}
+[data-bs-theme="dark"] .navbar .navbar-brand span:last-child{color:var(--text)!important;font-family:'Space Grotesk'}
+[data-bs-theme="dark"] .navbar .nav-link{color:var(--muted)!important}
+[data-bs-theme="dark"] .navbar .nav-link:hover{color:var(--text)!important}
+
+/* =================== responsive nav (themed pages) =================== */
+@media (max-width:680px){
+  .nav-toggle{display:block}
+  .site-nav .links{position:absolute;top:calc(100% + .4rem);right:5%;flex-direction:column;align-items:flex-start;
+    gap:1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.5rem;
+    min-width:190px;opacity:0;transform:translateY(-10px) scale(.98);pointer-events:none;transition:.25s}
+  .site-nav .links.open{opacity:1;transform:none;pointer-events:auto}
+}

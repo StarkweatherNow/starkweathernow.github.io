@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <meta name="color-scheme" content="dark">
+    <link rel="stylesheet" href="assets/css/site-theme.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -48,7 +50,7 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background-color: #E5E7EB;
+            background-color: rgba(255,255,255,0.12);
         }
         @media (min-width: 768px) {
             .timeline::before {
@@ -58,20 +60,33 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-200">
+<header class="site-header">
+  <nav class="site-nav">
+    <a class="brand" href="index.html"><span class="bolt">⚡</span> Brandon&nbsp;Starkweather</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a class="btn-x" href="assets/Resume-Brandon-Starkweather.pdf" target="_blank" rel="noopener">Résumé</a></li>
+    </ul>
+  </nav>
+</header>
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Your 6-Month Journey to</h1>
-            <h2 class="text-4xl md:text-5xl font-extrabold text-[#00BFFF]">AI Engineer</h2>
-            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">This accelerated curriculum is your roadmap from foundational knowledge to advanced AI deployment, meticulously designed to build the skills for a top-tier AI Engineer role.</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">Your 6-Month Journey to</h1>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-[#FF6B35]">AI Engineer</h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-400">This accelerated curriculum is your roadmap from foundational knowledge to advanced AI deployment, meticulously designed to build the skills for a top-tier AI Engineer role.</p>
         </header>
 
         <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-            <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">The 6-Month Roadmap</h3>
-                <p class="text-gray-600 mb-6">The curriculum is structured into three distinct phases, each building upon the last. This timeline provides a high-level overview of the core focus for each month, guiding you from setup to specialization.</p>
+            <div class="lg:col-span-2 bg-[#14141e] rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                <h3 class="text-2xl font-bold text-white mb-2">The 6-Month Roadmap</h3>
+                <p class="text-gray-400 mb-6">The curriculum is structured into three distinct phases, each building upon the last. This timeline provides a high-level overview of the core focus for each month, guiding you from setup to specialization.</p>
                 <div class="relative wrap overflow-hidden p-4 h-full">
                     <div class="timeline">
                         <div class="mb-8 flex justify-between items-center w-full md:flex-row-reverse">
@@ -81,7 +96,7 @@
                             </div>
                             <div class="bg-[#00BFFF] bg-opacity-10 rounded-lg shadow-md w-full md:w-5/12 p-4">
                                 <h4 class="font-bold text-[#00BFFF]">Month 1: Foundations</h4>
-                                <p class="text-sm text-gray-700">Establish your developer office and rapidly cover IT fundamentals, networking, and security.</p>
+                                <p class="text-sm text-gray-300">Establish your developer office and rapidly cover IT fundamentals, networking, and security.</p>
                             </div>
                         </div>
 
@@ -92,7 +107,7 @@
                             </div>
                             <div class="bg-[#FFD700] bg-opacity-10 rounded-lg shadow-md w-full md:w-5/12 p-4">
                                 <h4 class="font-bold text-[#d6a100]">Month 2: Core SWE I (Java)</h4>
-                                <p class="text-sm text-gray-700">Master Data Structures, Algorithms, and advanced Git workflows using Java.</p>
+                                <p class="text-sm text-gray-300">Master Data Structures, Algorithms, and advanced Git workflows using Java.</p>
                             </div>
                         </div>
 
@@ -103,7 +118,7 @@
                             </div>
                             <div class="bg-[#FF6347] bg-opacity-10 rounded-lg shadow-md w-full md:w-5/12 p-4">
                                 <h4 class="font-bold text-[#FF6347]">Month 3: Core SWE II (Java)</h4>
-                                <p class="text-sm text-gray-700">Build RESTful APIs and connect to databases, solidifying your backend skills in Java.</p>
+                                <p class="text-sm text-gray-300">Build RESTful APIs and connect to databases, solidifying your backend skills in Java.</p>
                             </div>
                         </div>
                         
@@ -114,7 +129,7 @@
                             </div>
                             <div class="bg-[#32CD32] bg-opacity-10 rounded-lg shadow-md w-full md:w-5/12 p-4">
                                 <h4 class="font-bold text-[#32CD32]">Month 4: Python & AI Math</h4>
-                                <p class="text-sm text-gray-700">Transition to Python and build the mathematical foundation for AI with Linear Algebra and Calculus.</p>
+                                <p class="text-sm text-gray-300">Transition to Python and build the mathematical foundation for AI with Linear Algebra and Calculus.</p>
                             </div>
                         </div>
 
@@ -125,7 +140,7 @@
                             </div>
                             <div class="bg-[#9370DB] bg-opacity-10 rounded-lg shadow-md w-full md:w-5/12 p-4">
                                 <h4 class="font-bold text-[#9370DB]">Month 5: RAG & Vector DBs</h4>
-                                <p class="text-sm text-gray-700">Dive into Embeddings, Vector Databases, and build Retrieval Augmented Generation pipelines.</p>
+                                <p class="text-sm text-gray-300">Dive into Embeddings, Vector Databases, and build Retrieval Augmented Generation pipelines.</p>
                             </div>
                         </div>
                         
@@ -135,8 +150,8 @@
                                 <span class="text-white font-bold text-lg">6</span>
                             </div>
                             <div class="bg-gray-700 bg-opacity-10 rounded-lg shadow-md w-full md:w-5/12 p-4">
-                                <h4 class="font-bold text-gray-700">Month 6: Fine-Tuning & Deploy</h4>
-                                <p class="text-sm text-gray-700">Train your own LLM, build AI agents, and learn to deploy models into production.</p>
+                                <h4 class="font-bold text-gray-300">Month 6: Fine-Tuning & Deploy</h4>
+                                <p class="text-sm text-gray-300">Train your own LLM, build AI agents, and learn to deploy models into production.</p>
                             </div>
                         </div>
 
@@ -144,41 +159,41 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">Curriculum Focus Distribution</h3>
-                <p class="text-gray-600 mb-6">The program is weighted towards advanced topics, ensuring you spend the most time on the specialized skills required for AI engineering roles.</p>
+            <div class="bg-[#14141e] rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                <h3 class="text-2xl font-bold text-white mb-2">Curriculum Focus Distribution</h3>
+                <p class="text-gray-400 mb-6">The program is weighted towards advanced topics, ensuring you spend the most time on the specialized skills required for AI engineering roles.</p>
                 <div class="chart-container">
                     <canvas id="distributionChart"></canvas>
                 </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">Language Focus: Java to Python</h3>
-                <p class="text-gray-600 mb-6">The curriculum begins with Java to build strong, typed programming fundamentals, then strategically pivots to Python, the lingua franca of AI and machine learning.</p>
+            <div class="bg-[#14141e] rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                <h3 class="text-2xl font-bold text-white mb-2">Language Focus: Java to Python</h3>
+                <p class="text-gray-400 mb-6">The curriculum begins with Java to build strong, typed programming fundamentals, then strategically pivots to Python, the lingua franca of AI and machine learning.</p>
                 <div class="chart-container">
                     <canvas id="languageShiftChart"></canvas>
                 </div>
             </div>
             
-            <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">Key Technologies You'll Master</h3>
-                <p class="text-gray-600 mb-6">You'll gain hands-on experience with a modern, industry-standard tech stack. The size of each bubble represents its relative focus within the advanced AI portion of the curriculum.</p>
+            <div class="lg:col-span-2 bg-[#14141e] rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                <h3 class="text-2xl font-bold text-white mb-2">Key Technologies You'll Master</h3>
+                <p class="text-gray-400 mb-6">You'll gain hands-on experience with a modern, industry-standard tech stack. The size of each bubble represents its relative focus within the advanced AI portion of the curriculum.</p>
                 <div class="chart-container max-w-full h-[400px] md:h-[450px]">
                     <canvas id="techBubbleChart"></canvas>
                 </div>
             </div>
             
-            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">The Mathematical Foundation</h3>
-                <p class="text-gray-600 mb-6">A conceptual and practical understanding of key mathematical areas is essential for truly understanding how AI models work. This chart shows the relative focus on each topic.</p>
+            <div class="bg-[#14141e] rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                <h3 class="text-2xl font-bold text-white mb-2">The Mathematical Foundation</h3>
+                <p class="text-gray-400 mb-6">A conceptual and practical understanding of key mathematical areas is essential for truly understanding how AI models work. This chart shows the relative focus on each topic.</p>
                  <div class="chart-container">
                     <canvas id="mathChart"></canvas>
                 </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Capstone Project: Custom LLM</h3>
-                 <p class="text-gray-600 mb-6">The curriculum culminates in a capstone project where you fine-tune and deploy your own Language Model, a critical skill that demonstrates end-to-end AI engineering capability.</p>
+            <div class="bg-[#14141e] rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                 <h3 class="text-2xl font-bold text-white mb-2">Capstone Project: Custom LLM</h3>
+                 <p class="text-gray-400 mb-6">The curriculum culminates in a capstone project where you fine-tune and deploy your own Language Model, a critical skill that demonstrates end-to-end AI engineering capability.</p>
                  <div class="w-full overflow-x-auto p-4">
                     <div class="flex items-center justify-start md:justify-center">
                         <div class="flowchart-step flex-col">
@@ -214,6 +229,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            if (window.Chart) {
+                Chart.defaults.color = '#c7c7d1';
+                Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
+                Chart.defaults.font.family = "'Inter', sans-serif";
+            }
 
             const palette = {
                 blue: '#00BFFF',
@@ -445,5 +466,16 @@
         });
     </script>
 
+    <footer class="site-footer">
+      <div class="foot">
+        <div class="copy">© <span data-year>2026</span> Brandon Starkweather</div>
+        <div class="socials" style="font-family:'JetBrains Mono';font-size:.85rem;gap:1.4rem">
+          <a href="index.html">Home</a>
+          <a href="https://github.com/StarkweatherNow" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/starkweathernow/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/site.js"></script>
 </body>
 </html>

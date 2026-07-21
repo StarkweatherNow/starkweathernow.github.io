@@ -1,182 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My 2025 Sabbatical - Brandon Starkweather</title>
-    <link rel="stylesheet" href="assets/css/2025.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 — The Build Year | Brandon Starkweather</title>
+<meta name="description" content="A timeline of the projects, learning, and milestones that took Brandon Starkweather from IT into software engineering.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/site-theme.css">
+<style>
+  .timeline{position:relative;width:90%;max-width:900px;margin:1rem auto 0;padding:2rem 0}
+  .timeline::before{content:"";position:absolute;left:24px;top:0;bottom:0;width:2px;
+    background:linear-gradient(180deg,transparent,var(--orange) 8%,var(--orange) 92%,transparent)}
+  @media(min-width:760px){.timeline::before{left:50%;transform:translateX(-50%)}}
+  .tl-event{position:relative;padding:0 0 2.4rem 64px}
+  @media(min-width:760px){
+    .tl-event{width:50%;padding:0 0 3rem 0}
+    .tl-event:nth-child(odd){left:0;padding-right:48px;text-align:right}
+    .tl-event:nth-child(even){left:50%;padding-left:48px}
+  }
+  .tl-dot{position:absolute;top:2px;left:8px;width:34px;height:34px;border-radius:50%;
+    background:var(--surface);border:1px solid var(--border-2);display:grid;place-items:center;
+    color:var(--orange);font-size:.95rem;z-index:2}
+  @media(min-width:760px){
+    .tl-event:nth-child(odd) .tl-dot{left:auto;right:-17px}
+    .tl-event:nth-child(even) .tl-dot{left:-17px}
+  }
+  .tl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.4rem;
+    transition:border-color .3s,transform .3s,box-shadow .3s}
+  .tl-card:hover{border-color:var(--border-2);transform:translateY(-3px);box-shadow:0 20px 50px -30px rgba(0,0,0,.8)}
+  .tl-card time{font-family:'JetBrains Mono';font-size:.78rem;color:var(--orange-l);letter-spacing:.04em}
+  .tl-card h3{font-size:1.15rem;font-weight:600;margin:.4rem 0 .5rem}
+  .tl-card p{color:var(--muted);font-size:.95rem;margin:0}
+  .tl-card .tag{display:inline-block;margin-top:.8rem;font-family:'JetBrains Mono';font-size:.72rem;
+    color:var(--muted-2);border:1px solid var(--border);border-radius:999px;padding:.25rem .6rem}
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;width:90%;max-width:900px;margin:1rem auto 0}
+  @media(max-width:640px){.snapshot{grid-template-columns:repeat(2,1fr)}}
+  .snap{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1rem;text-align:center}
+  .snap .n{font-family:'Space Grotesk';font-size:2rem;font-weight:700;line-height:1;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .snap .l{color:var(--muted-2);font-size:.8rem;margin-top:.5rem}
+</style>
 </head>
 <body>
-    <header>
-        <h1>My 2025 Sabbatical</h1>
-        <p>A timeline of projects, learning, and milestones preparing for my first software engineering role.</p>
-    </header>
+<header class="site-header">
+  <nav class="site-nav">
+    <a class="brand" href="index.html"><span class="bolt">⚡</span> Brandon&nbsp;Starkweather</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <ul class="links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a class="btn-x" href="assets/Resume-Brandon-Starkweather.pdf" target="_blank" rel="noopener">Résumé</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <main class="timeline-container">
-        <div class="timeline-event" data-aos="fade-right">
-            <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
-            <div class="timeline-content">
-                <time datetime="2025-04">Jan 2020 - Apr 2025</time>
-                <h2>IT Desktop Support at Charter Communications</h2>
-                <p>Concluded my tenure at Charter Communications in Syracuse, NY.</p>
-                <button class="details-btn" data-modal-target="#modal-charter">Details</button>
-                <div class="monthly-stats-graph">
-                    <div class="stat-bar" style="--bar-color: var(--color-projects); height: 0%;" title="Projects: 0"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-leetcode); height: 0%;" title="LeetCode: 20"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-commits); height: 0%;" title="Commits: 50"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-miles); height: 0%;" title="Miles: 10"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-weight); height: 0%;" title="Weight Gained: 35lbs"></div>
-                </div>
-            </div>
-        </div>
+<section class="page-hero wrap">
+  <span class="eyebrow">2025</span>
+  <h1>The build year</h1>
+  <p class="lead">The projects, learning, and milestones that carried me out of IT and into software engineering — the year I bet on shipping.</p>
+  <a class="back-home" href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to home</a>
+</section>
 
-        <div class="timeline-event" data-aos="fade-left">
-            <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
-            <div class="timeline-content">
-                <time datetime="2025-04">April 2025</time>
-                <h2>Graduated WGU - B.S. Software Engineering</h2>
-                <p>Successfully earned my Bachelor of Science in Software Engineering.</p>
-                <button class="details-btn" data-modal-target="#modal-wgu">Details</button>
-                <div class="monthly-stats-graph">
-                    <div class="stat-bar" style="--bar-color: var(--color-projects); height: 0%;" title="Projects: 0"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-leetcode); height: 0%;" title="LeetCode: 0"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-commits); height: 6%;" title="Commits: 75"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-miles); height: 0%;" title="Miles: 0"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-weight); height: 0%;" title="Weight Lost: 0lbs"></div>
-                </div>
-            </div>
-        </div>
+<div class="snapshot">
+  <div class="snap reveal"><div class="n">1</div><div class="l">App shipped to Google Play</div></div>
+  <div class="snap reveal"><div class="n">70+</div><div class="l">LeetCode problems solved</div></div>
+  <div class="snap reveal"><div class="n">150+</div><div class="l">Commits pushed</div></div>
+  <div class="snap reveal"><div class="n">B.S.</div><div class="l">Software Engineering, WGU</div></div>
+</div>
 
-        <div class="timeline-event" data-aos="fade-right">
-            <div class="timeline-icon"><i class="fab fa-google-play"></i></div>
-            <div class="timeline-content">
-                <time datetime="2025-04">April 2025</time>
-                <h2>Published First Android App</h2>
-                <p>Developed and launched "Inventory Audit - Barcode Scan" on the Google Play Store.</p>
-                <button class="details-btn" data-modal-target="#modal-app">Details</button>
-                <div class="monthly-stats-graph">
-                    <div class="stat-bar" style="--bar-color: var(--color-projects); height: 25%;" title="Projects: 1"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-leetcode); height: 0%;" title="LeetCode: 0"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-commits); height: 12%;" title="Commits: 133"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-miles); height: 0%;" title="Miles: 0"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-weight); height: 0%;" title="Weight Lost: 0lbs"></div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="timeline-event" data-aos="fade-left">
-            <div class="timeline-icon"><i class="fas fa-hands-helping"></i></div>
-            <div class="timeline-content">
-                <time datetime="2025-05">May 2025</time>
-                <h2>Supported Brother's Education</h2>
-                <p>Celebrated my brother's graduation from OCC and acceptance into RIT.</p>
-                <div class="monthly-stats-graph">
-                    <div class="stat-bar" style="--bar-color: var(--color-projects); height: 25%;" title="Projects: 1"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-leetcode); height: 0%;" title="LeetCode: 0"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-commits); height: 12%;" title="Commits: 133"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-miles); height: 3%;" title="Miles: 404"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-weight); height: 7%;" title="Weight Lost: 5lbs"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-event" data-aos="fade-right">
-            <div class="timeline-icon"><i class="fas fa-home"></i></div>
-            <div class="timeline-content">
-                <time datetime="2025-06">June 2025</time>
-                <h2>House Sold & Relocation Prep</h2>
-                <p>Sold house in Syracuse, preparing for move to Rochester.</p>
-                <div class="monthly-stats-graph">
-                    <div class="stat-bar" style="--bar-color: var(--color-projects); height: 20%;" title="Projects: 1"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-leetcode); height: 30%;" title="LeetCode: 70"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-commits); height: 40%;" title="Commits: 150"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-miles); height: 7%;" title="Miles: 687"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-weight); height: 100%;" title="Weight Lost: 25lbs"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-event" data-aos="fade-left">
-            <div class="timeline-icon"><i class="fas fa-laptop-code"></i></div>
-            <div class="timeline-content">
-                <time datetime="2025-07">July 2025</time>
-                <h2>Portfolio Work & New App Dev</h2>
-                <p>Focusing on portfolio projects and developing a new application.</p>
-                <div class="monthly-stats-graph">
-                    <div class="stat-bar" style="--bar-color: var(--color-projects); height: 30%;" title="Projects: 1 (New one in progress)"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-leetcode); height: 40%;" title="LeetCode: 100"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-commits); height: 55%;" title="Commits: 250"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-miles); height: 55%;" title="Miles: 160"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-weight); height: 100%;" title="Weight Lost: 25lbs"></div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="timeline-event" data-aos="fade-right">
-            <div class="timeline-icon"><i class="fas fa-brain"></i></div>
-            <div class="timeline-content">
-                <time datetime="2025-08">August 2025</time>
-                <h2>Deep Dive: Advanced AI/ML</h2>
-                <p>Immersed in learning [Specific ML Algorithm/Tool].</p>
-                <div class="monthly-stats-graph">
-                    <div class="stat-bar" style="--bar-color: var(--color-projects); height: 35%;" title="Projects: 1"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-leetcode); height: 50%;" title="LeetCode: 120"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-commits); height: 60%;" title="Commits: 300"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-miles); height: 55%;" title="Miles: 160"></div>
-                    <div class="stat-bar" style="--bar-color: var(--color-weight); height: 100%;" title="Weight Lost: 25lbs"></div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <div class="stats-snapshot-floating">
-        <div class="stat-item-floating" style="--stat-color: var(--color-projects);">
-            <i class="fas fa-rocket stat-icon"></i>
-            <span class="stat-value" id="sfp-projects">1</span> <span class="stat-label-floating">Project Launched</span>
-        </div>
-        <div class="stat-item-floating" style="--stat-color: var(--color-leetcode);">
-            <i class="fas fa-keyboard stat-icon"></i>
-            <span class="stat-value" id="sfp-leetcode">70+</span>
-            <span class="stat-label-floating">LeetCode Solved</span>
-        </div>
-        <div class="stat-item-floating" style="--stat-color: var(--color-commits);">
-            <i class="fab fa-github stat-icon"></i>
-            <span class="stat-value" id="sfp-commits">150+</span>
-            <span class="stat-label-floating">Total Commits</span>
-        </div>
-        <div class="stat-item-floating" style="--stat-color: var(--color-miles);">
-            <i class="fas fa-road stat-icon"></i>
-            <span class="stat-value" id="sfp-miles">150+</span>
-            <span class="stat-label-floating">Miles Traveled</span>
-        </div>
-        <div class="stat-item-floating" style="--stat-color: var(--color-weight);">
-            <i class="fas fa-heartbeat stat-icon"></i>
-            <span class="stat-value" id="sfp-weight">25</span>
-            <span class="stat-label-floating">lbs Pandemic Weight Lost</span>
-        </div>
+<main class="timeline">
+  <div class="tl-event reveal">
+    <div class="tl-dot"><i class="fa-solid fa-briefcase"></i></div>
+    <div class="tl-card">
+      <time>2020 — April 2025</time>
+      <h3>Concluded a decade in IT at Charter Communications</h3>
+      <p>Wrapped up my desktop-support tenure in East Syracuse, NY — the operational foundation everything since is built on.</p>
+      <span class="tag">chapter close</span>
     </div>
+  </div>
 
-    <div id="modal-charter" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Employed at Charter Communications</h2>
-            <p>Detailed information about your role at Charter Communications. Key responsibilities included...</p>
-            <p>Skills used: Skill A, Skill B, Skill C.</p>
-            <a href="#" class="external-link" target="_blank">Relevant Link (if any)</a>
-        </div>
+  <div class="tl-event reveal">
+    <div class="tl-dot"><i class="fa-solid fa-graduation-cap"></i></div>
+    <div class="tl-card">
+      <time>April 2025</time>
+      <h3>Earned my B.S. in Software Engineering</h3>
+      <p>Graduated from Western Governors University, pairing a decade of hands-on experience with formal engineering fundamentals.</p>
+      <span class="tag">milestone</span>
     </div>
-    <footer>
-        <p>Connect with me:
-            <a href="https://github.com/StarkweatherNow" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i> GitHub</a> |
-            <a href="https://www.linkedin.com/in/starkweathernow/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        </p>
-        <p>&copy; <span id="currentYear"></span> <a href="https://brandonstarkweather.com/" target="_blank" aria-label="Personal Portfolio">Brandon Starkweather.</a> Last Updated: <span id="lastUpdated"></span></p>
-    </footer>
+  </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="assets/js/2025.js"></script>
+  <div class="tl-event reveal">
+    <div class="tl-dot"><i class="fa-brands fa-google-play"></i></div>
+    <div class="tl-card">
+      <time>April 2025</time>
+      <h3>Published my first Android app</h3>
+      <p>Launched “Inventory Audit — Barcode Scan” on the Google Play Store: a real, downloadable product built on a modern MVVM stack.</p>
+      <span class="tag">shipped</span>
+    </div>
+  </div>
+
+  <div class="tl-event reveal">
+    <div class="tl-dot"><i class="fa-solid fa-hands-helping"></i></div>
+    <div class="tl-card">
+      <time>May 2025</time>
+      <h3>Cheered on family</h3>
+      <p>Celebrated my brother’s graduation from OCC and his acceptance into RIT. A good reminder of why the work matters.</p>
+      <span class="tag">personal</span>
+    </div>
+  </div>
+
+  <div class="tl-event reveal">
+    <div class="tl-dot"><i class="fa-solid fa-house"></i></div>
+    <div class="tl-card">
+      <time>June 2025</time>
+      <h3>Sold the house, set up to relocate</h3>
+      <p>Closed on my home in Syracuse and began the move toward Rochester — clearing the runway for the next chapter.</p>
+      <span class="tag">relocation</span>
+    </div>
+  </div>
+
+  <div class="tl-event reveal">
+    <div class="tl-dot"><i class="fa-solid fa-laptop-code"></i></div>
+    <div class="tl-card">
+      <time>July 2025</time>
+      <h3>Deep in portfolio &amp; new app development</h3>
+      <p>Rebuilt this portfolio on the modern web platform and started developing my next application.</p>
+      <span class="tag">building</span>
+    </div>
+  </div>
+
+  <div class="tl-event reveal">
+    <div class="tl-dot"><i class="fa-solid fa-brain"></i></div>
+    <div class="tl-card">
+      <time>August 2025</time>
+      <h3>Deep dive into applied AI</h3>
+      <p>Immersed in retrieval-augmented generation, embeddings, and vector databases — building toward AI-engineering fluency.</p>
+      <span class="tag">learning</span>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="foot">
+    <div class="copy">© <span data-year>2026</span> Brandon Starkweather</div>
+    <div class="socials">
+      <a href="https://github.com/StarkweatherNow" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/starkweathernow/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="mailto:brandonstarkweather@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
 </body>
 </html>
