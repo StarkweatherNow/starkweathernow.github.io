@@ -15,13 +15,13 @@
 <body>
     <div class="policy-container">
         <h1>Privacy Policy</h1>
-        <p><strong>Last Updated: February 2026</strong></p>
+        <p><strong>Last Updated: July 2026</strong></p>
         
-        <p>This Privacy Policy explains how Pager Manager ("we", "our", or "the App") handles your information. Pager Manager is designed with a "Privacy First" architecture. We do not collect, store, or transmit your personal data to any external servers.</p>
+        <p>This Privacy Policy explains how Pager Manager ("we", "our", or "the App") handles your information. Pager Manager is designed with a "Privacy First" architecture. We do not collect, store, or transmit your personal data to any developer-operated or third-party servers. The App does access and collect device location, including in the background, and transmits it only to your own paired hardware &mdash; never to us. See <strong>Section 3: Permissions &amp; Usage</strong> for the full location disclosure.</p>
 
         <h3>1. Data We Do Not Collect</h3>
         <ul>
-            <li>We do not track your location using GPS/Network providers for analytics.</li>
+            <li>We do not track your location for analytics, advertising, or user profiling. (The App does access and collect GPS location for the remote polling feature only, and sends it solely to your own paired device &mdash; see Section 3.)</li>
             <li>We do not collect usage statistics or crash reports automatically.</li>
             <li>We do not upload your files, scripts, or "loot" to any cloud server.</li>
         </ul>
@@ -43,6 +43,25 @@
             <li><strong>ACCESS_NETWORK_STATE:</strong> Required to verify connection to the management WiFi before attempting commands.</li>
             <li><strong>READ_EXTERNAL_STORAGE:</strong> (Optional) Used only if you explicitly choose to import payload files from your device storage.</li>
             <li><strong>CLIPBOARD ACCESS:</strong> Used only when you initiate a "Copy" command from the terminal output or logs.</li>
+            <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION:</strong> The App accesses and collects your <strong>precise location (GPS)</strong> and <strong>approximate location</strong> via Android location services. Location is used <strong>solely</strong> to relay your device's GPS position to your own paired WiFi Pineapple ("pager") device in support of the App's remote polling feature. It is used for no other purpose.</li>
+            <li><strong>ACCESS_BACKGROUND_LOCATION:</strong> The App continues to access and collect location in the <strong>background</strong> &mdash; that is, while it is minimized and not in active use on screen. This background access exists because an active remote polling session can continue while the App is backgrounded, so your paired device keeps receiving your position. Background collection does <strong>not</strong> occur when the App is fully closed or force-stopped, and it does not resume on its own; it runs only for a polling session you started yourself.</li>
+        </ul>
+
+        <p><strong>How location data is handled:</strong></p>
+        <ul>
+            <li><strong>Sharing:</strong> Location is transmitted <strong>only</strong> to your own paired pager device, over your own authenticated, encrypted SSH connection. It is <strong>not sold</strong>, and it is <strong>not</strong> shared with the developer, advertisers, analytics providers, or any other third party. No location data is sent to, processed by, or stored on any developer-operated server.</li>
+            <li><strong>Your control:</strong> Remote polling is <strong>off by default</strong> and must be explicitly activated by you within the App; location is never collected until you start a polling session. Ending the session stops collection immediately. The polling toggle <strong>does not persist between App launches</strong> &mdash; it resets to off every time the App starts, so a session can never resume without a deliberate action by you. You may also revoke location permission at any time in Android Settings &rarr; Apps &rarr; Pager Manager &rarr; Permissions, which stops collection entirely.</li>
+            <li><strong>Retention:</strong> The App stores <strong>no GPS data</strong>. Location is <strong>transient and in-transit only</strong>: each position is passed straight through the encrypted SSH pipeline to your paired pager device and then discarded. It is never written to the App's local database, logs, or disk, and no location history is retained on your phone. Once the data reaches your own pager device, how that device processes or retains it is under your control as its owner and operator.</li>
+        </ul>
+
+        <p>For clarity, this corresponds to the App's <strong>Data safety</strong> declaration on Google Play:</p>
+        <ul>
+            <li><strong>Data type:</strong> Location &mdash; <em>Precise location</em> and <em>Approximate location</em>.</li>
+            <li><strong>Collected:</strong> Yes. Location leaves your device, so we disclose it as collected.</li>
+            <li><strong>Shared:</strong> No. It is not transferred to any third party; the only recipient is your own paired pager device.</li>
+            <li><strong>Processed ephemerally:</strong> Yes. Location is used in transit to service your active polling session and is not persisted by the App.</li>
+            <li><strong>Purpose:</strong> App functionality only. It is not used for analytics, advertising, personalization, or account management.</li>
+            <li><strong>Required or optional:</strong> Optional. You can use the App without enabling remote polling, and no location is collected unless you do.</li>
         </ul>
 
         <h3>4. Third-Party Services</h3>
